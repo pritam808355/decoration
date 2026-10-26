@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | YUVI.decoration 🎈</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-body {
+      background-color: #fcf8f9;
+      min-height: 100vh;
+      color: var(--text-dark);
+    }
+    .admin-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-light);
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      border-color: var(--primary-pink);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+    .stat-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .stat-card-info h3 {
+      font-size: 1.8rem;
+      margin: 0;
+      color: var(--text-dark);
+    }
+    .stat-card-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .admin-nav-tabs {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-card);
+      margin-bottom: 2rem;
+    }
+    .admin-tab {
+      padding: 0.85rem 1.6rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+    }
+    .admin-tab.active {
+      color: var(--primary-pink);
+    }
+    .admin-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary-pink);
+      border-radius: 999px;
+    }
+
+    /* Table */
+    .table-responsive {
+      overflow-x: auto;
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .admin-table th {
+      background: #faf4f5;
+      padding: 1.1rem 1.25rem;
+      color: var(--text-dark);
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-light);
+      white-space: nowrap;
+    }
+    .admin-table td {
+      padding: 1.1rem 1.25rem;
+      border-bottom: 1px solid #f6eff1;
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+    .admin-table tr:hover td {
+      background: #fffcfd;
+    }
+
+    /* Login Box */
+    .login-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 85vh;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 2.8rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    /* Chat Thread Modal */
+    .chat-transcript-body {
+      max-height: 420px;
+      overflow-y: auto;
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .chat-bubble-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      max-width: 85%;
+    }
+    .chat-bubble-row.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+    .chat-bubble-row.bot {
+      align-self: flex-start;
+    }
+    .chat-bubble-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .chat-bubble-avatar.bot-icon {
+      background: #fde8ee;
+      color: var(--primary-pink);
+    }
+    .chat-bubble-avatar.user-icon {
+      background: #eff6ff;
+      color: #3b82f6;
+    }
+    .chat-bubble-content {
+      padding: 0.75rem 1.1rem;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      position: relative;
+    }
+    .chat-bubble-row.bot .chat-bubble-content {
+      background: #fbf7f8;
+      border: 1px solid #f2e3e6;
+      color: var(--text-dark);
+      border-top-left-radius: 4px;
+    }
+    .chat-bubble-row.user .chat-bubble-content {
+      background: var(--pink-gradient);
+      color: #ffffff;
+      border-top-right-radius: 4px;
+    }
+    .chat-bubble-time {
+      font-size: 0.68rem;
+      margin-top: 0.3rem;
+      opacity: 0.7;
+    }
+    .chat-bubble-row.user .chat-bubble-time {
+      text-align: right;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .chat-bubble-row.bot .chat-bubble-time {
+      text-align: left;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN VIEW -->
+  <div id="admin-login-view" class="login-container">
+    <div class="login-card">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="margin: 0 auto 1rem; width: 60px; height: 60px; border-radius: 50%; background: #fde8ee; color: var(--primary-pink); display: flex; align-items: center; justify-content: center;">
+          <i class="fa-solid fa-crown" style="font-size: 1.8rem;"></i>
+        </div>
+        <h2 style="font-size: 1.6rem; color: var(--text-dark);">Yuvi.Decoration Admin</h2>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.3rem;">Enter owner credentials to manage bookings & enquiries</p>
+      </div>
+
+      <form id="admin-login-form">
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="login-user"><i class="fa-regular fa-envelope" style="color: var(--primary-pink);"></i> Email Address / Username</label>
+          <input type="text" id="login-user" class="form-control" placeholder="partyhard2707@gmail.com" autocomplete="username" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label" for="login-pass"><i class="fa-solid fa-lock" style="color: var(--primary-pink);"></i> Password</label>
+          <input type="password" id="login-pass" class="form-control" placeholder="Enter password" autocomplete="current-password" required>
+        </div>
+
+        <button type="submit" class="btn btn-pink" style="width: 100%; padding: 0.9rem;">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Login to Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD VIEW -->
+  <div id="admin-dashboard-view" style="display: none;">
+    <!-- Admin Header -->
+    <header class="admin-header">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="font-size: 1.35rem; font-weight: 800; color: var(--text-dark);">
+          YUVI<span class="text-pink">.decoration</span> Admin
+        </span>
+        <span style="font-size: 0.75rem; background: #fff0f3; border: 1px solid var(--border-light); padding: 0.2rem 0.6rem; border-radius: 999px; color: var(--primary-pink); font-weight: 700;">
+          Control Center
+        </span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="index.html" target="_blank" class="btn btn-white-pill" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> View Website
+        </a>
+        <button id="admin-logout-btn" class="btn btn-white-pill" style="font-size: 0.85rem; padding: 0.5rem 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </header>
+
+    <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+      <!-- Metrics Overview -->
+      <div class="admin-stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background: #fde8ee; color: var(--primary-pink);">
+            <i class="fa-regular fa-calendar-days"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3 id="stat-total-bookings">0</h3>
+            <p>Total Bookings</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background: #fff4e5; color: #f59e0b;">
+            <i class="fa-solid fa-hourglass-half"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3 id="stat-pending-bookings">0</h3>
+            <p>Pending Action</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background: #e6fffa; color: #10b981;">
+            <i class="fa-regular fa-circle-check"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3 id="stat-confirmed-bookings">0</h3>
+            <p>Confirmed & Setup</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background: #eff6ff; color: #3b82f6;">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3 id="stat-revenue">₹0</h3>
+            <p>Est. Pipeline Value</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background: #fdf2f8; color: #db2777;">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3 id="stat-total-chats">0</h3>
+            <p>AI Conversations</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-nav-tabs">
+        <button class="admin-tab active" data-tab="bookings"><i class="fa-solid fa-list-check"></i> Customer Bookings</button>
+        <button class="admin-tab" data-tab="decorations"><i class="fa-solid fa-wand-magic-sparkles"></i> Manage Decorations & Rates (<span id="total-services-count">60</span>)</button>
+        <button class="admin-tab" data-tab="enquiries"><i class="fa-solid fa-envelope-open-text"></i> Contact Enquiries</button>
+        <button class="admin-tab" data-tab="chats"><i class="fa-solid fa-comments"></i> AI Chat History (<span id="total-chats-count">0</span>)</button>
+      </div>
+
+      <!-- TAB 1: BOOKINGS MANAGEMENT -->
+      <div id="tab-content-bookings">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; gap: 1rem; flex-wrap: wrap;">
+          <div style="max-width: 320px; width: 100%;">
+            <input type="text" id="admin-search-input" class="form-control" placeholder="Search by name, phone or ID...">
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="filter-tab-pill active" data-admin-filter="all" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">All</button>
+            <button class="filter-tab-pill" data-admin-filter="pending" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Pending</button>
+            <button class="filter-tab-pill" data-admin-filter="confirmed" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Confirmed</button>
+            <button class="filter-tab-pill" data-admin-filter="completed" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Completed</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Customer</th>
+                <th>Event & Date</th>
+                <th>Package & Venue</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-bookings-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: DECORATIONS & RATES MANAGEMENT -->
+      <div id="tab-content-decorations" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark);">Decoration Packages & Rates</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Manage your live prices, photos, and create new decoration packages</p>
+          </div>
+          <div>
+            <button class="btn btn-pink" onclick="openAddDecorationModal()">
+              <i class="fa-solid fa-plus-circle"></i> Add New Decoration
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; gap: 1rem; flex-wrap: wrap;">
+          <div style="max-width: 320px; width: 100%;">
+            <input type="text" id="admin-decor-search" class="form-control" placeholder="Search decorations by title or tag...">
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="filter-tab-pill active" data-decor-cat="all" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">All (60+)</button>
+            <button class="filter-tab-pill" data-decor-cat="birthday" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Birthday</button>
+            <button class="filter-tab-pill" data-decor-cat="wedding" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Weddings</button>
+            <button class="filter-tab-pill" data-decor-cat="babyshower" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Baby Shower</button>
+            <button class="filter-tab-pill" data-decor-cat="corporate" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Corporate</button>
+            <button class="filter-tab-pill" data-decor-cat="anniversary" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Anniversary</button>
+            <button class="filter-tab-pill" data-decor-cat="other" style="padding: 0.35rem 0.9rem; font-size: 0.8rem;">Other</button>
+          </div>
+        </div>
+
+        <!-- Decorations Table -->
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Decoration Title</th>
+                <th>Category</th>
+                <th>Starting Price</th>
+                <th>Key Features</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-decorations-tbody">
+              <!-- Dynamically populated via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: ENQUIRIES -->
+      <div id="tab-content-enquiries" style="display: none;">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Message</th>
+                <th>Direct Reply</th>
+              </tr>
+            </thead>
+            <tbody id="admin-enquiries-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 4: AI CHAT HISTORY & LEADS -->
+      <div id="tab-content-chats" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark);">Customer AI Chat History & Leads</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Review customer questions, budgets, and themes asked to Yuvi AI</p>
+          </div>
+          <div>
+            <button class="btn btn-white-pill" onclick="loadAdminChats()">
+              <i class="fa-solid fa-rotate"></i> Refresh Chats
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div style="margin-bottom: 1.25rem; max-width: 360px;">
+          <input type="text" id="admin-chats-search" class="form-control" placeholder="Search by session ID or inquiry topic...">
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Session ID</th>
+                <th>Started / Last Active</th>
+                <th>Inquiry Summary / Topic</th>
+                <th>Messages</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-chats-tbody">
+              <!-- Dynamically populated via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD NEW DECORATION -->
+  <div class="modal-overlay" id="add-decoration-modal">
+    <div class="modal-card" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-plus-circle" style="color: var(--primary-pink);"></i> Add New Decoration Package</h3>
+        <button class="modal-close-btn" onclick="closeAddDecorationModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-decoration-form">
+          <div class="form-grid-2col">
+            <div class="form-group full-width">
+              <label class="form-label">Decoration Title *</label>
+              <input type="text" id="decor-new-title" class="form-control" placeholder="e.g. Royal Blush Ring Arch with Neon Sign" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Category *</label>
+              <select id="decor-new-cat" class="form-control" required>
+                <option value="birthday">Birthday Parties 🎂</option>
+                <option value="wedding">Weddings & Engagements 💍</option>
+                <option value="babyshower">Baby Shower & Naming 🍼</option>
+                <option value="corporate">Corporate Events 🏢</option>
+                <option value="anniversary">Anniversary & Welcome 💖</option>
+                <option value="other">Other Occasions ✨</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Starting Price (₹) *</label>
+              <input type="number" id="decor-new-price" class="form-control" placeholder="e.g. 2999" min="500" step="50" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Image URL *</label>
+              <input type="url" id="decor-new-image" class="form-control" placeholder="https://images.unsplash.com/..." oninput="previewDecorImage(this.value)" required>
+              <div id="decor-image-preview-wrap" style="margin-top: 0.5rem; height: 140px; border-radius: 8px; overflow: hidden; background: #fdf5f5; display: none; border: 1px dashed var(--border-light);">
+                <img id="decor-image-preview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Badge Label (Optional)</label>
+              <input type="text" id="decor-new-badge" class="form-control" placeholder="e.g. Bestseller, Trending, Luxury">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Color Theme / Tags</label>
+              <input type="text" id="decor-new-tags" class="form-control" placeholder="e.g. Pastel Pink, Gold, Neon Sign">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Short Description *</label>
+              <textarea id="decor-new-desc" class="form-control" rows="2" placeholder="Brief description of the decoration setup..." required></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Package Inclusions (One per line) *</label>
+              <textarea id="decor-new-features" class="form-control" rows="3" placeholder="250+ Pastel Chrome Balloons&#10;Custom Neon Happy Birthday Light&#10;Round Golden Ring Frame&#10;Setup and dismantle included" required></textarea>
+            </div>
+
+            <div class="form-group full-width" style="margin-top: 1rem;">
+              <button type="submit" class="btn btn-pink" style="width: 100%; padding: 0.9rem;">
+                <i class="fa-solid fa-check-circle"></i> Save & Publish Decoration
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: VIEW CHAT TRANSCRIPT -->
+  <div class="modal-overlay" id="view-chat-modal">
+    <div class="modal-card" style="max-width: 620px;">
+      <div class="modal-header">
+        <div>
+          <h3 id="modal-chat-title" style="margin: 0; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-comments" style="color: var(--primary-pink);"></i>
+            <span>Session Transcript</span>
+          </h3>
+          <p id="modal-chat-subtitle" style="margin: 0.2rem 0 0; font-size: 0.78rem; color: var(--text-muted);"></p>
+        </div>
+        <button class="modal-close-btn" onclick="closeViewChatModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.25rem 1.75rem;">
+        <div id="modal-chat-transcript" class="chat-transcript-body">
+          <!-- Populated dynamically via admin.js -->
+        </div>
+      </div>
+
+      <div style="padding: 1rem 1.75rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; background: #faf4f5; border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl);">
+        <button class="btn btn-white-pill" style="font-size: 0.8rem; padding: 0.45rem 0.9rem;" onclick="copyCurrentChatTranscript()">
+          <i class="fa-regular fa-copy"></i> Copy Transcript
+        </button>
+        <button class="btn btn-pink" style="font-size: 0.8rem; padding: 0.45rem 1rem;" onclick="closeViewChatModal()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/services-data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YUVI.decoration 🎈 | Decorate Your Happiness • Premium Balloon Decoration Services</title>
+  <meta name="description" content="At Yuvi.Decoration, we turn your dreams into beautiful celebrations. Premium balloon decoration for Birthdays, Weddings, Baby Showers, Anniversaries & Corporate Events.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Floating Canvas for Soft Balloons -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Background Decorative Pastel Blobs -->
+  <div class="bg-decor-blob-left"></div>
+  <div class="bg-decor-blob-right"></div>
+
+  <!-- ===================================================
+       NAVBAR (Exact Match to User Reference)
+  =================================================== -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo">
+        <svg class="logo-balloons-svg" viewBox="0 0 48 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Pink Balloon Left -->
+          <ellipse cx="18" cy="20" rx="11" ry="14" fill="#F8B4C4"/>
+          <ellipse cx="15" cy="16" rx="3.5" ry="5.5" fill="#FFFFFF" fill-opacity="0.45"/>
+          <path d="M18 34L16.5 36.5H19.5L18 34Z" fill="#E85072"/>
+          <path d="M18 36.5C18 42 22 45 23 50" stroke="#E85072" stroke-width="1.2" stroke-linecap="round"/>
+
+          <!-- Cyan Balloon Middle Back -->
+          <ellipse cx="30" cy="17" rx="10.5" ry="13.5" fill="#A5E5E0"/>
+          <ellipse cx="27.5" cy="13.5" rx="3" ry="5" fill="#FFFFFF" fill-opacity="0.5"/>
+          <path d="M30 30.5L28.5 33H31.5L30 30.5Z" fill="#38B2AC"/>
+          <path d="M30 33C30 39 25 43 23 50" stroke="#38B2AC" stroke-width="1.2" stroke-linecap="round"/>
+
+          <!-- Peach / Orange Balloon Front Right -->
+          <ellipse cx="24" cy="25" rx="11" ry="14" fill="#FFC9A8"/>
+          <ellipse cx="21" cy="21" rx="3.5" ry="5.5" fill="#FFFFFF" fill-opacity="0.45"/>
+          <path d="M24 39L22.5 41.5H25.5L24 39Z" fill="#DD6B20"/>
+          <path d="M24 41.5C24 45 23 48 23 50" stroke="#DD6B20" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+
+        <div class="logo-text-col">
+          <div class="logo-brand-name">YUVI<span>.decoration</span></div>
+          <div class="logo-tagline">Decorate Your Happiness</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Nav Action CTAs -->
+      <div class="nav-actions">
+        <button class="btn-welcome-sparkle" onclick="showWelcomeModal(true)" title="Welcome Greeting & Offers">
+          <span class="sparkle-emoji">🎉</span> <span>Welcome</span>
+        </button>
+        <button class="nav-icon-btn" title="Search services" onclick="focusSearch()">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button class="btn btn-pink" onclick="openBookingModalForPackage('')">
+          Book Now <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button class="mobile-toggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================================================
+       HERO SECTION (Exact Match to User Reference)
+  =================================================== -->
+  <header class="hero-section" id="home">
+    <div class="container hero-grid">
+      <!-- Left Column: Content -->
+      <div class="hero-content">
+        <div class="eyebrow-tag">
+          <i class="fa-solid fa-heart heart-icon"></i>
+          <span>PREMIUM BALLOON DECORATION SERVICES</span>
+        </div>
+
+        <h1 class="hero-title">
+          Make Every Moment <br>
+          <span class="text-pink">More Special</span> <span class="heart-outline">♡</span>
+        </h1>
+
+        <p class="hero-desc">
+          At Yuvi.Decoration, we turn your dreams into beautiful celebrations. From birthdays to weddings, we create stunning balloon decorations that add magic to your special moments.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group">
+          <button class="btn btn-pink" onclick="openBookingModalForPackage('')">
+            <i class="fa-regular fa-calendar-check"></i> Book Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <a href="#gallery" class="btn btn-white-pill">
+            <i class="fa-regular fa-images"></i> Explore Gallery
+          </a>
+        </div>
+
+        <!-- Trust / Highlight Badges directly below CTAs -->
+        <div class="hero-features-row">
+          <div class="feature-badge-item">
+            <div class="feature-badge-icon pink">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <div class="feature-badge-text">
+              Premium Quality<br>Balloons
+            </div>
+          </div>
+
+          <div class="feature-badge-item">
+            <div class="feature-badge-icon orange">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div class="feature-badge-text">
+              Creative & Unique<br>Designs
+            </div>
+          </div>
+
+          <div class="feature-badge-item">
+            <div class="feature-badge-icon mint">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="feature-badge-text">
+              On-Time<br>Delivery
+            </div>
+          </div>
+
+          <div class="feature-badge-item">
+            <div class="feature-badge-icon heart">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="feature-badge-text">
+              Customer<br>Satisfaction
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Showcase + Floating AI Assistant -->
+      <div class="hero-visual-wrapper">
+        <div class="hero-main-card">
+          <img src="images/hero-banner.png" alt="Happy Birthday Luxury Balloon Decoration Setup by YUVI.decoration">
+          <div class="hero-card-tag">
+            <i class="fa-solid fa-crown" style="color: #f59e0b;"></i>
+            <span>Featured Luxury Birthday Setup</span>
+          </div>
+        </div>
+
+        <!-- FLOATING AI ASSISTANT CARD (Rendered on Hero exactly as in Reference Image) -->
+        <div class="hero-ai-card" id="hero-ai-widget">
+          <div class="ai-card-header">
+            <div class="ai-card-title">
+              <i class="fa-solid fa-crown" style="color: #f59e0b;"></i>
+              <span>YUVI AI Assistant</span>
+              <span class="ai-status-indicator">● Online</span>
+            </div>
+            <button class="chat-close-btn" style="font-size: 1rem;" onclick="hideHeroAiCard()">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Cute AI Bot Avatar -->
+          <div class="ai-avatar-center">
+            <i class="fa-solid fa-robot" style="font-size: 1.8rem; color: #3b82f6;"></i>
+          </div>
+
+          <div class="ai-greeting-text">Hi! I'm Yuvi AI, 👋</div>
+          <div class="ai-sub-greeting">How can I help you today?</div>
+
+          <!-- 6 Action Prompt Buttons (Exact matching to uploaded image) -->
+          <div class="ai-prompts-stack">
+            <button class="ai-prompt-btn" onclick="askAiPrompt('Show me birthday decoration ideas')">
+              Show me birthday decoration ideas
+            </button>
+            <button class="ai-prompt-btn" onclick="askAiPrompt('What are your packages & prices?')">
+              What are your packages & prices?
+            </button>
+            <button class="ai-prompt-btn" onclick="askAiPrompt('Book a decoration for wedding')">
+              Book a decoration for wedding
+            </button>
+            <button class="ai-prompt-btn" onclick="askAiPrompt('Show gallery photos')">
+              Show gallery photos
+            </button>
+            <button class="ai-prompt-btn" onclick="askAiPrompt('Check booking status')">
+              Check booking status
+            </button>
+            <button class="ai-prompt-btn" onclick="askAiPrompt('Talk to a human')">
+              Talk to a human
+            </button>
+          </div>
+
+          <!-- Mini Input Box -->
+          <form onsubmit="handleHeroAiSubmit(event)">
+            <div class="ai-mini-input-box">
+              <input type="text" id="hero-ai-input" class="ai-mini-input" placeholder="Type your message..." autocomplete="off">
+              <button type="submit" class="ai-mini-send" title="Send message">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================
+       POPULAR CATEGORIES SECTION (Exact Match)
+  =================================================== -->
+  <section class="section-wrapper" id="services" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="section-head-row">
+        <div>
+          <div class="eyebrow-tag">OUR SERVICES</div>
+          <h2 class="section-title-large">Popular <span class="text-pink">Categories</span></h2>
+          <p class="section-desc-sub">Choose from a wide range of balloon decoration services for every occasion.</p>
+        </div>
+        <div>
+          <a href="#packages" class="view-all-link">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 6 Category Cards Grid -->
+      <div class="categories-grid">
+        <!-- 1. Birthday Parties -->
+        <div class="category-card reveal-on-scroll" onclick="filterGalleryByCat('birthday')">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop&q=80" alt="Birthday Parties">
+          </div>
+          <div class="category-footer-bar">
+            <div class="cat-label-wrap">
+              <div class="cat-icon-mini pink"><i class="fa-solid fa-cake-candles"></i></div>
+              <span class="cat-title-text">Birthday Parties</span>
+            </div>
+            <div class="cat-arrow-circle"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- 2. Weddings -->
+        <div class="category-card reveal-on-scroll" onclick="filterGalleryByCat('wedding')">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Weddings">
+          </div>
+          <div class="category-footer-bar">
+            <div class="cat-label-wrap">
+              <div class="cat-icon-mini purple"><i class="fa-solid fa-ring"></i></div>
+              <span class="cat-title-text">Weddings</span>
+            </div>
+            <div class="cat-arrow-circle"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- 3. Baby Shower -->
+        <div class="category-card reveal-on-scroll" onclick="filterGalleryByCat('babyshower')">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80" alt="Baby Shower">
+          </div>
+          <div class="category-footer-bar">
+            <div class="cat-label-wrap">
+              <div class="cat-icon-mini cyan"><i class="fa-solid fa-baby-carriage"></i></div>
+              <span class="cat-title-text">Baby Shower</span>
+            </div>
+            <div class="cat-arrow-circle"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- 4. Corporate Events -->
+        <div class="category-card reveal-on-scroll" onclick="filterGalleryByCat('corporate')">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80" alt="Corporate Events">
+          </div>
+          <div class="category-footer-bar">
+            <div class="cat-label-wrap">
+              <div class="cat-icon-mini orange"><i class="fa-solid fa-briefcase"></i></div>
+              <span class="cat-title-text">Corporate Events</span>
+            </div>
+            <div class="cat-arrow-circle"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- 5. Anniversaries -->
+        <div class="category-card reveal-on-scroll" onclick="filterGalleryByCat('anniversary')">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&auto=format&fit=crop&q=80" alt="Anniversaries">
+          </div>
+          <div class="category-footer-bar">
+            <div class="cat-label-wrap">
+              <div class="cat-icon-mini rose"><i class="fa-solid fa-heart"></i></div>
+              <span class="cat-title-text">Anniversaries</span>
+            </div>
+            <div class="cat-arrow-circle"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- 6. Other Occasions -->
+        <div class="category-card reveal-on-scroll" onclick="filterGalleryByCat('other')">
+          <div class="category-img-box">
+            <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=600&auto=format&fit=crop&q=80" alt="Other Occasions">
+          </div>
+          <div class="category-footer-bar">
+            <div class="cat-label-wrap">
+              <div class="cat-icon-mini yellow"><i class="fa-solid fa-star"></i></div>
+              <span class="cat-title-text">Other Occasions</span>
+            </div>
+            <div class="cat-arrow-circle"><i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       WHY CHOOSE YUVI.DECORATION? (Exact Match)
+  =================================================== -->
+  <section class="why-choose-section">
+    <div class="container">
+      <div class="section-head-row" style="margin-bottom: 1.5rem;">
+        <div>
+          <h2 class="section-title-large">Why Choose <span class="text-pink">Yuvi.Decoration?</span></h2>
+          <p class="section-desc-sub">We make your special moments unforgettable with creativity, quality and trust.</p>
+        </div>
+        <div>
+          <a href="#packages" class="btn btn-pink" style="padding: 0.65rem 1.4rem; font-size: 0.88rem;">
+            Our Packages <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Features Grid -->
+      <div class="why-features-grid">
+        <!-- 1. Creative Designs -->
+        <div class="why-card reveal-on-scroll">
+          <div class="why-icon-box pink">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <div class="why-content">
+            <h4>Creative Designs</h4>
+            <p>Unique and customized decorations for every occasion.</p>
+          </div>
+        </div>
+
+        <!-- 2. Premium Balloons -->
+        <div class="why-card reveal-on-scroll">
+          <div class="why-icon-box purple">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <div class="why-content">
+            <h4>Premium Balloons</h4>
+            <p>High-quality, long-lasting and eco-friendly balloons.</p>
+          </div>
+        </div>
+
+        <!-- 3. Experienced Team -->
+        <div class="why-card reveal-on-scroll">
+          <div class="why-icon-box cyan">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="why-content">
+            <h4>Experienced Team</h4>
+            <p>Skilled professionals with years of experience.</p>
+          </div>
+        </div>
+
+        <!-- 4. Affordable Pricing -->
+        <div class="why-card reveal-on-scroll">
+          <div class="why-icon-box orange">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="why-content">
+            <h4>Affordable Pricing</h4>
+            <p>Best decorations at competitive rates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       RECENT DECORATIONS (GALLERY) (Exact Match)
+  =================================================== -->
+  <section class="section-wrapper" id="gallery">
+    <div class="container">
+      <div class="section-head-row">
+        <div>
+          <div class="eyebrow-tag">OUR WORKS</div>
+          <h2 class="section-title-large">Recent <span class="text-pink">Decorations</span></h2>
+          <p class="section-desc-sub">Take a look at some of our latest balloon decoration setups.</p>
+        </div>
+        <div>
+          <a href="#packages" class="view-all-link">View All Gallery <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Gallery Grid of 6 Photos -->
+      <div class="recent-gallery-grid">
+        <div class="recent-gallery-item reveal-on-scroll" onclick="openServiceDetailModal('srv-bday-1')">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop&q=80" alt="Pastel Birthday Setup">
+        </div>
+        <div class="recent-gallery-item reveal-on-scroll" onclick="openServiceDetailModal('srv-baby-1')">
+          <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80" alt="Pastel Baby Shower Setup">
+        </div>
+        <div class="recent-gallery-item reveal-on-scroll" onclick="openServiceDetailModal('srv-anniv-1')">
+          <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&auto=format&fit=crop&q=80" alt="Romantic Anniversary Arch">
+        </div>
+        <div class="recent-gallery-item reveal-on-scroll" onclick="openServiceDetailModal('srv-wed-1')">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Floral Wedding Arch">
+        </div>
+        <div class="recent-gallery-item reveal-on-scroll" onclick="openServiceDetailModal('srv-corp-1')">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80" alt="Corporate Welcome Backdrop">
+        </div>
+        <div class="recent-gallery-item reveal-on-scroll" onclick="openServiceDetailModal('srv-other-1')">
+          <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=600&auto=format&fit=crop&q=80" alt="Celebration Arch">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       PACKAGES & PRICING SECTION (Phase 2 Full Details)
+  =================================================== -->
+  <section class="section-wrapper" id="packages" style="background: #ffffff; border-top: 1px solid var(--border-light);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2.8rem;">
+        <div class="eyebrow-tag" style="justify-content: center;">TRANSPARENT PRICING</div>
+        <h2 class="section-title-large">Curated Decoration <span class="text-pink">Packages</span></h2>
+        <p class="section-desc-sub" style="max-width: 600px; margin: 0 auto;">
+          Every package includes full on-site styling, high-quality balloons, custom props, and timely setup.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs-row">
+        <button class="filter-tab-pill active" data-filter="all">All Packages</button>
+        <button class="filter-tab-pill" data-filter="birthday">Birthday Parties</button>
+        <button class="filter-tab-pill" data-filter="wedding">Weddings</button>
+        <button class="filter-tab-pill" data-filter="babyshower">Baby Shower</button>
+        <button class="filter-tab-pill" data-filter="anniversary">Anniversary</button>
+        <button class="filter-tab-pill" data-filter="corporate">Corporate</button>
+      </div>
+
+      <!-- Detailed Services Grid -->
+      <div class="services-detailed-grid" id="services-grid">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       ONLINE BOOKING SECTION (Phase 4)
+  =================================================== -->
+  <section class="section-wrapper" id="book">
+    <div class="container">
+      <div class="booking-container-card">
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+          <div class="eyebrow-tag" style="justify-content: center;">INSTANT RESERVATION</div>
+          <h2 class="section-title-large">Book Your <span class="text-pink">Celebration</span></h2>
+          <p class="section-desc-sub">
+            Fill in the details below to lock your date. You will get an immediate Booking ID and direct WhatsApp confirmation.
+          </p>
+        </div>
+
+        <form id="main-booking-form">
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label" for="booking-name"><i class="fa-regular fa-user" style="color: var(--primary-pink);"></i> Full Name *</label>
+              <input type="text" id="booking-name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="booking-phone"><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> WhatsApp Mobile Number *</label>
+              <input type="tel" id="booking-phone" class="form-control" placeholder="e.g. 9876543210" pattern="[0-9]{10}" title="Enter a 10-digit mobile number" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="booking-event-type"><i class="fa-regular fa-calendar-star" style="color: var(--primary-pink);"></i> Occasion *</label>
+              <select id="booking-event-type" class="form-control" required>
+                <option value="">-- Select Occasion --</option>
+                <option value="Birthday Party">Birthday Party 🎂</option>
+                <option value="Weddings">Weddings & Engagements 💍</option>
+                <option value="Baby Shower">Baby Shower & Naming 🍼</option>
+                <option value="Anniversary">Anniversary & Welcome Baby 💖</option>
+                <option value="Corporate Events">Corporate Events & Opening 🏢</option>
+                <option value="Other Occasion">Other Custom Occasion ✨</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="booking-package"><i class="fa-solid fa-box-open" style="color: var(--primary-pink);"></i> Selected Package</label>
+              <select id="booking-package" class="form-control">
+                <option value="custom">✨ Custom Bespoke Theme (Tailored to your needs)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="booking-date"><i class="fa-regular fa-calendar-days" style="color: var(--primary-pink);"></i> Event Date *</label>
+              <input type="date" id="booking-date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="booking-time"><i class="fa-regular fa-clock" style="color: var(--primary-pink);"></i> Setup Timing</label>
+              <select id="booking-time" class="form-control">
+                <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                <option value="Afternoon (1:00 PM - 4:00 PM)" selected>Afternoon (1:00 PM - 4:00 PM)</option>
+                <option value="Evening (5:00 PM - 8:00 PM)">Evening (5:00 PM - 8:00 PM)</option>
+                <option value="Night Surprise (9:30 PM - 11:30 PM)">Night Surprise (9:30 PM - 11:30 PM)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="booking-budget"><i class="fa-solid fa-wallet" style="color: var(--primary-pink);"></i> Budget Range</label>
+              <select id="booking-budget" class="form-control">
+                <option value="₹1,500 - ₹3,000">₹1,500 - ₹3,000 (Room & Simple Arch)</option>
+                <option value="₹3,000 - ₹6,000" selected>₹3,000 - ₹6,000 (Ring Arch & Neon Sign)</option>
+                <option value="₹6,000 - ₹12,000">₹6,000 - ₹12,000 (Grand Milestone & Stage)</option>
+                <option value="₹15,000+ Luxury">₹15,000+ (Grand Luxury Setup)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="booking-theme"><i class="fa-solid fa-palette" style="color: var(--primary-pink);"></i> Color Theme</label>
+              <input type="text" id="booking-theme" class="form-control" placeholder="e.g. Pastel Pink & Mint, Rose Gold, Chrome Black">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="booking-venue"><i class="fa-solid fa-location-dot" style="color: var(--primary-pink);"></i> Venue / Delivery Address *</label>
+              <input type="text" id="booking-venue" class="form-control" placeholder="e.g. Flat 402, Sunshine Apts, MG Road" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="booking-notes"><i class="fa-regular fa-comment-dots" style="color: var(--primary-pink);"></i> Special Instructions / Age / Name on Neon Sign</label>
+              <textarea id="booking-notes" class="form-control" rows="3" placeholder="Tell us if you want a specific age number balloon, custom name on sign, etc."></textarea>
+            </div>
+
+            <div class="form-group full-width" style="text-align: center; margin-top: 1rem;">
+              <button type="submit" class="btn btn-pink" style="width: 100%; padding: 1rem; font-size: 1.05rem;">
+                <i class="fa-regular fa-circle-check"></i> Submit Booking & Generate ID
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       TRACK BOOKING SECTION (Phase 5)
+  =================================================== -->
+  <section class="section-wrapper" id="track" style="background: #ffffff; border-top: 1px solid var(--border-light);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <div class="eyebrow-tag" style="justify-content: center;">LIVE ORDER TRACKING</div>
+        <h2 class="section-title-large">Track Your <span class="text-pink">Booking</span></h2>
+        <p class="section-desc-sub">
+          Enter your Booking ID (e.g. YUVI-2026-8941) or registered mobile number to check real-time decorator status.
+        </p>
+      </div>
+
+      <div class="track-search-box">
+        <div style="display: flex; gap: 0.75rem;">
+          <input type="text" id="track-input" class="form-control" placeholder="Enter Booking ID (e.g. YUVI-2026-8941) or Mobile Number">
+          <button id="track-search-btn" class="btn btn-pink" style="flex-shrink: 0;">
+            <i class="fa-solid fa-magnifying-glass"></i> Track Live Status
+          </button>
+        </div>
+      </div>
+
+      <!-- Tracking Results Card -->
+      <div id="track-result-card" class="track-result-wrap">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       ABOUT & CONTACT SECTION
+  =================================================== -->
+  <section class="section-wrapper" id="contact">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;">
+        <div>
+          <div class="eyebrow-tag">CONNECT WITH US</div>
+          <h2 class="section-title-large" style="margin-bottom: 1rem;">Let’s Plan Your <br><span class="text-pink">Dream Celebration</span></h2>
+          <p style="color: var(--text-body); font-size: 1.02rem; margin-bottom: 2rem; line-height: 1.6;">
+            Have a question, need customized pricing, or want our head stylist to visit your venue? We are available 7 days a week to make your celebration unforgettable.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: #fde8ee; color: var(--primary-pink); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <strong style="color: var(--text-dark); display: block;">Call Us Directly</strong>
+                <a href="tel:+919263667669" style="color: var(--text-muted); text-decoration: none;">+91 92636 67669</a>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: #e6fffa; color: #25D366; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <strong style="color: var(--text-dark); display: block;">Instant WhatsApp Chat</strong>
+                <a href="https://wa.me/919263667669?text=Hello%20Yuvi%20Decoration" target="_blank" style="color: #25D366; text-decoration: none;">+91 92636 67669 (Fastest Reply)</a>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: #f3e8ff; color: #9333ea; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <strong style="color: var(--text-dark); display: block;">Email Us</strong>
+                <a href="mailto:partyhard2707@gmail.com" style="color: var(--text-muted); text-decoration: none;">partyhard2707@gmail.com</a>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: #fffaf0; color: #dd6b20; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <div>
+                <strong style="color: var(--text-dark); display: block;">Working Hours</strong>
+                <span style="color: var(--text-muted);">Monday – Sunday: 8:00 AM – 10:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Enquiry Form -->
+        <div style="background: #ffffff; border-radius: var(--radius-xl); padding: 2.8rem; box-shadow: var(--shadow-card); border: 1px solid var(--border-card);">
+          <h3 style="font-size: 1.4rem; color: var(--text-dark); margin-bottom: 1.25rem;">Send a Quick Enquiry</h3>
+          <form id="contact-form">
+            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Your Name *</label>
+                <input type="text" id="contact-name" class="form-control" placeholder="Your Name" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-phone">WhatsApp Number *</label>
+                <input type="tel" id="contact-phone" class="form-control" placeholder="10-digit Mobile" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-msg">Message / Theme Requirements *</label>
+                <textarea id="contact-msg" class="form-control" rows="3" placeholder="Tell us about the occasion, venue or styling you have in mind..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-pink" style="width: 100%;">
+                <i class="fa-regular fa-paper-plane"></i> Send Enquiry
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       FOOTER
+  =================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="#home" class="brand-logo" style="margin-bottom: 1rem;">
+          <div class="logo-text-col">
+            <div class="logo-brand-name">YUVI<span>.decoration</span></div>
+            <div class="logo-tagline">Decorate Your Happiness</div>
+          </div>
+        </a>
+        <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 320px; line-height: 1.6;">
+          Turning your celebrations into breathtaking memories with premium pastel balloon styling, neon signboards, and personalized themes.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Occasions</h4>
+        <ul class="footer-links">
+          <li><a href="#packages" onclick="filterGalleryByCat('birthday')">Birthday Parties</a></li>
+          <li><a href="#packages" onclick="filterGalleryByCat('wedding')">Weddings</a></li>
+          <li><a href="#packages" onclick="filterGalleryByCat('babyshower')">Baby Shower</a></li>
+          <li><a href="#packages" onclick="filterGalleryByCat('anniversary')">Anniversaries</a></li>
+          <li><a href="#packages" onclick="filterGalleryByCat('corporate')">Corporate Events</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#packages">Pricing & Packages</a></li>
+          <li><a href="#track">Track Booking</a></li>
+          <li><a href="#contact">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Direct Connect</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+          Chat directly with our head decorator on WhatsApp for instant confirmation:
+        </p>
+        <a href="https://wa.me/919263667669?text=Hello%20Yuvi%20Decoration" target="_blank" class="btn btn-whatsapp" style="width: 100%; margin-bottom: 0.8rem;">
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <button class="btn btn-pink" style="width: 100%;" onclick="openBookingModalForPackage('')">
+          Book an Event Now
+        </button>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        © 2026 <strong>YUVI.decoration</strong>. All rights reserved. Decorate Your Happiness.
+      </div>
+      <div>
+        Premium Celebrations • Beautiful Memories
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================
+       PERSISTENT BOTTOM-RIGHT FLOATING AI CONCIERGE LAUNCHER
+  =================================================== -->
+  <div class="ai-chat-launcher" id="ai-chat-launcher" title="Chat with Yuvi AI">
+    <div class="ai-pulse-ring"></div>
+    <div class="ai-pulse-ring delay"></div>
+    <i class="fa-solid fa-robot" style="font-size: 1.6rem; color: #ffffff;"></i>
+    <span class="ai-online-badge" title="Online 24/7"></span>
+  </div>
+
+  <div class="chat-bubble-tooltip" id="ai-welcome-bubble" onclick="openAiChat()">
+    <button class="tooltip-close" onclick="event.stopPropagation(); closeAiTooltip();" title="Dismiss">&times;</button>
+    <div class="tooltip-badge">
+      <span class="wave-hand">👋</span> <strong>Namaste!</strong>
+    </div>
+    <div class="tooltip-body">
+      Welcome to <strong>YUVI.decoration</strong>! Decoration ideas ya prices chahiye? Mujhse puchiye!
+    </div>
+    <div class="tooltip-cta">
+      <span>Chat with Yuvi AI</span> <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  </div>
+
+  <!-- Expandable Floating Chat Box -->
+  <div class="ai-chat-box" id="ai-chat-box">
+    <div class="chat-header">
+      <div class="chat-header-user">
+        <div class="chat-avatar">
+          <i class="fa-solid fa-robot" style="color: #3b82f6;"></i>
+        </div>
+        <div class="chat-title-info">
+          <h4>YUVI AI Assistant 🎈</h4>
+          <span class="chat-status"><span class="status-dot"></span> Online • Hindi / Hinglish / Eng</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <button id="ai-chat-clear" title="Restart / Clear chat" style="background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer;"><i class="fa-solid fa-rotate-right"></i></button>
+        <button class="chat-close-btn" id="ai-chat-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <!-- Quick Chips for Prompts -->
+    <div class="chat-quick-chips">
+      <button class="chat-chip" data-query="Show me birthday decoration ideas">🎂 Birthday Ideas</button>
+      <button class="chat-chip" data-query="Mera budget ₹3,000 hai">💰 Budget ₹3,000</button>
+      <button class="chat-chip" data-query="Book a decoration for wedding">💍 Wedding Booking</button>
+      <button class="chat-chip" data-query="Baby shower decoration dikhao">🍼 Baby Shower</button>
+      <button class="chat-chip" data-query="Meri booking ka status batao">🔎 Track Booking</button>
+      <button class="chat-chip" data-query="Talk to a human">📞 Talk to Human</button>
+    </div>
+
+    <!-- Messages Container -->
+    <div class="chat-messages" id="ai-chat-messages">
+      <div class="chat-msg bot">
+        Hi! I'm <strong>Yuvi AI</strong> 👋<br><br>
+        Welcome to <strong>YUVI.decoration</strong>! How can I help you today? Aap mujhse decoration ideas, packages, pricing, budget recommendations ya booking status ke bare mein pooch sakte hain!
+      </div>
+    </div>
+
+    <!-- Input Form -->
+    <form class="chat-input-bar" id="ai-chat-form">
+      <input type="text" id="ai-chat-input" class="chat-input" placeholder="Type your message..." autocomplete="off">
+      <button type="submit" class="chat-send-btn" title="Send message">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- ===================================================
+       MODAL 1: BOOKING CONFIRMATION MODAL
+  =================================================== -->
+  <div class="modal-overlay" id="confirmation-modal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-body">
+        <div class="confirmation-box">
+          <div class="confirmation-icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h2 style="font-size: 1.7rem; color: var(--text-dark); margin-bottom: 0.4rem;">Booking Submitted!</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Thank you for choosing <strong>Yuvi.Decoration</strong>. Your booking has been recorded.
+          </p>
+
+          <div>
+            <span class="booking-id-pill" id="confirm-booking-id">YUVI-2026-8941</span>
+          </div>
+
+          <button class="btn btn-white-pill" onclick="copyBookingId()" style="font-size: 0.85rem; padding: 0.4rem 1rem; margin-bottom: 1rem;">
+            <i class="fa-regular fa-copy"></i> Copy Booking ID
+          </button>
+
+          <!-- Injected Details -->
+          <div id="confirm-booking-details"></div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem;">
+            <a id="confirm-whatsapp-btn" href="#" target="_blank" class="btn btn-whatsapp">
+              <i class="fa-brands fa-whatsapp"></i> Send on WhatsApp for 1-Minute Confirmation
+            </a>
+            <button class="btn btn-white-pill" onclick="closeModal('confirmation-modal')">
+              Done & Return to Website
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================
+       MODAL 2: SERVICE DETAIL MODAL
+  =================================================== -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="detail-title">Package Details</h3>
+        <button class="modal-close-btn" onclick="closeModal('detail-modal')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="detail-body">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================
+       MODAL 3: CELEBRATION WELCOME EXPERIENCE MODAL
+  =================================================== -->
+  <div class="modal-overlay welcome-overlay" id="welcome-modal">
+    <!-- Full-screen Canvas for Celebration Confetti Burst -->
+    <canvas id="welcome-confetti-canvas" class="welcome-confetti-canvas"></canvas>
+
+    <div class="modal-card welcome-card">
+      <button class="welcome-close-btn" onclick="closeWelcomeModal()" title="Close Welcome">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="welcome-card-inner">
+        <!-- Welcoming Badge -->
+        <div class="welcome-badge-wrap">
+          <span class="welcome-badge">
+            <span class="welcome-sparkle-dot"></span>
+            SWAGATAM • WELCOME TO YUVI.DECORATION
+            <span class="welcome-sparkle-dot"></span>
+          </span>
+        </div>
+
+        <!-- Animated Floating Festive Balloon Row -->
+        <div class="welcome-balloons-art" aria-hidden="true">
+          <span class="welcome-balloon b1">🎈</span>
+          <span class="welcome-balloon b2">✨</span>
+          <span class="welcome-balloon b3">🎊</span>
+          <span class="welcome-balloon b4">🎂</span>
+          <span class="welcome-balloon b5">💖</span>
+        </div>
+
+        <h2 class="welcome-title">
+          Har Celebration Ko Banayein <br>
+          <span class="welcome-gradient-text">Khoobsurat & Yaadgar!</span> 🎈
+        </h2>
+
+        <p class="welcome-tagline">
+          <em>"Decorate Your Happiness"</em> — Premium Balloon & Luxury Event Styling
+        </p>
+
+        <p class="welcome-msg">
+          Namaste! 🙏 <strong>YUVI.decoration</strong> mein aapka swagat hai! Hum aapke Birthdays, Anniversaries, Weddings aur Baby Showers ke liye laaye hain <strong>60+ trending setups</strong> aur <strong>instant 2-Hour Express Service</strong>.
+        </p>
+
+        <!-- Feature Mini Highlights -->
+        <div class="welcome-highlights">
+          <div class="welcome-hl-pill">
+            <i class="fa-solid fa-crown" style="color: #f59e0b;"></i>
+            <span>60+ Luxury Themes</span>
+          </div>
+          <div class="welcome-hl-pill">
+            <i class="fa-solid fa-bolt" style="color: #e85072;"></i>
+            <span>2-Hour Express Setup</span>
+          </div>
+          <div class="welcome-hl-pill">
+            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+            <span>4.9★ Client Rating</span>
+          </div>
+          <div class="welcome-hl-pill">
+            <i class="fa-solid fa-shield-heart" style="color: #10b981;"></i>
+            <span>100% On-Time Guarantee</span>
+          </div>
+        </div>
+
+        <!-- Action CTAs -->
+        <div class="welcome-actions">
+          <button class="btn btn-pink welcome-cta-btn" onclick="handleWelcomeExplore()">
+            <i class="fa-regular fa-compass"></i> Explore 60+ Packages <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button class="btn btn-white-pill welcome-ai-btn" onclick="handleWelcomeChat()">
+            <i class="fa-solid fa-robot" style="color: #e85072;"></i> Chat with Yuvi AI 👋
+          </button>
+        </div>
+
+        <div class="welcome-footer-note">
+          <span>Need instant assistance? Call or WhatsApp:</span>
+          <a href="https://wa.me/919263667669?text=Hello%20Yuvi%20Decoration,%20I%20am%20visiting%20your%20website" target="_blank" class="welcome-wa-link">
+            <i class="fa-brands fa-whatsapp"></i> +91 92636 67669
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/services-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chat.js"></script>
+
+  <!-- Interactive helper scripts for the Hero AI Card -->
+  <script>
+    function hideHeroAiCard() {
+      const card = document.getElementById('hero-ai-widget');
+      if (card) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(-10px)';
+        card.style.transition = 'all 0.3s ease';
+        setTimeout(() => { card.style.display = 'none'; }, 300);
+      }
+    }
+
+    function handleHeroAiSubmit(e) {
+      e.preventDefault();
+      const heroInput = document.getElementById('hero-ai-input');
+      const val = heroInput ? heroInput.value.trim() : '';
+      if (!val) return;
+      heroInput.value = '';
+      if (window.askAiPrompt) {
+        window.askAiPrompt(val);
+      }
+    }
+
+    function focusSearch() {
+      const packagesSection = document.getElementById('packages');
+      if (packagesSection) packagesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

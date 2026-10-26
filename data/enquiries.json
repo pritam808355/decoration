@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ENQ-5992",
+    "name": "rohit kumar",
+    "phone": "6204274718",
+    "email": "",
+    "message": "give me reASON",
+    "date": "2026-10-26T09:21:15.992Z",
+    "status": "unread"
+  },
+  {
+    "id": "ENQ-1001",
+    "name": "Karan Malhotra",
+    "phone": "9811223344",
+    "email": "karan.m@example.com",
+    "message": "Do you also provide helium gas balloons and customized LED letter tables for wedding entry?",
+    "date": "2026-10-26T10:00:00.000Z",
+    "status": "unread"
+  }
+]
