@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | YUVI.decoration 🎈</title>
+  <title>Admin Dashboard | The Party Hard 👑</title>
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
@@ -224,6 +224,153 @@
       text-align: left;
       color: var(--text-muted);
     }
+
+    /* Mobile Responsive for Admin Panel */
+    @media (max-width: 768px) {
+      .admin-header {
+        padding: 0.9rem 1.15rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      .admin-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+        margin: 1.25rem 0;
+      }
+      .stat-card {
+        padding: 1rem;
+        gap: 0.75rem;
+      }
+      .stat-card-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.15rem;
+      }
+      .stat-card-info h3 {
+        font-size: 1.4rem;
+      }
+      .stat-card-info p {
+        font-size: 0.7rem;
+      }
+      .admin-nav-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.5rem;
+        scrollbar-width: none;
+        margin-bottom: 1.25rem;
+      }
+      .admin-nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .admin-tab {
+        padding: 0.75rem 1rem;
+        font-size: 0.86rem;
+        flex-shrink: 0;
+      }
+      .login-container {
+        padding: 1rem;
+      }
+      .login-card {
+        padding: 2rem 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .admin-stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Local Image Upload & Dropzone */
+    .image-source-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.5rem;
+    }
+    .img-src-tab {
+      background: none;
+      border: 1px solid var(--border-card);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .img-src-tab.active {
+      background: #fde8ee;
+      border-color: var(--primary-pink);
+      color: var(--primary-pink);
+    }
+    .upload-dropzone {
+      border: 2px dashed #f3c2ce;
+      background: #fffafa;
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .upload-dropzone:hover, .upload-dropzone.dragover {
+      border-color: var(--primary-pink);
+      background: #fef2f4;
+      transform: translateY(-1px);
+    }
+    .dropzone-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--primary-pink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 12px rgba(232, 80, 114, 0.15);
+    }
+    .dropzone-title {
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      margin: 0 0 0.2rem;
+    }
+    .dropzone-subtitle {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .image-preview-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-card);
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
+      margin-top: 0.75rem;
+    }
+    .image-preview-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .image-preview-info {
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #faf4f5;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.82rem;
+    }
   </style>
 </head>
 <body class="admin-body">
@@ -235,7 +382,7 @@
         <div style="margin: 0 auto 1rem; width: 60px; height: 60px; border-radius: 50%; background: #fde8ee; color: var(--primary-pink); display: flex; align-items: center; justify-content: center;">
           <i class="fa-solid fa-crown" style="font-size: 1.8rem;"></i>
         </div>
-        <h2 style="font-size: 1.6rem; color: var(--text-dark);">Yuvi.Decoration Admin</h2>
+        <h2 style="font-size: 1.6rem; color: var(--text-dark);">The Party Hard Admin</h2>
         <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.3rem;">Enter owner credentials to manage bookings & enquiries</p>
       </div>
 
@@ -261,13 +408,19 @@
   <div id="admin-dashboard-view" style="display: none;">
     <!-- Admin Header -->
     <header class="admin-header">
-      <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
         <span style="font-size: 1.35rem; font-weight: 800; color: var(--text-dark);">
-          YUVI<span class="text-pink">.decoration</span> Admin
+          THE PARTY<span class="text-pink"> HARD</span> Admin
         </span>
         <span style="font-size: 0.75rem; background: #fff0f3; border: 1px solid var(--border-light); padding: 0.2rem 0.6rem; border-radius: 999px; color: var(--primary-pink); font-weight: 700;">
           Control Center
         </span>
+        <!-- Live Database Indicator Pill -->
+        <div id="admin-db-status-pill" onclick="openDbInfoModal()" style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; padding: 0.28rem 0.75rem; border-radius: 999px; font-weight: 700; background: #fffbeb; color: #b45309; border: 1px solid #fde68a; cursor: pointer; transition: all 0.2s ease;" title="Click for Database Connection Status & Guide">
+          <span id="admin-db-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+          <span id="admin-db-status-text">Checking Database...</span>
+          <i class="fa-solid fa-circle-info" style="font-size: 0.75rem; opacity: 0.75;"></i>
+        </div>
       </div>
 
       <div style="display: flex; align-items: center; gap: 1rem;">
@@ -452,7 +605,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
           <div>
             <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark);">Customer AI Chat History & Leads</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Review customer questions, budgets, and themes asked to Yuvi AI</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Review customer questions, budgets, and themes asked to Party Hard AI</p>
           </div>
           <div>
             <button class="btn btn-white-pill" onclick="loadAdminChats()">
@@ -519,10 +672,57 @@
             </div>
 
             <div class="form-group full-width">
-              <label class="form-label">Image URL *</label>
-              <input type="url" id="decor-new-image" class="form-control" placeholder="https://images.unsplash.com/..." oninput="previewDecorImage(this.value)" required>
-              <div id="decor-image-preview-wrap" style="margin-top: 0.5rem; height: 140px; border-radius: 8px; overflow: hidden; background: #fdf5f5; display: none; border: 1px dashed var(--border-light);">
-                <img id="decor-image-preview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">
+              <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                <span><i class="fa-solid fa-camera" style="color: var(--primary-pink);"></i> Decoration Photo *</span>
+                <span id="upload-status-badge" style="font-size: 0.72rem; color: #10b981; font-weight: 700; display: none;">
+                  <i class="fa-solid fa-circle-check"></i> Image Ready
+                </span>
+              </label>
+
+              <!-- Source Selection Tabs -->
+              <div class="image-source-tabs">
+                <button type="button" class="img-src-tab active" id="tab-src-local" onclick="switchImageSource('local')">
+                  <i class="fa-solid fa-mobile-screen-button"></i> Choose Local Photo (Phone / PC)
+                </button>
+                <button type="button" class="img-src-tab" id="tab-src-url" onclick="switchImageSource('url')">
+                  <i class="fa-solid fa-link"></i> Paste Web URL
+                </button>
+              </div>
+
+              <!-- Option 1: Local Device File Upload (Drag & Drop or Tap to Browse) -->
+              <div id="pane-src-local" class="image-source-pane">
+                <div class="upload-dropzone" id="decor-dropzone" onclick="document.getElementById('decor-file-input').click()">
+                  <input type="file" id="decor-file-input" accept="image/*" style="display: none;" onchange="handleLocalFileSelect(event)">
+                  <div class="dropzone-icon">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                  </div>
+                  <p class="dropzone-title"><strong>Click to select photo</strong> or drag & drop here</p>
+                  <p class="dropzone-subtitle">Choose from your phone gallery or computer (JPG, PNG, WEBP)</p>
+                </div>
+              </div>
+
+              <!-- Option 2: Direct Web Image URL -->
+              <div id="pane-src-url" class="image-source-pane" style="display: none;">
+                <input type="url" id="decor-new-image-url" class="form-control" placeholder="https://images.unsplash.com/..." oninput="handleUrlInputChange(this.value)">
+                <p style="font-size: 0.74rem; color: var(--text-muted); margin: 0.35rem 0 0;">Enter direct photo link from web, Unsplash or Pinterest.</p>
+              </div>
+
+              <!-- Hidden input that holds final image value (URL or uploaded path) -->
+              <input type="hidden" id="decor-new-image" required>
+
+              <!-- Unified Image Preview Card -->
+              <div id="decor-image-preview-card" class="image-preview-card" style="display: none;">
+                <img id="decor-image-preview" src="" alt="Selected Decoration" class="image-preview-thumb">
+                <div class="image-preview-info">
+                  <div style="display: flex; align-items: center; gap: 0.5rem; overflow: hidden;">
+                    <i class="fa-solid fa-circle-check" style="color: #10b981;"></i>
+                    <span id="preview-file-name" style="font-weight: 700; color: var(--text-dark); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 260px;">photo.jpg</span>
+                    <span id="preview-file-size" style="color: var(--text-muted); font-size: 0.75rem;"></span>
+                  </div>
+                  <button type="button" class="btn btn-white-pill" style="font-size: 0.75rem; padding: 0.25rem 0.65rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" onclick="removeSelectedImage()">
+                    <i class="fa-solid fa-trash-can"></i> Remove
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -584,6 +784,53 @@
         <button class="btn btn-pink" style="font-size: 0.8rem; padding: 0.45rem 1rem;" onclick="closeViewChatModal()">
           Close
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DATABASE STATUS & CONFIGURATION -->
+  <div class="modal-overlay" id="db-info-modal">
+    <div class="modal-card" style="max-width: 580px;">
+      <div class="modal-header">
+        <div>
+          <h3 style="margin: 0; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-database" style="color: var(--primary-pink);"></i>
+            <span>Database Status & Storage Mode</span>
+          </h3>
+          <p style="margin: 0.2rem 0 0; font-size: 0.78rem; color: var(--text-muted);">Real-time MongoDB Atlas & Local JSON status</p>
+        </div>
+        <button class="modal-close-btn" onclick="closeDbInfoModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.5rem 1.75rem;">
+        <div id="db-modal-status-badge" style="padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 1rem;">
+          <!-- Dynamically filled by admin.js -->
+        </div>
+
+        <div style="background: #faf4f5; border: 1px solid var(--border-card); border-radius: 12px; padding: 1.1rem; margin-bottom: 1.25rem; font-size: 0.85rem;">
+          <h4 style="margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--text-dark); display: flex; align-items: center; gap: 0.4rem;">
+            <i class="fa-solid fa-cloud" style="color: #0284c7;"></i> How to Connect MongoDB Atlas:
+          </h4>
+          <ol style="margin: 0; padding-left: 1.25rem; color: var(--text-body); line-height: 1.6;">
+            <li>Apne project folder mein <code>.env</code> file open karein.</li>
+            <li><code>MONGODB_URI</code> mein apna password aur cluster domain update karein:</li>
+          </ol>
+          <div style="background: #1e1e24; color: #a7f3d0; padding: 0.65rem 0.85rem; border-radius: 8px; font-family: monospace; font-size: 0.78rem; margin-top: 0.6rem; word-break: break-all;">
+            MONGODB_URI=mongodb+srv://pk6926459_db_user:&lt;PASSWORD&gt;@&lt;YOUR_CLUSTER_HOST&gt;/localkart?retryWrites=true&w=majority
+          </div>
+          <p style="margin: 0.6rem 0 0; font-size: 0.78rem; color: var(--text-muted);">
+            💡 <strong>Note:</strong> Agar MongoDB offline rehta hai, tab bhi website aur booking 100% chalti rahegi automatically local JSON storage se!
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <button class="btn btn-white-pill" style="flex: 1; font-size: 0.82rem;" onclick="refreshDbStatus()">
+            <i class="fa-solid fa-rotate"></i> Re-check Status
+          </button>
+          <button class="btn btn-pink" style="flex: 1; font-size: 0.82rem;" onclick="closeDbInfoModal()">
+            Done
+          </button>
+        </div>
       </div>
     </div>
   </div>

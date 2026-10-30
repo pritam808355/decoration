@@ -230,6 +230,7 @@ function showDashboard() {
   document.getElementById('admin-dashboard-view').style.display = 'block';
   loadBookings();
   loadAdminChatsCount();
+  loadDbStatus();
 }
 
 async function loadBookings() {
@@ -334,7 +335,7 @@ function renderBookingsTable(bookings) {
   tbody.innerHTML = bookings.map(b => {
     const status = (b.status || 'pending').toLowerCase();
     const waText = encodeURIComponent(
-      `Hello ${b.customerName}! 🎈 This is Yuvi Decoration regarding your booking ${b.id} for ${b.eventType} on ${b.eventDate}. Current status is: ${status.toUpperCase()}. Let us know if you need any adjustments!`
+      `Hello ${b.customerName}! 🎈 This is The Party Hard regarding your booking ${b.id} for ${b.eventType} on ${b.eventDate}. Current status is: ${status.toUpperCase()}. Let us know if you need any adjustments!`
     );
 
     return `
@@ -449,7 +450,7 @@ function renderEnquiriesTable(enquiries) {
       <td>${e.email || '-'}</td>
       <td style="max-width: 300px;">${e.message}</td>
       <td>
-        <a href="https://wa.me/91${e.phone.replace(/\D/g,'')}?text=Hello%20${encodeURIComponent(e.name)},%20this%20is%20Yuvi%20Decoration%20replying%20to%20your%20enquiry" target="_blank" class="btn btn-whatsapp" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;">
+        <a href="https://wa.me/91${e.phone.replace(/\D/g,'')}?text=Hello%20${encodeURIComponent(e.name)},%20this%20is%20The%20Party%20Hard%20replying%20to%20your%20enquiry" target="_blank" class="btn btn-whatsapp" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;">
           <i class="fa-brands fa-whatsapp"></i> Reply on WhatsApp
         </a>
       </td>
@@ -557,24 +558,189 @@ function renderDecorationsTable(services) {
 
 window.openAddDecorationModal = function() {
   const modal = document.getElementById('add-decoration-modal');
-  if (modal) modal.classList.add('open');
+  if (modal) {
+    modal.classList.add('open');
+    initDropzoneEvents();
+  }
 };
 
 window.closeAddDecorationModal = function() {
   const modal = document.getElementById('add-decoration-modal');
   if (modal) modal.classList.remove('open');
+  removeSelectedImage();
 };
 
-window.previewDecorImage = function(url) {
-  const wrap = document.getElementById('decor-image-preview-wrap');
-  const img = document.getElementById('decor-image-preview');
-  if (wrap && img && url.trim().length > 5) {
-    img.src = url;
-    wrap.style.display = 'block';
-  } else if (wrap) {
-    wrap.style.display = 'none';
+// Image Source Switching (Local File vs Web URL)
+window.switchImageSource = function(mode) {
+  const tabLocal = document.getElementById('tab-src-local');
+  const tabUrl = document.getElementById('tab-src-url');
+  const paneLocal = document.getElementById('pane-src-local');
+  const paneUrl = document.getElementById('pane-src-url');
+
+  if (mode === 'local') {
+    if (tabLocal) tabLocal.classList.add('active');
+    if (tabUrl) tabUrl.classList.remove('active');
+    if (paneLocal) paneLocal.style.display = 'block';
+    if (paneUrl) paneUrl.style.display = 'none';
+  } else {
+    if (tabUrl) tabUrl.classList.add('active');
+    if (tabLocal) tabLocal.classList.remove('active');
+    if (paneUrl) paneUrl.style.display = 'block';
+    if (paneLocal) paneLocal.style.display = 'none';
   }
 };
+
+// Handle Local File Selection from Phone/PC
+window.handleLocalFileSelect = function(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  processLocalImageFile(file);
+};
+
+// Process and Upload local image file
+async function processLocalImageFile(file) {
+  if (!file.type.startsWith('image/')) {
+    alert('Please select a valid image file (JPG, PNG, WEBP).');
+    return;
+  }
+
+  if (file.size > 25 * 1024 * 1024) {
+    alert('Image file is too large. Please select an image under 25MB.');
+    return;
+  }
+
+  const badge = document.getElementById('upload-status-badge');
+  const previewCard = document.getElementById('decor-image-preview-card');
+  const previewImg = document.getElementById('decor-image-preview');
+  const fileNameSpan = document.getElementById('preview-file-name');
+  const fileSizeSpan = document.getElementById('preview-file-size');
+  const hiddenInput = document.getElementById('decor-new-image');
+
+  // Immediately display preview locally using FileReader
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    const dataUrl = e.target.result;
+    if (previewImg) previewImg.src = dataUrl;
+    if (previewCard) previewCard.style.display = 'block';
+    if (fileNameSpan) fileNameSpan.textContent = file.name;
+    if (fileSizeSpan) fileSizeSpan.textContent = `(${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+
+    if (badge) {
+      badge.style.display = 'inline-flex';
+      badge.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Uploading...`;
+      badge.style.color = '#f59e0b';
+    }
+
+    try {
+      const res = await fetch('/api/admin/upload-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          dataUrl: dataUrl,
+          filename: file.name
+        })
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success && data.imageUrl) {
+        hiddenInput.value = data.imageUrl;
+        if (badge) {
+          badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> Uploaded!`;
+          badge.style.color = '#10b981';
+        }
+      } else {
+        hiddenInput.value = dataUrl;
+        if (badge) {
+          badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> Ready (Local)`;
+          badge.style.color = '#10b981';
+        }
+      }
+    } catch (err) {
+      hiddenInput.value = dataUrl;
+      if (badge) {
+        badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> Ready (Local)`;
+        badge.style.color = '#10b981';
+      }
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+// Handle Direct Web URL Input
+window.handleUrlInputChange = function(url) {
+  const hiddenInput = document.getElementById('decor-new-image');
+  const previewCard = document.getElementById('decor-image-preview-card');
+  const previewImg = document.getElementById('decor-image-preview');
+  const fileNameSpan = document.getElementById('preview-file-name');
+  const fileSizeSpan = document.getElementById('preview-file-size');
+  const badge = document.getElementById('upload-status-badge');
+
+  const trimmed = (url || '').trim();
+  hiddenInput.value = trimmed;
+
+  if (trimmed.length > 8 && (trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('/'))) {
+    if (previewImg) previewImg.src = trimmed;
+    if (previewCard) previewCard.style.display = 'block';
+    if (fileNameSpan) fileNameSpan.textContent = trimmed.split('/').pop() || 'Web Image';
+    if (fileSizeSpan) fileSizeSpan.textContent = '(Web URL)';
+    if (badge) {
+      badge.style.display = 'inline-flex';
+      badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> URL Active`;
+      badge.style.color = '#10b981';
+    }
+  } else {
+    if (previewCard) previewCard.style.display = 'none';
+    if (badge) badge.style.display = 'none';
+  }
+};
+
+// Remove Selected Image
+window.removeSelectedImage = function() {
+  const hiddenInput = document.getElementById('decor-new-image');
+  const fileInput = document.getElementById('decor-file-input');
+  const urlInput = document.getElementById('decor-new-image-url');
+  const previewCard = document.getElementById('decor-image-preview-card');
+  const previewImg = document.getElementById('decor-image-preview');
+  const badge = document.getElementById('upload-status-badge');
+
+  if (hiddenInput) hiddenInput.value = '';
+  if (fileInput) fileInput.value = '';
+  if (urlInput) urlInput.value = '';
+  if (previewImg) previewImg.src = '';
+  if (previewCard) previewCard.style.display = 'none';
+  if (badge) badge.style.display = 'none';
+};
+
+// Drag & drop support
+function initDropzoneEvents() {
+  const dropzone = document.getElementById('decor-dropzone');
+  if (!dropzone || dropzone.dataset.initialized) return;
+  dropzone.dataset.initialized = 'true';
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropzone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.add('dragover');
+    }, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropzone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove('dragover');
+    }, false);
+  });
+
+  dropzone.addEventListener('drop', (e) => {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    if (files && files.length > 0) {
+      processLocalImageFile(files[0]);
+    }
+  }, false);
+}
 
 window.deleteDecoration = async function(id) {
   if (!confirm(`Are you sure you want to remove this decoration package (${id})? It will be removed immediately.`)) return;
@@ -649,7 +815,7 @@ window.loadAdminChats = async function() {
         lastMessageAt: new Date(Date.now() - 1800000).toISOString(),
         summary: "Inquired about Birthday Arch under ₹3,000",
         messages: [
-          { sender: "bot", text: "Hi! I'm Yuvi AI 👋 Welcome to YUVI.decoration! How can I help you today?", time: "10:15 AM" },
+          { sender: "bot", text: "Hi! I'm Party Hard AI 👋 Welcome to The Party Hard! How can I help you today?", time: "10:15 AM" },
           { sender: "user", text: "Birthday decoration ideas dikhao", time: "10:16 AM" },
           { sender: "bot", text: "🎂 Top Birthday Themes: 1. Pastel Dream Ring Arch (₹2,499), 2. Royal Black & Gold Milestone Arch (₹2,999)...", time: "10:16 AM" },
           { sender: "user", text: "Mera budget ₹3,000 hai", time: "10:17 AM" },
@@ -662,9 +828,9 @@ window.loadAdminChats = async function() {
         lastMessageAt: new Date(Date.now() - 7000000).toISOString(),
         summary: "Customer wanted to talk to human / owner",
         messages: [
-          { sender: "bot", text: "Hi! I'm Yuvi AI 👋 Welcome to YUVI.decoration! How can I help you today?", time: "12:30 PM" },
+          { sender: "bot", text: "Hi! I'm Party Hard AI 👋 Welcome to The Party Hard! How can I help you today?", time: "12:30 PM" },
           { sender: "user", text: "Talk to a human", time: "12:31 PM" },
-          { sender: "bot", text: "📞 Yuvi.Decoration Direct Support: Phone & WhatsApp +91 92636 67669, Email partyhard2707@gmail.com. Timings: 8:00 AM - 10:00 PM.", time: "12:32 PM" }
+          { sender: "bot", text: "📞 The Party Hard Direct Support: Phone & WhatsApp +91 92636 67669, Email partyhard2707@gmail.com. Timings: 8:00 AM - 10:00 PM.", time: "12:32 PM" }
         ]
       }
     ];
@@ -815,12 +981,12 @@ window.copyCurrentChatTranscript = function() {
     return;
   }
 
-  let text = `=== YUVI DECORATION AI CHAT TRANSCRIPT ===\n`;
+  let text = `=== THE PARTY HARD AI CHAT TRANSCRIPT ===\n`;
   text += `Session ID: ${currentActiveSession.sessionId}\n`;
   text += `Started At: ${currentActiveSession.startedAt}\n\n`;
 
   currentActiveSession.messages.forEach(m => {
-    const role = m.sender === 'bot' ? 'Yuvi AI' : 'Customer';
+    const role = m.sender === 'bot' ? 'Party Hard AI' : 'Customer';
     text += `[${m.time || ''}] ${role}: ${m.text}\n\n`;
   });
 
@@ -861,3 +1027,92 @@ function escapeHtml(str) {
     }[m];
   });
 }
+
+// Database Status & Diagnostics
+let currentDbStatus = {
+  type: 'Local JSON Fallback',
+  connected: false,
+  database: 'local_storage',
+  host: 'localhost'
+};
+
+async function loadDbStatus() {
+  const pill = document.getElementById('admin-db-status-pill');
+  const dot = document.getElementById('admin-db-status-dot');
+  const text = document.getElementById('admin-db-status-text');
+  if (!pill || !text || !dot) return;
+
+  try {
+    const res = await fetch('/api/db-status');
+    if (res.ok) {
+      currentDbStatus = await res.json();
+    }
+  } catch (err) {
+    currentDbStatus = {
+      type: 'Local JSON Fallback',
+      connected: false,
+      database: 'local_storage',
+      host: 'localhost'
+    };
+  }
+
+  if (currentDbStatus.connected) {
+    pill.style.background = '#ecfdf5';
+    pill.style.color = '#047857';
+    pill.style.borderColor = '#a7f3d0';
+    dot.style.background = '#10b981';
+    text.innerHTML = `🍃 MongoDB: Connected (${currentDbStatus.database})`;
+  } else {
+    pill.style.background = '#fffbeb';
+    pill.style.color = '#b45309';
+    pill.style.borderColor = '#fde68a';
+    dot.style.background = '#f59e0b';
+    text.innerHTML = `💾 Storage: Local JSON (MongoDB Offline)`;
+  }
+}
+
+window.openDbInfoModal = function() {
+  const modal = document.getElementById('db-info-modal');
+  const badgeBox = document.getElementById('db-modal-status-badge');
+  if (!modal) return;
+
+  if (badgeBox) {
+    if (currentDbStatus.connected) {
+      badgeBox.style.background = '#ecfdf5';
+      badgeBox.style.border = '1px solid #a7f3d0';
+      badgeBox.innerHTML = `
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #d1fae5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <div>
+          <h4 style="margin: 0; color: #065f46; font-size: 1rem;">🍃 MongoDB Atlas Connected!</h4>
+          <p style="margin: 0.2rem 0 0; color: #047857; font-size: 0.8rem;">Database: <strong>${escapeHtml(currentDbStatus.database)}</strong> | Host: <strong>${escapeHtml(currentDbStatus.host)}</strong></p>
+        </div>
+      `;
+    } else {
+      badgeBox.style.background = '#fffbeb';
+      badgeBox.style.border = '1px solid #fde68a';
+      badgeBox.innerHTML = `
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+          <i class="fa-solid fa-hard-drive"></i>
+        </div>
+        <div>
+          <h4 style="margin: 0; color: #92400e; font-size: 1rem;">💾 Local High-Performance JSON Fallback Active</h4>
+          <p style="margin: 0.2rem 0 0; color: #b45309; font-size: 0.8rem;">All bookings, packages & chat history are safely stored in <code>data/*.json</code></p>
+        </div>
+      `;
+    }
+  }
+
+  modal.classList.add('active');
+};
+
+window.closeDbInfoModal = function() {
+  const modal = document.getElementById('db-info-modal');
+  if (modal) modal.classList.remove('active');
+};
+
+window.refreshDbStatus = async function() {
+  await loadDbStatus();
+  openDbInfoModal();
+};

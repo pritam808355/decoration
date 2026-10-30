@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initModals();
   initScrollReveal();
   initWelcomeExperience();
+  initAnimatedStatsCounters();
+  initCard3DTilt();
 });
 
 // ===================================================
@@ -28,11 +30,11 @@ function initAmbientCanvas() {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  let width = (canvas.width = window.innerWidth);
+  let width = (canvas.width = document.documentElement.clientWidth || window.innerWidth);
   let height = (canvas.height = window.innerHeight);
 
   window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
+    width = canvas.width = document.documentElement.clientWidth || window.innerWidth;
     height = canvas.height = window.innerHeight;
   });
 
@@ -147,19 +149,40 @@ function initNavbar() {
   });
 
   if (toggleBtn && navLinks) {
+    const icon = toggleBtn.querySelector('i');
+    
     toggleBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      const icon = toggleBtn.querySelector('i');
+      const isOpen = navLinks.classList.toggle('open');
       if (icon) {
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-xmark');
+        if (isOpen) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        } else {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
       }
     });
 
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
+        if (icon) {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
       });
+    });
+
+    // Close mobile nav when tapping outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+        navLinks.classList.remove('open');
+        if (icon) {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
+      }
     });
   }
 }
@@ -272,11 +295,7 @@ function initFilterTabs() {
 }
 
 function populateBookingPackageDropdown(services) {
-  const select = document.getElementById('booking-package');
-  if (!select) return;
-
-  const currentVal = select.value;
-  select.innerHTML = `
+  const optionsHtml = `
     <option value="">-- Choose a Curated Package (or Custom) --</option>
     <option value="custom">✨ Custom Bespoke Theme (Tailored to your needs)</option>
     ${services.map(s => `
@@ -285,98 +304,184 @@ function populateBookingPackageDropdown(services) {
       </option>
     `).join('')}
   `;
-  if (currentVal) select.value = currentVal;
+
+  const select = document.getElementById('booking-package');
+  if (select) {
+    const curVal = select.value;
+    select.innerHTML = optionsHtml;
+    if (curVal) select.value = curVal;
+  }
+
+  const modalSelect = document.getElementById('modal-booking-package');
+  if (modalSelect) {
+    const curModal = modalSelect.value;
+    modalSelect.innerHTML = optionsHtml;
+    if (curModal) modalSelect.value = curModal;
+  }
+}
+
+// Helper to link package select to event type select
+function setupFormSelectSync(packageSelectId, eventTypeId, onPackageChange) {
+  const packageSelect = document.getElementById(packageSelectId);
+  const eventTypeSelect = document.getElementById(eventTypeId);
+
+  if (!packageSelect || !eventTypeSelect) return;
+
+  packageSelect.addEventListener('change', () => {
+    const selectedOpt = packageSelect.selectedOptions[0];
+    const packageType = selectedOpt ? selectedOpt.getAttribute('data-type') : null;
+    if (packageType) {
+      for (let i = 0; i < eventTypeSelect.options.length; i++) {
+        if (eventTypeSelect.options[i].text.includes(packageType) || packageType.includes(eventTypeSelect.options[i].value)) {
+          eventTypeSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+    if (typeof onPackageChange === 'function') {
+      onPackageChange(packageSelect.value);
+    }
+  });
 }
 
 // ===================================================
 // 4. BOOKING FORM & CONFIRMATION
 // ===================================================
 function initBookingForm() {
-  const form = document.getElementById('main-booking-form');
-  if (!form) return;
+  const today = new Date().toISOString().split('T')[0];
 
   const dateInput = document.getElementById('booking-date');
-  if (dateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
-  }
+  if (dateInput) dateInput.min = today;
+  const modalDateInput = document.getElementById('modal-booking-date');
+  if (modalDateInput) modalDateInput.min = today;
 
-  const packageSelect = document.getElementById('booking-package');
-  const eventTypeSelect = document.getElementById('booking-event-type');
+  setupFormSelectSync('booking-package', 'booking-event-type');
+  setupFormSelectSync('modal-booking-package', 'modal-booking-event-type', (pkgId) => {
+    updateModalPackagePreview(pkgId);
+  });
 
-  if (packageSelect && eventTypeSelect) {
-    packageSelect.addEventListener('change', () => {
-      const selectedOpt = packageSelect.selectedOptions[0];
-      const packageType = selectedOpt ? selectedOpt.getAttribute('data-type') : null;
-      if (packageType) {
-        for (let i = 0; i < eventTypeSelect.options.length; i++) {
-          if (eventTypeSelect.options[i].text.includes(packageType) || packageType.includes(eventTypeSelect.options[i].value)) {
-            eventTypeSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
+  // 1. Main Inline Form Submit
+  const mainForm = document.getElementById('main-booking-form');
+  if (mainForm) {
+    mainForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      processBookingSubmit({
+        form: mainForm,
+        name: document.getElementById('booking-name')?.value,
+        phone: document.getElementById('booking-phone')?.value,
+        eventType: document.getElementById('booking-event-type')?.value,
+        packageSelect: document.getElementById('booking-package'),
+        date: document.getElementById('booking-date')?.value,
+        time: document.getElementById('booking-time')?.value || 'Flexible',
+        venue: document.getElementById('booking-venue')?.value,
+        budget: document.getElementById('booking-budget')?.value || 'Standard',
+        theme: document.getElementById('booking-theme')?.value || 'Pastel Mix',
+        notes: document.getElementById('booking-notes')?.value || '',
+        modalToClose: null
+      });
     });
   }
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Reserving Slot...`;
-
-    const selectedPkgOpt = packageSelect ? packageSelect.selectedOptions[0] : null;
-
-    const payload = {
-      customerName: document.getElementById('booking-name').value,
-      mobile: document.getElementById('booking-phone').value,
-      email: '',
-      eventType: eventTypeSelect.value,
-      eventDate: document.getElementById('booking-date').value,
-      eventTime: document.getElementById('booking-time') ? document.getElementById('booking-time').value : 'Flexible',
-      venueAddress: document.getElementById('booking-venue').value,
-      budget: document.getElementById('booking-budget') ? document.getElementById('booking-budget').value : 'Standard',
-      packageId: packageSelect ? packageSelect.value : 'custom',
-      packageName: selectedPkgOpt && packageSelect.value ? selectedPkgOpt.text : 'Custom Decoration',
-      colorTheme: document.getElementById('booking-theme') ? document.getElementById('booking-theme').value : 'Pastel Mix',
-      notes: document.getElementById('booking-notes') ? document.getElementById('booking-notes').value : ''
-    };
-
-    try {
-      const res = await fetch('/api/bookings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+  // 2. Instant Modal Form Submit
+  const modalForm = document.getElementById('modal-booking-form');
+  if (modalForm) {
+    modalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      processBookingSubmit({
+        form: modalForm,
+        name: document.getElementById('modal-booking-name')?.value,
+        phone: document.getElementById('modal-booking-phone')?.value,
+        eventType: document.getElementById('modal-booking-event-type')?.value,
+        packageSelect: document.getElementById('modal-booking-package'),
+        date: document.getElementById('modal-booking-date')?.value,
+        time: document.getElementById('modal-booking-time')?.value || 'Flexible',
+        venue: document.getElementById('modal-booking-venue')?.value,
+        budget: '₹3,000 - ₹6,000',
+        theme: 'Pastel Dream / Custom Theme',
+        notes: document.getElementById('modal-booking-notes')?.value || '',
+        modalToClose: 'booking-modal'
       });
+    });
+  }
+}
 
-      const data = await res.json();
+async function processBookingSubmit(cfg) {
+  const submitBtn = cfg.form.querySelector('button[type="submit"]');
+  const originalText = submitBtn ? submitBtn.innerHTML : 'Confirm Booking';
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Securing Reservation...`;
+  }
 
-      if (res.ok && data.success) {
-        form.reset();
-        showBookingSuccessModal(data.booking);
-        return;
+  const selectedPkgOpt = cfg.packageSelect ? cfg.packageSelect.selectedOptions[0] : null;
+  const pkgVal = cfg.packageSelect ? cfg.packageSelect.value : 'custom';
+
+  const payload = {
+    customerName: (cfg.name || '').trim(),
+    mobile: (cfg.phone || '').trim(),
+    email: '',
+    eventType: cfg.eventType || 'Birthday Party',
+    eventDate: cfg.date,
+    eventTime: cfg.time || 'Flexible',
+    venueAddress: (cfg.venue || '').trim(),
+    budget: cfg.budget || 'Standard',
+    packageId: pkgVal || 'custom',
+    packageName: selectedPkgOpt && pkgVal ? selectedPkgOpt.text : 'Custom Bespoke Setup',
+    colorTheme: cfg.theme || 'Pastel Theme',
+    notes: (cfg.notes || '').trim()
+  };
+
+  try {
+    const res = await fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      cfg.form.reset();
+      if (cfg.modalToClose) {
+        closeModal(cfg.modalToClose);
       }
-    } catch (err) {
-      // Live Server / Static Mode Fallback
-      const generatedBooking = {
-        id: `YUVI-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
-        ...payload,
-        status: 'pending',
-        estimatedAmount: selectedPkgOpt ? (Number(selectedPkgOpt.getAttribute('data-price')) || 2499) : 2499,
-        createdAt: new Date().toISOString()
-      };
+      try {
+        const localBookings = JSON.parse(localStorage.getItem('yuvi_bookings_data') || '[]');
+        localBookings.unshift(data.booking);
+        localStorage.setItem('yuvi_bookings_data', JSON.stringify(localBookings.slice(0, 50)));
+      } catch (e) {}
+      showBookingSuccessModal(data.booking);
+      return;
+    } else {
+      throw new Error(data.error || 'Server error occurred');
+    }
+  } catch (err) {
+    // Offline / Live Server fallback
+    const estimatedAmount = selectedPkgOpt ? (Number(selectedPkgOpt.getAttribute('data-price')) || 2499) : 2499;
+    const generatedBooking = {
+      id: `TPH-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
+      ...payload,
+      status: 'pending',
+      estimatedAmount: estimatedAmount,
+      createdAt: new Date().toISOString()
+    };
+    try {
       const localBookings = JSON.parse(localStorage.getItem('yuvi_bookings_data') || '[]');
       localBookings.unshift(generatedBooking);
       localStorage.setItem('yuvi_bookings_data', JSON.stringify(localBookings));
-      form.reset();
-      showBookingSuccessModal(generatedBooking);
-    } finally {
+    } catch (e) {}
+
+    cfg.form.reset();
+    if (cfg.modalToClose) {
+      closeModal(cfg.modalToClose);
+    }
+    showBookingSuccessModal(generatedBooking);
+  } finally {
+    if (submitBtn) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
     }
-  });
+  }
 }
 
 function showBookingSuccessModal(booking) {
@@ -406,7 +511,7 @@ function showBookingSuccessModal(booking) {
 
   if (waBtn) {
     const waText = encodeURIComponent(
-      `Hello Yuvi.Decoration! 🎈\nI have placed a new booking.\n\n• Booking ID: ${booking.id}\n• Customer: ${booking.customerName}\n• Event: ${booking.eventType}\n• Date: ${booking.eventDate} (${booking.eventTime})\n• Package: ${booking.packageName}\n\nPlease confirm availability!`
+      `Hello The Party Hard! 🎈\nI have placed a new booking.\n\n• Booking ID: ${booking.id}\n• Customer: ${booking.customerName}\n• Event: ${booking.eventType}\n• Date: ${booking.eventDate} (${booking.eventTime})\n• Package: ${booking.packageName}\n\nPlease confirm availability!`
     );
     waBtn.href = `https://wa.me/919263667669?text=${waText}`;
   }
@@ -433,9 +538,9 @@ function initTracker() {
   if (!trackBtn || !trackInput || !resultCard) return;
 
   const performTrack = async () => {
-    const query = trackInput.value.trim();
-    if (!query) {
-      alert('Please enter your Booking ID (e.g. YUVI-2026-8941) or Mobile Number.');
+    const rawQuery = trackInput.value.trim();
+    if (!rawQuery) {
+      trackInput.focus();
       return;
     }
 
@@ -443,7 +548,7 @@ function initTracker() {
     trackBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Checking...`;
 
     try {
-      const res = await fetch(`/api/bookings/track/${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/bookings/track/${encodeURIComponent(rawQuery)}`);
       if (res.ok) {
         const bookings = await res.json();
         if (bookings && bookings.length > 0) {
@@ -455,36 +560,60 @@ function initTracker() {
       }
       throw new Error('Fallback to local lookup');
     } catch (err) {
-      // Live Server & LocalStorage Fallback
+      // LocalStorage & Offline Fallback
+      const queryClean = rawQuery.toLowerCase();
+      const digitsOnly = rawQuery.replace(/\D/g, '');
+      const last10 = digitsOnly.length >= 10 ? digitsOnly.slice(-10) : digitsOnly;
+
       const localBookings = JSON.parse(localStorage.getItem('yuvi_bookings_data') || '[]');
       const defaultDemo = [
         {
-          id: "YUVI-2026-8941",
-          customerName: "Rahul Sharma",
-          mobile: "9876543210",
-          eventType: "Birthday Party",
-          eventDate: "2026-11-05",
-          eventTime: "17:00",
-          venueAddress: "Flat 402, Royal Palms, Link Road",
-          packageName: "Pastel Dream Birthday Ring Arch",
-          status: "confirmed",
-          estimatedAmount: 2499,
-          createdAt: new Date().toISOString()
+          id: "TPH-2026-8708",
+          customerName: "yaari gamer",
+          mobile: "8083553450",
+          eventType: "Baby Shower",
+          eventDate: "2027-06-12",
+          eventTime: "Morning (9:00 AM - 12:00 PM)",
+          venueAddress: "New atwarpur dhalai road",
+          packageName: "Surprise Bedroom Balloon Canopy & Fairy Lights",
+          status: "pending",
+          estimatedAmount: 1499,
+          createdAt: "2026-10-27T05:01:38.696Z"
+        },
+        {
+          id: "YUVI-2026-3417",
+          customerName: "PRITAM KUMAR",
+          mobile: "6204274718",
+          eventType: "Weddings",
+          eventDate: "2027-06-14",
+          eventTime: "Evening (5:00 PM - 8:00 PM)",
+          venueAddress: "PATNA",
+          packageName: "baby theme",
+          status: "completed",
+          estimatedAmount: 3000,
+          createdAt: "2026-10-26T09:23:24.222Z"
         }
       ];
       const combined = [...localBookings, ...defaultDemo];
-      const matched = combined.filter(b => 
-        b.id.toLowerCase() === query.toLowerCase() || 
-        b.mobile.includes(query)
-      );
+      const matched = combined.filter(b => {
+        const bId = (b.id || '').toLowerCase();
+        const bPhone = (b.mobile || '').replace(/\D/g, '');
+        const bName = (b.customerName || '').toLowerCase();
+
+        if (bId.includes(queryClean) || queryClean.includes(bId)) return true;
+        if (digitsOnly.length >= 4 && (bId.includes(digitsOnly) || bPhone.includes(digitsOnly) || bPhone.includes(last10))) return true;
+        if (rawQuery.length >= 3 && bName.includes(queryClean)) return true;
+        return false;
+      });
 
       if (matched.length > 0) {
         renderTrackingResult(matched[0]);
         resultCard.style.display = 'block';
         resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
-        resultCard.style.display = 'none';
-        alert('No booking found for this ID or Mobile. Please verify and try again.');
+        renderNotFoundCard(rawQuery);
+        resultCard.style.display = 'block';
+        resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     } finally {
       trackBtn.disabled = false;
@@ -496,6 +625,35 @@ function initTracker() {
   trackInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') performTrack();
   });
+}
+
+function renderNotFoundCard(query) {
+  const resultCard = document.getElementById('track-result-card');
+  if (!resultCard) return;
+
+  const safeQuery = String(query).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+  const waQuery = encodeURIComponent(`Hello The Party Hard, mujhe apni booking status check karne me help chahiye. My query: ${query}`);
+
+  resultCard.innerHTML = `
+    <div style="text-align: center; padding: 2.2rem 1.2rem; background: #fff8f9; border: 1.5px dashed var(--primary-pink); border-radius: 16px;">
+      <div style="width: 58px; height: 58px; border-radius: 50%; background: #ffe4e8; display: inline-flex; align-items: center; justify-content: center; font-size: 1.7rem; color: var(--primary-pink); margin-bottom: 0.85rem;">
+        <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+      </div>
+      <h3 style="font-size: 1.35rem; color: var(--text-dark); margin-bottom: 0.35rem; font-weight: 700;">Koi Booking Record Nahi Mila</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 480px; margin: 0 auto 1.25rem; line-height: 1.5;">
+        Aapne search kiya: <strong>"${safeQuery}"</strong>.<br>
+        Kripya apna <strong>10-digit Mobile Number</strong> (e.g. <em>8083553450</em>) ya <strong>Booking ID</strong> (e.g. <em>TPH-2026-8708</em> ya sirf <em>8708</em>) verify karke dobara try karein.
+      </p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://wa.me/919263667669?text=${waQuery}" target="_blank" class="btn btn-whatsapp" style="font-size: 0.88rem; padding: 0.65rem 1.25rem; text-decoration: none;">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Support par Poochhein
+        </a>
+        <button class="btn btn-pink" onclick="document.getElementById('book').scrollIntoView({ behavior: 'smooth' }); setTimeout(function(){ const n = document.getElementById('booking-name'); if(n) n.focus(); }, 350);" style="font-size: 0.88rem; padding: 0.65rem 1.25rem;">
+          <i class="fa-regular fa-calendar-check"></i> Nayi Booking Karein
+        </button>
+      </div>
+    </div>
+  `;
 }
 
 function renderTrackingResult(booking) {
@@ -581,7 +739,7 @@ function renderTrackingResult(booking) {
     </div>
 
     <div style="display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap;">
-      <a href="https://wa.me/919263667669?text=Hello%20Yuvi%20Decoration,%20inquiring%20about%20Booking%20ID%20${booking.id}" target="_blank" class="btn btn-whatsapp" style="font-size: 0.85rem;">
+      <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20inquiring%20about%20Booking%20ID%20${booking.id}" target="_blank" class="btn btn-whatsapp" style="font-size: 0.85rem;">
         <i class="fa-brands fa-whatsapp"></i> Chat with Support
       </a>
       <button class="btn btn-white-pill" onclick="window.print()" style="font-size: 0.85rem;">
@@ -664,14 +822,71 @@ window.closeModal = function (id) {
 };
 
 window.openBookingModalForPackage = function (packageId) {
-  const pkgSelect = document.getElementById('booking-package');
-  if (pkgSelect && packageId) {
-    pkgSelect.value = packageId;
-    pkgSelect.dispatchEvent(new Event('change'));
+  // 1. Check if Instant Booking Modal exists (NO PAGE SCROLLING!)
+  const modal = document.getElementById('booking-modal');
+  if (modal) {
+    const modalPkgSelect = document.getElementById('modal-booking-package');
+    const mainPkgSelect = document.getElementById('booking-package');
+
+    if (modalPkgSelect) {
+      if (packageId) {
+        modalPkgSelect.value = packageId;
+      }
+      modalPkgSelect.dispatchEvent(new Event('change'));
+    }
+    if (mainPkgSelect && packageId) {
+      mainPkgSelect.value = packageId;
+      mainPkgSelect.dispatchEvent(new Event('change'));
+    }
+
+    updateModalPackagePreview(packageId);
+
+    const modalDate = document.getElementById('modal-booking-date');
+    if (modalDate) {
+      const today = new Date().toISOString().split('T')[0];
+      modalDate.min = today;
+      if (!modalDate.value) modalDate.value = today;
+    }
+
+    // Open Modal Instantly without ANY scrolling!
+    openModal('booking-modal');
+
+    setTimeout(() => {
+      const nameInput = document.getElementById('modal-booking-name');
+      if (nameInput) nameInput.focus();
+    }, 200);
+    return;
   }
-  const bookSection = document.getElementById('book');
-  if (bookSection) {
-    bookSection.scrollIntoView({ behavior: 'smooth' });
+
+  // Fallback to standalone booking page if modal is missing
+  window.location.href = 'booking.html' + (packageId ? '?package=' + encodeURIComponent(packageId) : '');
+};
+
+window.updateModalPackagePreview = function (packageId) {
+  const previewWrap = document.getElementById('modal-pkg-preview');
+  if (!previewWrap) return;
+
+  const previewImg = document.getElementById('modal-preview-img');
+  const previewCat = document.getElementById('modal-preview-cat');
+  const previewTitle = document.getElementById('modal-preview-title');
+  const previewPrice = document.getElementById('modal-preview-price');
+  const submitBtn = document.getElementById('modal-submit-btn');
+
+  const servicesList = window.allServices || [];
+  const matched = servicesList.find(s => s.id === packageId);
+
+  if (matched) {
+    if (previewImg) previewImg.src = matched.image || 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800';
+    if (previewCat) previewCat.textContent = matched.categoryLabel || 'Curated Setup';
+    if (previewTitle) previewTitle.textContent = matched.title;
+    if (previewPrice) previewPrice.textContent = `Starts ₹${(matched.priceStart || 1999).toLocaleString('en-IN')} • Free On-Site Setup`;
+    if (submitBtn) submitBtn.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Confirm Booking (₹${(matched.priceStart || 1999).toLocaleString('en-IN')})`;
+  } else {
+    if (previewImg) previewImg.src = 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800';
+    if (previewCat) previewCat.textContent = 'Custom Bespoke Setup';
+    if (previewTitle) previewTitle.textContent = 'Custom Event Balloon Styling';
+    if (previewPrice) previewPrice.textContent = 'Packages start from ₹1,499 • Custom Colors & Themes';
+    if (submitBtn) submitBtn.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Confirm Reservation`;
   }
 };
 
@@ -708,7 +923,7 @@ window.openServiceDetailModal = function (serviceId) {
         <button class="btn btn-pink" style="flex-grow: 1;" onclick="closeModal('detail-modal'); openBookingModalForPackage('${service.id}');">
           <i class="fa-regular fa-calendar-check"></i> Book This Setup
         </button>
-        <a href="https://wa.me/919263667669?text=Hello%20Yuvi%20Decoration,%20I%20am%20interested%20in%20${encodeURIComponent(service.title)}" target="_blank" class="btn btn-whatsapp">
+        <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20I%20am%20interested%20in%20${encodeURIComponent(service.title)}" target="_blank" class="btn btn-whatsapp">
           <i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp
         </a>
       </div>
@@ -833,7 +1048,7 @@ window.handleWelcomeChat = function () {
   closeWelcomeModal();
   setTimeout(() => {
     if (window.openAiChat) {
-      window.openAiChat('Namaste! Mujhe Yuvi Decoration ke best packages aur trending designs dikhao.');
+      window.openAiChat('Namaste! Mujhe The Party Hard ke best packages aur trending designs dikhao.');
     }
   }, 300);
 };
@@ -844,7 +1059,7 @@ function startWelcomeConfetti() {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   
-  canvas.width = window.innerWidth;
+  canvas.width = document.documentElement.clientWidth || window.innerWidth;
   canvas.height = window.innerHeight;
 
   const colors = ['#e85072', '#f06292', '#f59e0b', '#38b2ac', '#805ad5', '#f472b6', '#fbbf24', '#38bdf8'];
@@ -1027,3 +1242,79 @@ window.observeRevealElements = function () {
     revealObserver.observe(el);
   });
 };
+
+// ===================================================
+// 8. ANIMATED STATS COUNTERS (Cubic Ease-Out)
+// ===================================================
+function initAnimatedStatsCounters() {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  if (!statNumbers.length) return;
+
+  const obs = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const targetVal = parseFloat(el.getAttribute('data-target'));
+        const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        animateNumberCount(el, targetVal, decimals);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  statNumbers.forEach(el => obs.observe(el));
+}
+
+function animateNumberCount(el, target, decimals) {
+  let start = 0;
+  const duration = 1800;
+  const startTime = performance.now();
+
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const current = start + (target - start) * easeProgress;
+
+    el.textContent = decimals > 0 ? current.toFixed(decimals) : Math.floor(current).toString();
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = decimals > 0 ? target.toFixed(decimals) : target.toString();
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+
+
+// ===================================================
+// 11. 3D TILT ON PACKAGE & STAT CARDS
+// ===================================================
+function initCard3DTilt() {
+  if (window.innerWidth <= 768) return;
+
+  document.addEventListener('mouseover', (e) => {
+    const card = e.target.closest('.package-card, .stat-card');
+    if (!card || card.dataset.tiltInit) return;
+    card.dataset.tiltInit = 'true';
+
+    card.addEventListener('mousemove', (ev) => {
+      const rect = card.getBoundingClientRect();
+      const x = ev.clientX - rect.left;
+      const y = ev.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      card.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(1)}deg) rotateY(${rotateY.toFixed(1)}deg) translateY(-8px) scale(1.015)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}

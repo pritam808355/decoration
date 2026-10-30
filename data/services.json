@@ -1,5 +1,23 @@
 [
   {
+    "id": "srv-birt-1140",
+    "title": "baby theme",
+    "category": "birthday",
+    "categoryLabel": "Birthday Parties",
+    "priceStart": 1550,
+    "rating": 5,
+    "reviewCount": 1,
+    "badge": "partyhard",
+    "description": "hello",
+    "features": [
+      "hellooo"
+    ],
+    "image": "/uploads/WhatsApp_Image_2026-10-26_at_2-1793111730479-809.jpg",
+    "tags": [
+      "pink"
+    ]
+  },
+  {
     "id": "srv-bday-1",
     "title": "Royal Pastel Pink Ring Arch with Custom Neon Sign",
     "category": "birthday",
@@ -17,7 +35,13 @@
       "Professional On-Time Setup & Post-Event Dismantle"
     ],
     "image": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Pastel Pink", "Neon Sign", "Ring Arch", "Girls Birthday", "Bestseller"]
+    "tags": [
+      "Pastel Pink",
+      "Neon Sign",
+      "Ring Arch",
+      "Girls Birthday",
+      "Bestseller"
+    ]
   },
   {
     "id": "srv-bday-2",
@@ -25,7 +49,7 @@
     "category": "birthday",
     "categoryLabel": "Birthday Parties",
     "priceStart": 2999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 188,
     "badge": "Trending Luxury",
     "description": "Sophisticated matte black, metallic chrome gold, and silver organic balloon garland perfect for 18th, 21st, 25th, 30th & 50th celebrations.",
@@ -37,7 +61,13 @@
       "Complete On-Site Setup and Cleanup Included"
     ],
     "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Black and Gold", "Milestone", "Adult Birthday", "Chrome Balloons", "Luxury"]
+    "tags": [
+      "Black and Gold",
+      "Milestone",
+      "Adult Birthday",
+      "Chrome Balloons",
+      "Luxury"
+    ]
   },
   {
     "id": "srv-bday-3",
@@ -57,7 +87,12 @@
       "100% Child-Safe, Non-Toxic Natural Latex Materials"
     ],
     "image": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Rainbow", "Kids Birthday", "1st Birthday", "Cartoon Theme"]
+    "tags": [
+      "Rainbow",
+      "Kids Birthday",
+      "1st Birthday",
+      "Cartoon Theme"
+    ]
   },
   {
     "id": "srv-bday-4",
@@ -77,7 +112,13 @@
       "4 Star & Heart Metallic Foil Balloons"
     ],
     "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Room Surprise", "Bedroom Decor", "Fairy Lights", "Budget Friendly", "Couple Surprise"]
+    "tags": [
+      "Room Surprise",
+      "Bedroom Decor",
+      "Fairy Lights",
+      "Budget Friendly",
+      "Couple Surprise"
+    ]
   },
   {
     "id": "srv-bday-5",
@@ -97,7 +138,12 @@
       "Includes 3 Acrylic Cake Pedestals of Graduated Heights"
     ],
     "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Double Ring", "Acrylic Name", "VIP Setup", "Milestone Birthday"]
+    "tags": [
+      "Double Ring",
+      "Acrylic Name",
+      "VIP Setup",
+      "Milestone Birthday"
+    ]
   },
   {
     "id": "srv-bday-6",
@@ -117,7 +163,13 @@
       "Customized ONE / Wild One High-Chair Banner"
     ],
     "image": "https://images.unsplash.com/photo-1533294455009-a77b7557d2d1?w=800&auto=format&fit=crop&q=80",
-    "tags": ["1st Birthday", "Jungle Safari", "Wild One", "Boy Birthday", "Sage Green"]
+    "tags": [
+      "1st Birthday",
+      "Jungle Safari",
+      "Wild One",
+      "Boy Birthday",
+      "Sage Green"
+    ]
   },
   {
     "id": "srv-bday-7",
@@ -125,7 +177,7 @@
     "category": "birthday",
     "categoryLabel": "Birthday Parties",
     "priceStart": 3299,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 142,
     "badge": "Glamour Special",
     "description": "Instagram-worthy shimmer sequin wall with hot pink, baby pink, and holographic balloon wave for trendsetters.",
@@ -137,7 +189,12 @@
       "Dismantle and Setup Included with No Hidden Fees"
     ],
     "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Barbie Pink", "Shimmer Wall", "Instagram Worthy", "Girls Birthday"]
+    "tags": [
+      "Barbie Pink",
+      "Shimmer Wall",
+      "Instagram Worthy",
+      "Girls Birthday"
+    ]
   },
   {
     "id": "srv-bday-8",
@@ -157,7 +214,13 @@
       "Hassle-Free 90-Minute Professional Home Setup"
     ],
     "image": "https://images.unsplash.com/photo-1561489413-985b06da5bee?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Superhero", "Spiderman", "Avengers", "Boys Birthday", "Action Theme"]
+    "tags": [
+      "Superhero",
+      "Spiderman",
+      "Avengers",
+      "Boys Birthday",
+      "Action Theme"
+    ]
   },
   {
     "id": "srv-bday-9",
@@ -165,7 +228,7 @@
     "category": "birthday",
     "categoryLabel": "Birthday Parties",
     "priceStart": 3499,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 110,
     "badge": "Grace & Elegance",
     "description": "Graceful floral and balloon ensemble in rose gold, white pearl, and champagne for parents or elders milestone birthdays.",
@@ -177,7 +240,13 @@
       "Includes Matching Welcome Stand for Entrance"
     ],
     "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Milestone", "Parents Birthday", "Rose Gold", "50th Birthday", "Elegant"]
+    "tags": [
+      "Milestone",
+      "Parents Birthday",
+      "Rose Gold",
+      "50th Birthday",
+      "Elegant"
+    ]
   },
   {
     "id": "srv-bday-10",
@@ -197,16 +266,21 @@
       "Complete Installation with Zero Wall Damage Guarantee"
     ],
     "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Space Theme", "Astronaut", "Galaxy", "Kids Birthday", "Silver & Blue"]
+    "tags": [
+      "Space Theme",
+      "Astronaut",
+      "Galaxy",
+      "Kids Birthday",
+      "Silver & Blue"
+    ]
   },
-
   {
     "id": "srv-wed-1",
     "title": "Royal Champagne & Rose Gold Double Ring Arch",
     "category": "wedding",
     "categoryLabel": "Weddings",
     "priceStart": 5499,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 224,
     "badge": "Wedding Luxury",
     "description": "Ultra-luxurious double ring installation adorned with champagne, ivory, and chrome gold balloons with fresh floral clusters.",
@@ -218,7 +292,13 @@
       "Warm LED Ambience Ground Spotlights"
     ],
     "image": "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Weddings", "Double Ring", "Fresh Flowers", "Champagne", "Luxury"]
+    "tags": [
+      "Weddings",
+      "Double Ring",
+      "Fresh Flowers",
+      "Champagne",
+      "Luxury"
+    ]
   },
   {
     "id": "srv-wed-2",
@@ -238,7 +318,13 @@
       "Complete Setup, Props Placement & On-Time Dismantle"
     ],
     "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Haldi", "Mehendi", "Marigold", "Traditional", "Yellow Theme"]
+    "tags": [
+      "Haldi",
+      "Mehendi",
+      "Marigold",
+      "Traditional",
+      "Yellow Theme"
+    ]
   },
   {
     "id": "srv-wed-3",
@@ -246,7 +332,7 @@
     "category": "wedding",
     "categoryLabel": "Weddings",
     "priceStart": 8999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 145,
     "badge": "Grand Stage",
     "description": "Full-stage backdrop covering up to 16ft width with high-density balloon cascades, drapery, and romantic warm fairy waterfall.",
@@ -258,7 +344,12 @@
       "Dedicated On-Site Decorator Team During Setup"
     ],
     "image": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Reception Stage", "Grand Wedding", "Full Stage", "Stage Decor"]
+    "tags": [
+      "Reception Stage",
+      "Grand Wedding",
+      "Full Stage",
+      "Stage Decor"
+    ]
   },
   {
     "id": "srv-wed-4",
@@ -278,7 +369,12 @@
       "High Impact Visuals for Photography & Reels"
     ],
     "image": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Bridal Entry", "Walkway", "Red Carpet", "Tunnel Arch"]
+    "tags": [
+      "Bridal Entry",
+      "Walkway",
+      "Red Carpet",
+      "Tunnel Arch"
+    ]
   },
   {
     "id": "srv-wed-5",
@@ -298,7 +394,13 @@
       "Setup Completed 3 Hours Before Guest Arrival"
     ],
     "image": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Sangeet", "Dance Stage", "Disco Ball", "Neon Sign", "Party Vibe"]
+    "tags": [
+      "Sangeet",
+      "Dance Stage",
+      "Disco Ball",
+      "Neon Sign",
+      "Party Vibe"
+    ]
   },
   {
     "id": "srv-wed-6",
@@ -318,7 +420,12 @@
       "Experienced Senior Decorators for Puja Protocols"
     ],
     "image": "https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Mandap", "Traditional Wedding", "Pheras", "White & Gold"]
+    "tags": [
+      "Mandap",
+      "Traditional Wedding",
+      "Pheras",
+      "White & Gold"
+    ]
   },
   {
     "id": "srv-wed-7",
@@ -326,7 +433,7 @@
     "category": "wedding",
     "categoryLabel": "Weddings",
     "priceStart": 4999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 130,
     "badge": "Cocktail Chic",
     "description": "Ultra-modern geometric and balloon styling in deep emerald green, chrome silver, and champagne for sophisticated pre-wedding soirees.",
@@ -338,7 +445,12 @@
       "Quick and Clean Post-Party Dismantle Included"
     ],
     "image": "https://images.unsplash.com/photo-1496337589254-7e19d01cec44?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Cocktail Party", "Emerald Green", "Photo Booth", "Pre Wedding"]
+    "tags": [
+      "Cocktail Party",
+      "Emerald Green",
+      "Photo Booth",
+      "Pre Wedding"
+    ]
   },
   {
     "id": "srv-wed-8",
@@ -358,7 +470,12 @@
       "Complete Electrical Fitting & Extended Power Cord Included"
     ],
     "image": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Engagement", "Rings Ceremony", "Dusty Rose", "Ring Arch"]
+    "tags": [
+      "Engagement",
+      "Rings Ceremony",
+      "Dusty Rose",
+      "Ring Arch"
+    ]
   },
   {
     "id": "srv-wed-9",
@@ -366,7 +483,7 @@
     "category": "wedding",
     "categoryLabel": "Weddings",
     "priceStart": 2999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 215,
     "badge": "Bride Special",
     "description": "Warm and intimate bridal suite makeover with ceiling balloons, fairy lights, fresh rose petals, and heart-shaped balloon clusters.",
@@ -378,7 +495,12 @@
       "Romantic Tea-Light Candles (Battery Operated Safe LEDs)"
     ],
     "image": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Bridal Room", "Wedding Night", "Bed Decor", "Rose Petals"]
+    "tags": [
+      "Bridal Room",
+      "Wedding Night",
+      "Bed Decor",
+      "Rose Petals"
+    ]
   },
   {
     "id": "srv-wed-10",
@@ -398,16 +520,20 @@
       "Fast 45-Minute On-Site Service Before Vidaai Departure"
     ],
     "image": "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Car Decor", "Just Married", "Vidaai", "Wedding Car"]
+    "tags": [
+      "Car Decor",
+      "Just Married",
+      "Vidaai",
+      "Wedding Car"
+    ]
   },
-
   {
     "id": "srv-baby-1",
     "title": "Pastel Cloud Cascade with 4ft Giant Plush Teddy Bear",
     "category": "babyshower",
     "categoryLabel": "Baby Shower",
     "priceStart": 3299,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 260,
     "badge": "Top Bestseller",
     "description": "Our most loved baby shower package featuring pastel blue, blush pink, and cream balloon clouds with a giant 4ft cuddly teddy bear.",
@@ -419,7 +545,13 @@
       "Includes Setup, Styling and Post-Event Collection"
     ],
     "image": "https://images.unsplash.com/photo-1583875762487-5f8f7c718d14?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Baby Shower", "Teddy Bear", "Pastel Clouds", "Oh Baby", "Mom To Be"]
+    "tags": [
+      "Baby Shower",
+      "Teddy Bear",
+      "Pastel Clouds",
+      "Oh Baby",
+      "Mom To Be"
+    ]
   },
   {
     "id": "srv-baby-2",
@@ -439,7 +571,12 @@
       "Clean Setup Completed 2 Hours Prior to Celebration"
     ],
     "image": "https://images.unsplash.com/photo-1531747056595-07f6cbbe10ad?w=800&auto=format&fit=crop&q=80",
-    "tags": ["BABY Cubes", "Letter Blocks", "Baby Shower", "Pastel Balloons"]
+    "tags": [
+      "BABY Cubes",
+      "Letter Blocks",
+      "Baby Shower",
+      "Pastel Balloons"
+    ]
   },
   {
     "id": "srv-baby-3",
@@ -459,7 +596,12 @@
       "Confidential Doctor Note / Envelope Handling Guaranteed"
     ],
     "image": "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Gender Reveal", "Boy or Girl", "Confetti Balloon", "Baby Shower"]
+    "tags": [
+      "Gender Reveal",
+      "Boy or Girl",
+      "Confetti Balloon",
+      "Baby Shower"
+    ]
   },
   {
     "id": "srv-baby-4",
@@ -479,7 +621,13 @@
       "Odourless, 100% Baby-Safe Non-Toxic Natural Latex"
     ],
     "image": "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Welcome Baby", "Cradle Decor", "Homecoming", "Newborn", "Jhoola"]
+    "tags": [
+      "Welcome Baby",
+      "Cradle Decor",
+      "Homecoming",
+      "Newborn",
+      "Jhoola"
+    ]
   },
   {
     "id": "srv-baby-5",
@@ -487,7 +635,7 @@
     "category": "babyshower",
     "categoryLabel": "Baby Shower",
     "priceStart": 3499,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 125,
     "badge": "Dreamy Fantasy",
     "description": "Whimsical hot air balloon basket setup with 3D cloud ceiling suspensions, stars, and moon foils for fairy-tale photography.",
@@ -499,7 +647,12 @@
       "Full Teardown and Dismantle by Team"
     ],
     "image": "https://images.unsplash.com/photo-1578922746465-3a80a228f223?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Hot Air Balloon", "Fantasy Clouds", "Dreamy Baby", "Baby Shower"]
+    "tags": [
+      "Hot Air Balloon",
+      "Fantasy Clouds",
+      "Dreamy Baby",
+      "Baby Shower"
+    ]
   },
   {
     "id": "srv-baby-6",
@@ -519,7 +672,12 @@
       "On-Time Setup Completed Before Puja Muhurat"
     ],
     "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Naming Ceremony", "Naamkaran", "Traditional", "Baby Name"]
+    "tags": [
+      "Naming Ceremony",
+      "Naamkaran",
+      "Traditional",
+      "Baby Name"
+    ]
   },
   {
     "id": "srv-baby-7",
@@ -539,7 +697,12 @@
       "Includes On-Site Placement & Post-Event Cleanup"
     ],
     "image": "https://images.unsplash.com/photo-1530099486328-e021101a494a?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Baby Boy", "Sky Blue", "It is a Boy", "Silver Balloons"]
+    "tags": [
+      "Baby Boy",
+      "Sky Blue",
+      "It is a Boy",
+      "Silver Balloons"
+    ]
   },
   {
     "id": "srv-baby-8",
@@ -559,7 +722,12 @@
       "Safe, Damage-Free Wall Mounts Guaranteed"
     ],
     "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Baby Girl", "Blush Pink", "Butterflies", "It is a Girl"]
+    "tags": [
+      "Baby Girl",
+      "Blush Pink",
+      "Butterflies",
+      "It is a Girl"
+    ]
   },
   {
     "id": "srv-baby-9",
@@ -579,7 +747,12 @@
       "Complete Installation with Zero Stress for Mommy-to-Be"
     ],
     "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Little Peanut", "Elephant Theme", "Pastel Mint", "Baby Shower"]
+    "tags": [
+      "Little Peanut",
+      "Elephant Theme",
+      "Pastel Mint",
+      "Baby Shower"
+    ]
   },
   {
     "id": "srv-baby-10",
@@ -599,16 +772,20 @@
       "Ready in under 60 minutes for sudden hospital discharges"
     ],
     "image": "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Door Garland", "Welcome Baby", "Quick Setup", "Home Arrival"]
+    "tags": [
+      "Door Garland",
+      "Welcome Baby",
+      "Quick Setup",
+      "Home Arrival"
+    ]
   },
-
   {
     "id": "srv-corp-1",
     "title": "14ft Grand Spiral Entrance Gateway Matching Brand Colors",
     "category": "corporate",
     "categoryLabel": "Corporate Events",
     "priceStart": 4999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 175,
     "badge": "Corporate Standard",
     "description": "Imposing 14ft tall spiral balloon arch built over sturdy iron trussing, customized exactly to your corporate brand Pantone colors.",
@@ -620,7 +797,13 @@
       "Official GST Invoice Provided with Company Name"
     ],
     "image": "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Grand Gateway", "Corporate Arch", "Entrance Decor", "Brand Colors", "GST Invoice"]
+    "tags": [
+      "Grand Gateway",
+      "Corporate Arch",
+      "Entrance Decor",
+      "Brand Colors",
+      "GST Invoice"
+    ]
   },
   {
     "id": "srv-corp-2",
@@ -640,7 +823,12 @@
       "Speedy 45-Minute Setup Before Business Hours"
     ],
     "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Balloon Pillars", "Entrance Columns", "Office Reception", "Corporate"]
+    "tags": [
+      "Balloon Pillars",
+      "Entrance Columns",
+      "Office Reception",
+      "Corporate"
+    ]
   },
   {
     "id": "srv-corp-3",
@@ -648,7 +836,7 @@
     "category": "corporate",
     "categoryLabel": "Corporate Events",
     "priceStart": 5999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 130,
     "badge": "Grand Opening",
     "description": "Complete ceremonial inauguration package including 20ft red carpet runner, golden stanchions, velvet ropes, and grand balloon entrance arch.",
@@ -660,7 +848,12 @@
       "Early Morning 7:00 AM Setup Available on Request"
     ],
     "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Grand Opening", "Showroom Launch", "Red Carpet", "Ribbon Cutting"]
+    "tags": [
+      "Grand Opening",
+      "Showroom Launch",
+      "Red Carpet",
+      "Ribbon Cutting"
+    ]
   },
   {
     "id": "srv-corp-4",
@@ -680,7 +873,12 @@
       "Commercial Cleanup and Prompt Collection Post Event"
     ],
     "image": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Annual Day", "Stage Backdrop", "Auditorium", "Corporate Gala"]
+    "tags": [
+      "Annual Day",
+      "Stage Backdrop",
+      "Auditorium",
+      "Corporate Gala"
+    ]
   },
   {
     "id": "srv-corp-5",
@@ -688,7 +886,7 @@
     "category": "corporate",
     "categoryLabel": "Corporate Events",
     "priceStart": 7999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 82,
     "badge": "Product Launch",
     "description": "High-density, seamless 8x10ft organic balloon wall serving as an impressive photo-op and media backdrop for brand reveals.",
@@ -700,7 +898,12 @@
       "Designed for Maximum Social Media & Press Exposure"
     ],
     "image": "https://images.unsplash.com/photo-1517456793572-1d8efd6dc135?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Product Launch", "Balloon Wall", "Media Backdrop", "Brand Logo"]
+    "tags": [
+      "Product Launch",
+      "Balloon Wall",
+      "Media Backdrop",
+      "Brand Logo"
+    ]
   },
   {
     "id": "srv-corp-6",
@@ -720,7 +923,12 @@
       "Quick Post-Event Cleaning Service on Call"
     ],
     "image": "https://images.unsplash.com/photo-1555244162-803834f70033?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Office Floor", "Diwali Office", "Townhall", "Ceiling Balloons"]
+    "tags": [
+      "Office Floor",
+      "Diwali Office",
+      "Townhall",
+      "Ceiling Balloons"
+    ]
   },
   {
     "id": "srv-corp-7",
@@ -740,7 +948,12 @@
       "Complies with All Convention Center Fire & Safety Codes"
     ],
     "image": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Exhibition Stall", "Trade Fair", "Expo Booth", "Eye Catcher"]
+    "tags": [
+      "Exhibition Stall",
+      "Trade Fair",
+      "Expo Booth",
+      "Eye Catcher"
+    ]
   },
   {
     "id": "srv-corp-8",
@@ -760,7 +973,12 @@
       "Monthly / Weekly Subscription Rates Available"
     ],
     "image": "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Car Delivery", "Automobile Dealership", "Handover Ceremony", "Showroom"]
+    "tags": [
+      "Car Delivery",
+      "Automobile Dealership",
+      "Handover Ceremony",
+      "Showroom"
+    ]
   },
   {
     "id": "srv-corp-9",
@@ -768,7 +986,7 @@
     "category": "corporate",
     "categoryLabel": "Corporate Events",
     "priceStart": 5499,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 92,
     "badge": "Company Jubilee",
     "description": "Honor company milestones with grand golden chrome balloon gateway, giant metallic number pillars, and executive stage trim.",
@@ -780,7 +998,12 @@
       "Full Teardown Included Post Ceremony"
     ],
     "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Company Anniversary", "Milestone", "25 Years", "Golden Jubilee"]
+    "tags": [
+      "Company Anniversary",
+      "Milestone",
+      "25 Years",
+      "Golden Jubilee"
+    ]
   },
   {
     "id": "srv-corp-10",
@@ -800,16 +1023,20 @@
       "Punctual Early Setup Guaranteed"
     ],
     "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Conference", "Seminar", "Registration Desk", "Corporate Welcome"]
+    "tags": [
+      "Conference",
+      "Seminar",
+      "Registration Desk",
+      "Corporate Welcome"
+    ]
   },
-
   {
     "id": "srv-anni-1",
     "title": "Romantic Candlelight & Rose Petal Pathway with Heart Arch",
     "category": "anniversary",
     "categoryLabel": "Anniversary",
     "priceStart": 2999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 310,
     "badge": "Ultimate Romance",
     "description": "Turn your home into a 5-star romantic resort with a pathway of fresh rose petals, 50 safe glass candles, and a grand heart balloon arch.",
@@ -821,7 +1048,13 @@
       "Customized Happy Anniversary Glowing Acrylic Sign"
     ],
     "image": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Romantic", "Rose Petals", "Candlelight", "Heart Arch", "Surprise Anniversary"]
+    "tags": [
+      "Romantic",
+      "Rose Petals",
+      "Candlelight",
+      "Heart Arch",
+      "Surprise Anniversary"
+    ]
   },
   {
     "id": "srv-anni-2",
@@ -841,7 +1074,12 @@
       "Golden Happy Anniversary Foil Letter Banner"
     ],
     "image": "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Bedroom Canopy", "Intimate Romance", "Budget Friendly", "Couple Surprise"]
+    "tags": [
+      "Bedroom Canopy",
+      "Intimate Romance",
+      "Budget Friendly",
+      "Couple Surprise"
+    ]
   },
   {
     "id": "srv-anni-3",
@@ -849,7 +1087,7 @@
     "category": "anniversary",
     "categoryLabel": "Anniversary",
     "priceStart": 3999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 164,
     "badge": "Silver Jubilee",
     "description": "Magnificent 25th wedding anniversary celebration with metallic chrome silver, pearl white balloons, and custom lighted 25 sign.",
@@ -861,7 +1099,12 @@
       "Includes 2 Matching Side Pillars for Photo Shoots"
     ],
     "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Silver Jubilee", "25th Anniversary", "Silver & White", "Parents Anniversary"]
+    "tags": [
+      "Silver Jubilee",
+      "25th Anniversary",
+      "Silver & White",
+      "Parents Anniversary"
+    ]
   },
   {
     "id": "srv-anni-4",
@@ -869,7 +1112,7 @@
     "category": "anniversary",
     "categoryLabel": "Anniversary",
     "priceStart": 4499,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 118,
     "badge": "Golden Jubilee",
     "description": "Majestic 50th wedding anniversary milestone backdrop crafted with royal gold chrome balloons, warm spotlights, and personalized photo gallery.",
@@ -881,7 +1124,12 @@
       "Complete Setup and Stress-Free Cleanup for Elderly Parents"
     ],
     "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Golden Jubilee", "50th Anniversary", "Gold Foil", "Parents Milestone"]
+    "tags": [
+      "Golden Jubilee",
+      "50th Anniversary",
+      "Gold Foil",
+      "Parents Milestone"
+    ]
   },
   {
     "id": "srv-anni-5",
@@ -901,7 +1149,12 @@
       "Romantic Table Setting for Candlelight Dinner"
     ],
     "image": "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Terrace Cabana", "Rooftop Setup", "Romantic Canopy", "Outdoor Date"]
+    "tags": [
+      "Terrace Cabana",
+      "Rooftop Setup",
+      "Romantic Canopy",
+      "Outdoor Date"
+    ]
   },
   {
     "id": "srv-anni-6",
@@ -909,7 +1162,7 @@
     "category": "anniversary",
     "categoryLabel": "Anniversary",
     "priceStart": 4999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 172,
     "badge": "She Said YES!",
     "description": "The ultimate dream marriage proposal setup with giant 3D illuminated MARRY ME letters, red carpet runner, and 200 red balloons.",
@@ -921,7 +1174,12 @@
       "Cold Pyro Fireworks Ignition Coordination Ready"
     ],
     "image": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Marriage Proposal", "Marry Me", "LED Letters", "She Said Yes"]
+    "tags": [
+      "Marriage Proposal",
+      "Marry Me",
+      "LED Letters",
+      "She Said Yes"
+    ]
   },
   {
     "id": "srv-anni-7",
@@ -941,7 +1199,12 @@
       "Includes 2 Elegant Cylinder Pedestals for Anniversary Cake"
     ],
     "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800&auto=format&fit=crop&q=80",
-    "tags": ["1st Anniversary", "Paper Anniversary", "Rose Gold", "Ring Arch"]
+    "tags": [
+      "1st Anniversary",
+      "Paper Anniversary",
+      "Rose Gold",
+      "Ring Arch"
+    ]
   },
   {
     "id": "srv-anni-8",
@@ -961,7 +1224,12 @@
       "Quick 40-Minute Discreet Setup at Home or Restaurant"
     ],
     "image": "https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Dinner Date", "Table Styling", "Candlelight Dinner", "Roses"]
+    "tags": [
+      "Dinner Date",
+      "Table Styling",
+      "Candlelight Dinner",
+      "Roses"
+    ]
   },
   {
     "id": "srv-anni-9",
@@ -981,7 +1249,12 @@
       "Tear-Down and Cleanup Completely Managed by Yuvi Team"
     ],
     "image": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Red Heart", "Balloon Wall", "Red & Gold", "Passionate Love"]
+    "tags": [
+      "Red Heart",
+      "Balloon Wall",
+      "Red & Gold",
+      "Passionate Love"
+    ]
   },
   {
     "id": "srv-anni-10",
@@ -989,7 +1262,7 @@
     "category": "anniversary",
     "categoryLabel": "Anniversary",
     "priceStart": 2499,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 275,
     "badge": "Hotel Ready",
     "description": "Seamless coordination with hotel staff for surprise decoration before check-in with non-damaging adhesive technology.",
@@ -1001,16 +1274,20 @@
       "Strict Zero Damage, Tape-Free Hotel Friendly Mounts"
     ],
     "image": "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Hotel Surprise", "Staycation", "Check-in Surprise", "Couples"]
+    "tags": [
+      "Hotel Surprise",
+      "Staycation",
+      "Check-in Surprise",
+      "Couples"
+    ]
   },
-
   {
     "id": "srv-oth-1",
     "title": "Luxury Car Boot Surprise Birthday & Proposal Decor",
     "category": "other",
     "categoryLabel": "Other Occasions",
     "priceStart": 1999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 390,
     "badge": "Viral Surprise",
     "description": "Open the car boot for an astonishing surprise! Packed with fairy lights, metallic balloons, photo clips, and customized message banner.",
@@ -1022,7 +1299,12 @@
       "Can Be Setup Anywhere — Parking Lot, Cafe, or Driveway"
     ],
     "image": "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Car Boot Surprise", "Trunk Decor", "Driveway Surprise", "Viral Trend"]
+    "tags": [
+      "Car Boot Surprise",
+      "Trunk Decor",
+      "Driveway Surprise",
+      "Viral Trend"
+    ]
   },
   {
     "id": "srv-oth-2",
@@ -1042,7 +1324,12 @@
       "Ideal for Intimate Gatherings, Bachelorette & Birthdays"
     ],
     "image": "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Terrace Tent", "Cabana", "Starry Night", "Fairy Lights"]
+    "tags": [
+      "Terrace Tent",
+      "Cabana",
+      "Starry Night",
+      "Fairy Lights"
+    ]
   },
   {
     "id": "srv-oth-3",
@@ -1062,7 +1349,12 @@
       "Setup Completed Early Morning Before Griha Pravesh Puja"
     ],
     "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=800&auto=format&fit=crop&q=80",
-    "tags": ["House Warming", "Griha Pravesh", "New Home", "Traditional Toran"]
+    "tags": [
+      "House Warming",
+      "Griha Pravesh",
+      "New Home",
+      "Traditional Toran"
+    ]
   },
   {
     "id": "srv-oth-4",
@@ -1082,7 +1374,12 @@
       "Prompt On-Site Delivery at Office, Banquet or Residence"
     ],
     "image": "https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Farewell", "Retirement", "Office Sendoff", "Golden Memories"]
+    "tags": [
+      "Farewell",
+      "Retirement",
+      "Office Sendoff",
+      "Golden Memories"
+    ]
   },
   {
     "id": "srv-oth-5",
@@ -1102,7 +1399,12 @@
       "Perfect Photo Backdrop for Degree Celebrations"
     ],
     "image": "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Graduation", "Class of 2026", "Congrats Grad", "Exam Success"]
+    "tags": [
+      "Graduation",
+      "Class of 2026",
+      "Congrats Grad",
+      "Exam Success"
+    ]
   },
   {
     "id": "srv-oth-6",
@@ -1110,7 +1412,7 @@
     "category": "other",
     "categoryLabel": "Other Occasions",
     "priceStart": 4299,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 98,
     "badge": "Resort Glam",
     "description": "Magical poolside party with 50 floating water balloons with glowing waterproof LED orbs, poolside balloon arch, and candle lanterns.",
@@ -1122,7 +1424,12 @@
       "Includes Waterproof Weight Anchors (Zero Drifting)"
     ],
     "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Poolside Decor", "Floating Balloons", "Resort Party", "Night Lights"]
+    "tags": [
+      "Poolside Decor",
+      "Floating Balloons",
+      "Resort Party",
+      "Night Lights"
+    ]
   },
   {
     "id": "srv-oth-7",
@@ -1142,7 +1449,13 @@
       "Ideal for Homes, Showrooms and Apartment Societies"
     ],
     "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Diwali", "Festive Decor", "Navratri", "Ganesh Utsav", "Marigold"]
+    "tags": [
+      "Diwali",
+      "Festive Decor",
+      "Navratri",
+      "Ganesh Utsav",
+      "Marigold"
+    ]
   },
   {
     "id": "srv-oth-8",
@@ -1162,7 +1475,12 @@
       "Party Photo-Booth Accessories & Sparklers Included"
     ],
     "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80",
-    "tags": ["New Year", "Balloon Drop", "Champagne Bottle", "Countdown Party"]
+    "tags": [
+      "New Year",
+      "Balloon Drop",
+      "Champagne Bottle",
+      "Countdown Party"
+    ]
   },
   {
     "id": "srv-oth-9",
@@ -1170,7 +1488,7 @@
     "category": "other",
     "categoryLabel": "Other Occasions",
     "priceStart": 2499,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 155,
     "badge": "Cozy Date",
     "description": "Create a cozy indoor cinema date with fluffy floor mattresses, fairy light canopy, popcorn snack bar, and romantic balloon framing.",
@@ -1182,7 +1500,12 @@
       "Perfect Surprise for Birthdays, Valentine or Anniversaries"
     ],
     "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Movie Night", "Cozy Cinema", "Date Night", "Indoor Picnic"]
+    "tags": [
+      "Movie Night",
+      "Cozy Cinema",
+      "Date Night",
+      "Indoor Picnic"
+    ]
   },
   {
     "id": "srv-oth-10",
@@ -1202,6 +1525,11 @@
       "Delivered Fully Inflated in Protective Transportation Bag"
     ],
     "image": "https://images.unsplash.com/photo-1513201099705-a9742e15a5b8?w=800&auto=format&fit=crop&q=80",
-    "tags": ["Balloon Bouquet", "Bubble Balloon", "Personalized Gift", "Hand Delivery"]
+    "tags": [
+      "Balloon Bouquet",
+      "Bubble Balloon",
+      "Personalized Gift",
+      "Hand Delivery"
+    ]
   }
 ]

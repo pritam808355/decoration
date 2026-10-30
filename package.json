@@ -1,7 +1,7 @@
 {
-  "name": "yuvi-decoration",
+  "name": "the-party-hard",
   "version": "1.0.0",
-  "description": "Yuvi Decoration - Premium Balloon & Event Decoration Website with AI Assistant & Real Booking System",
+  "description": "The Party Hard - Premium Balloon & Event Decoration Website with AI Assistant & Real Booking System",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,15 +10,17 @@
   "keywords": [
     "balloon-decoration",
     "event-planner",
-    "yuvi-decoration",
+    "party-hard",
+    "the-party-hard",
     "luxury-decor",
     "ai-chatbot"
   ],
-  "author": "Yuvi Decoration",
+  "author": "The Party Hard",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^9.11.4"
   }
 }

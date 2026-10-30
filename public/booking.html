@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Balloon Decoration Online | The Party Hard Patna</title>
+  <meta name="description" content="Book luxury balloon decoration in Patna for Birthdays, Weddings, Baby Showers and Anniversaries. Instant booking with zero advance pressure.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .booking-page-wrap {
+      min-height: 100vh;
+      background: radial-gradient(circle at top right, #fff0f3 0%, #fffbfb 45%, #fff 100%);
+      padding-bottom: 5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .booking-top-nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 0.9rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .booking-page-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .booking-summary-sidebar {
+      position: sticky;
+      top: 5.5rem;
+      height: fit-content;
+    }
+
+    .booking-live-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 1.6rem;
+      box-shadow: 0 15px 40px rgba(232, 80, 114, 0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-live-img {
+      width: 100%;
+      height: 220px;
+      border-radius: 14px;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .booking-perks-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+    }
+
+    .booking-perks-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .booking-perks-list li i {
+      color: #10b981;
+      font-size: 0.95rem;
+    }
+
+    .booking-form-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 20px 50px rgba(180, 100, 120, 0.08);
+    }
+
+    @media (max-width: 991px) {
+      .booking-page-grid {
+        grid-template-columns: 1fr;
+      }
+      .booking-summary-sidebar {
+        position: static;
+      }
+      .booking-form-card {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body class="booking-page-wrap">
+
+  <!-- Dedicated Header Navigation -->
+  <header class="booking-top-nav">
+    <a href="index.html" class="nav-brand" style="text-decoration: none;">
+      <span class="brand-logo-wrap">
+        <span class="logo-balloon-icon">🎈</span>
+        <span class="brand-text">THE PARTY HARD</span>
+      </span>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20mujhe%20booking%20ke%20bare%20mein%20poochna%20hai" target="_blank" class="btn btn-whatsapp" style="font-size: 0.84rem; padding: 0.45rem 0.95rem; text-decoration: none;">
+        <i class="fa-brands fa-whatsapp"></i> Chat Support
+      </a>
+      <a href="index.html" class="btn btn-white-pill" style="font-size: 0.84rem; padding: 0.45rem 0.95rem; text-decoration: none;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="max-width: 1100px; padding: 1.5rem 1rem;">
+    <!-- Title Section -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div class="eyebrow-tag" style="display: inline-flex; justify-content: center;">
+        <i class="fa-solid fa-crown" style="color: #f59e0b;"></i> INSTANT EVENT RESERVATION
+      </div>
+      <h1 class="section-title-large" style="margin: 0.4rem 0 0.5rem 0; font-size: 2.2rem;">
+        Reserve Your <span class="text-pink">Celebration Setup</span> 🎈
+      </h1>
+      <p class="section-desc-sub" style="max-width: 580px; margin: 0 auto;">
+        Fill in your details below to lock your date & time slot. Instant Booking ID and direct WhatsApp confirmation with zero upfront payment pressure.
+      </p>
+    </div>
+
+    <div class="booking-page-grid">
+      <!-- Left Column: Live Package Preview & Trust Badges -->
+      <aside class="booking-summary-sidebar">
+        <div class="booking-live-card">
+          <div class="eyebrow-tag" style="margin-bottom: 0.6rem; font-size: 0.72rem;">SELECTED SETUP PREVIEW</div>
+          <img id="bp-preview-img" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800" alt="Setup Preview" class="booking-live-img">
+          
+          <h3 id="bp-preview-title" style="font-size: 1.25rem; color: var(--text-dark); margin: 0 0 0.35rem 0;">
+            Pastel Dream Birthday Ring Arch
+          </h3>
+          <div id="bp-preview-price" style="font-size: 1.15rem; font-weight: 800; color: var(--primary-pink); margin-bottom: 0.85rem;">
+            Starts ₹2,499 • Complete Setup Included
+          </div>
+
+          <p id="bp-preview-desc" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 1rem 0;">
+            Stunning circular metal ring backdrop with organic pastel & chrome balloons, warm LED neon sign and balloon pedestal stands.
+          </p>
+
+          <ul class="booking-perks-list">
+            <li><i class="fa-solid fa-circle-check"></i> 100% On-Time Delivery Guarantee</li>
+            <li><i class="fa-solid fa-circle-check"></i> Free Setup & Dismantle by Expert Decorators</li>
+            <li><i class="fa-solid fa-circle-check"></i> Child-Safe, High-Grade Metallic Chrome Balloons</li>
+            <li><i class="fa-solid fa-circle-check"></i> Pay via UPI, GPay, PhonePe or Cash after setup</li>
+          </ul>
+
+          <div style="background: #fdf5f6; border-radius: 12px; padding: 0.85rem 1rem; border: 1px dashed rgba(232, 80, 114, 0.3); text-align: center;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary-pink);">
+              🔒 100% Risk Free • Zero Advance to Lock Slot
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Column: Booking Form -->
+      <section>
+        <div class="booking-form-card">
+          <h2 style="font-size: 1.45rem; color: var(--text-dark); margin: 0 0 0.3rem 0; font-weight: 800;">
+            Enter Event Details 📅
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0 0 1.5rem 0;">
+            Takes less than 1 minute. Our team will verify and lock the decorator team immediately.
+          </p>
+
+          <form id="standalone-booking-form">
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label class="form-label" for="sp-name"><i class="fa-regular fa-user" style="color: var(--primary-pink);"></i> Your Full Name *</label>
+                <input type="text" id="sp-name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sp-phone"><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> WhatsApp Mobile Number *</label>
+                <input type="tel" id="sp-phone" class="form-control" placeholder="e.g. 9876543210" pattern="[0-9]{10}" title="Enter 10-digit mobile number" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sp-event-type"><i class="fa-regular fa-calendar-star" style="color: var(--primary-pink);"></i> Occasion *</label>
+                <select id="sp-event-type" class="form-control" required>
+                  <option value="">-- Select Occasion --</option>
+                  <option value="Birthday Party" selected>Birthday Party 🎂</option>
+                  <option value="Weddings">Weddings & Engagements 💍</option>
+                  <option value="Baby Shower">Baby Shower & Naming 🍼</option>
+                  <option value="Anniversary">Anniversary & Romance 💖</option>
+                  <option value="Corporate Events">Corporate Events & Opening 🏢</option>
+                  <option value="Other Occasion">Other Custom Occasion ✨</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sp-package"><i class="fa-solid fa-box-open" style="color: var(--primary-pink);"></i> Choose Decoration Setup</label>
+                <select id="sp-package" class="form-control">
+                  <option value="custom">✨ Custom Bespoke Theme (Tailored)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sp-date"><i class="fa-regular fa-calendar-days" style="color: var(--primary-pink);"></i> Event Date *</label>
+                <input type="date" id="sp-date" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sp-time"><i class="fa-regular fa-clock" style="color: var(--primary-pink);"></i> Preferred Setup Time</label>
+                <select id="sp-time" class="form-control">
+                  <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                  <option value="Afternoon (1:00 PM - 4:00 PM)" selected>Afternoon (1:00 PM - 4:00 PM)</option>
+                  <option value="Evening (5:00 PM - 8:00 PM)">Evening (5:00 PM - 8:00 PM)</option>
+                  <option value="Night Surprise (9:30 PM - 11:30 PM)">Night Surprise (9:30 PM - 11:30 PM)</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label class="form-label" for="sp-venue"><i class="fa-solid fa-location-dot" style="color: var(--primary-pink);"></i> Delivery / Venue Address in Patna *</label>
+                <input type="text" id="sp-venue" class="form-control" placeholder="e.g. Flat 402, Royal Palms, Boring Road, Patna" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sp-theme"><i class="fa-solid fa-palette" style="color: var(--primary-pink);"></i> Preferred Balloon Colors</label>
+                <input type="text" id="sp-theme" class="form-control" placeholder="e.g. Pastel Pink & Mint, Rose Gold, Royal Black">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sp-budget"><i class="fa-solid fa-wallet" style="color: var(--primary-pink);"></i> Budget Range</label>
+                <select id="sp-budget" class="form-control">
+                  <option value="₹1,500 - ₹3,000">₹1,500 - ₹3,000 (Room & Simple Arch)</option>
+                  <option value="₹3,000 - ₹6,000" selected>₹3,000 - ₹6,000 (Ring Arch & Neon Sign)</option>
+                  <option value="₹6,000 - ₹12,000">₹6,000 - ₹12,000 (Milestone & Backdrop)</option>
+                  <option value="₹15,000+ Luxury">₹15,000+ (Grand Luxury)</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label class="form-label" for="sp-notes"><i class="fa-regular fa-comment-dots" style="color: var(--primary-pink);"></i> Special Instructions / Name or Age for Neon Sign</label>
+                <textarea id="sp-notes" class="form-control" rows="2" placeholder="Tell us if you want a specific age number balloon, custom name on sign, etc."></textarea>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+              <button type="submit" class="btn btn-pink" style="width: 100%; padding: 0.95rem; font-size: 1.05rem;" id="sp-submit-btn">
+                <i class="fa-regular fa-calendar-check"></i> Confirm Reservation & Get Booking ID 🎈
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===================================================
+       BOOKING CONFIRMATION MODAL
+  =================================================== -->
+  <div class="modal-overlay" id="confirmation-modal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-body">
+        <div class="confirmation-box">
+          <div class="confirmation-icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h2 style="font-size: 1.7rem; color: var(--text-dark); margin-bottom: 0.4rem;">Booking Submitted!</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Thank you for choosing <strong>The Party Hard</strong>. Your booking has been recorded.
+          </p>
+
+          <div>
+            <span class="booking-id-pill" id="confirm-booking-id">TPH-2026-8941</span>
+          </div>
+
+          <button class="btn btn-white-pill" onclick="copyBookingId()" style="font-size: 0.85rem; padding: 0.4rem 1rem; margin-bottom: 1rem;">
+            <i class="fa-regular fa-copy"></i> Copy Booking ID
+          </button>
+
+          <!-- Injected Details -->
+          <div id="confirm-booking-details"></div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem;">
+            <a id="confirm-whatsapp-btn" href="#" target="_blank" class="btn btn-whatsapp" style="text-decoration: none;">
+              <i class="fa-brands fa-whatsapp"></i> Send on WhatsApp for 1-Minute Confirmation
+            </a>
+            <a href="index.html" class="btn btn-white-pill" style="text-decoration: none;">
+              Done & Return to Homepage
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/services-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const services = window.DEFAULT_SERVICES || [];
+      const packageSelect = document.getElementById('sp-package');
+      const eventTypeSelect = document.getElementById('sp-event-type');
+      const dateInput = document.getElementById('sp-date');
+      const form = document.getElementById('standalone-booking-form');
+
+      // Set min date to today
+      if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+        dateInput.value = today;
+      }
+
+      // Populate packages
+      if (packageSelect) {
+        packageSelect.innerHTML = `
+          <option value="">-- Choose a Curated Package (or Custom) --</option>
+          <option value="custom">✨ Custom Bespoke Theme (Tailored to your needs)</option>
+          ${services.map(s => `
+            <option value="${s.id}" data-price="${s.priceStart}" data-type="${s.categoryLabel}" data-title="${s.title}" data-image="${s.image}" data-desc="${s.description || ''}">
+              ${s.title} (₹${s.priceStart.toLocaleString('en-IN')})
+            </option>
+          `).join('')}
+        `;
+      }
+
+      // Check URL params for preselected package
+      const urlParams = new URLSearchParams(window.location.search);
+      const pkgParam = urlParams.get('package');
+      if (pkgParam && packageSelect) {
+        packageSelect.value = pkgParam;
+      }
+
+      // Function to update preview
+      function updateLivePreview(pkgId) {
+        const img = document.getElementById('bp-preview-img');
+        const title = document.getElementById('bp-preview-title');
+        const price = document.getElementById('bp-preview-price');
+        const submitBtn = document.getElementById('sp-submit-btn');
+
+        const matched = services.find(s => s.id === pkgId);
+        if (matched) {
+          if (img) img.src = matched.image;
+          if (title) title.textContent = matched.title;
+          if (price) price.textContent = `Starts ₹${matched.priceStart.toLocaleString('en-IN')} • Complete Setup Included`;
+          if (submitBtn) submitBtn.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Confirm Reservation (₹${matched.priceStart.toLocaleString('en-IN')}) 🎈`;
+        } else {
+          if (img) img.src = 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800';
+          if (title) title.textContent = 'Custom Bespoke Setup';
+          if (price) price.textContent = 'Packages start from ₹1,499 • Custom Themes';
+          if (submitBtn) submitBtn.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Confirm Reservation & Lock Slot 🎈`;
+        }
+      }
+
+      if (packageSelect) {
+        packageSelect.addEventListener('change', () => {
+          const selectedOpt = packageSelect.selectedOptions[0];
+          const packageType = selectedOpt ? selectedOpt.getAttribute('data-type') : null;
+          if (packageType && eventTypeSelect) {
+            for (let i = 0; i < eventTypeSelect.options.length; i++) {
+              if (eventTypeSelect.options[i].text.includes(packageType) || packageType.includes(eventTypeSelect.options[i].value)) {
+                eventTypeSelect.selectedIndex = i;
+                break;
+              }
+            }
+          }
+          updateLivePreview(packageSelect.value);
+        });
+        updateLivePreview(packageSelect.value);
+      }
+
+      // Handle form submit
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const submitBtn = document.getElementById('sp-submit-btn');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Securing Reservation...`;
+
+          const selectedPkgOpt = packageSelect ? packageSelect.selectedOptions[0] : null;
+          const pkgVal = packageSelect ? packageSelect.value : 'custom';
+
+          const payload = {
+            customerName: document.getElementById('sp-name').value.trim(),
+            mobile: document.getElementById('sp-phone').value.trim(),
+            email: '',
+            eventType: eventTypeSelect.value,
+            eventDate: dateInput.value,
+            eventTime: document.getElementById('sp-time').value,
+            venueAddress: document.getElementById('sp-venue').value.trim(),
+            budget: document.getElementById('sp-budget').value,
+            packageId: pkgVal || 'custom',
+            packageName: selectedPkgOpt && pkgVal ? selectedPkgOpt.text : 'Custom Decoration',
+            colorTheme: document.getElementById('sp-theme').value.trim() || 'Pastel Theme',
+            notes: document.getElementById('sp-notes').value.trim()
+          };
+
+          try {
+            const res = await fetch('/api/bookings', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
+            if (res.ok && data.success) {
+              form.reset();
+              showSuccess(data.booking);
+              return;
+            } else {
+              throw new Error(data.error || 'Server error');
+            }
+          } catch (err) {
+            const generatedBooking = {
+              id: `TPH-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
+              ...payload,
+              status: 'pending',
+              estimatedAmount: selectedPkgOpt ? (Number(selectedPkgOpt.getAttribute('data-price')) || 2499) : 2499,
+              createdAt: new Date().toISOString()
+            };
+            try {
+              const localBookings = JSON.parse(localStorage.getItem('yuvi_bookings_data') || '[]');
+              localBookings.unshift(generatedBooking);
+              localStorage.setItem('yuvi_bookings_data', JSON.stringify(localBookings));
+            } catch (e) {}
+            form.reset();
+            showSuccess(generatedBooking);
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }
+        });
+      }
+
+      function showSuccess(booking) {
+        const modal = document.getElementById('confirmation-modal');
+        if (!modal) return;
+        document.getElementById('confirm-booking-id').textContent = booking.id;
+        document.getElementById('confirm-booking-details').innerHTML = `
+          <div style="background: #fff8f9; border: 1px solid var(--border-light); border-radius: 12px; padding: 1.2rem; text-align: left; margin: 1.2rem 0; font-size: 0.9rem; line-height: 1.6;">
+            <div style="color: var(--primary-pink); font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem;">
+              ${booking.packageName}
+            </div>
+            <p><strong>Customer:</strong> ${booking.customerName} (${booking.mobile})</p>
+            <p><strong>Occasion:</strong> ${booking.eventType}</p>
+            <p><strong>Date & Time:</strong> ${booking.eventDate} • ${booking.eventTime}</p>
+            <p><strong>Venue:</strong> ${booking.venueAddress || 'To be shared'}</p>
+            <p><strong>Estimated Amount:</strong> ₹${(booking.estimatedAmount || 2499).toLocaleString('en-IN')}</p>
+          </div>
+        `;
+        const waText = encodeURIComponent(
+          `Hello The Party Hard! 🎈\nI have placed a new booking.\n\n• Booking ID: ${booking.id}\n• Customer: ${booking.customerName}\n• Event: ${booking.eventType}\n• Date: ${booking.eventDate} (${booking.eventTime})\n• Package: ${booking.packageName}\n\nPlease confirm availability!`
+        );
+        document.getElementById('confirm-whatsapp-btn').href = `https://wa.me/919263667669?text=${waText}`;
+        modal.classList.add('open');
+      }
+
+      window.copyBookingId = function() {
+        const id = document.getElementById('confirm-booking-id').textContent;
+        navigator.clipboard.writeText(id);
+        alert(`Copied ${id} to clipboard!`);
+      };
+    });
+  </script>
+</body>
+</html>

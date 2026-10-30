@@ -1,5 +1,353 @@
 [
   {
+    "sessionId": "CHAT-2026-3960",
+    "startedAt": "2026-10-28T16:30:20.469Z",
+    "lastMessageAt": "2026-10-28T16:30:20.469Z",
+    "summary": "mujhe booking karni hai",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "mujhe booking karni hai",
+        "time": "10:00 pm",
+        "timestamp": "2026-10-28T16:30:20.469Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "📅 **Booking Process Bahut Aasan Hai:**\n\n1️⃣ Niche '**Book Now**' button par click karein.\n2️⃣ Apna Naam, Mobile Number, Event Date aur Occasion select karein.\n3️⃣ 'Confirm Booking' dabate hi aapko instant **Booking ID** mil jayegi!\n4️⃣ Humari team 15 minutes mein call/WhatsApp karke slot lock kar degi.\n\nChaliye main aapke liye booking form open kar deta hoon! 🎈",
+        "time": "10:00 pm",
+        "timestamp": "2026-10-28T16:30:20.469Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-5651",
+    "startedAt": "2026-10-27T14:33:34.109Z",
+    "lastMessageAt": "2026-10-27T14:33:34.109Z",
+    "summary": "Show gallery photos",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Show gallery photos",
+        "time": "08:03 pm",
+        "timestamp": "2026-10-27T14:33:34.109Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "🎨 **Custom Theme & Reference Photos:**\n\nHaan bilkul! Agar aapke paas Instagram, Pinterest ya internet ka koi bhi photo ya customized idea hai, toh hum 100% same-to-same ready kar denge! 🪄\n\nAap apna photo direct WhatsApp par share kar sakte hain:\n📱 **WhatsApp**: +91 92636 67669\n\nHum colours, balloon density aur LED signs aapke preference ke according customize kar denge!",
+        "time": "08:03 pm",
+        "timestamp": "2026-10-27T14:33:34.109Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-8045",
+    "startedAt": "2026-10-27T06:12:23.928Z",
+    "lastMessageAt": "2026-10-27T06:12:57.782Z",
+    "summary": "Namaste! Mujhe The Party Hard ke best packages aur...",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Namaste! Mujhe The Party Hard ke best packages aur trending designs dikhao.",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:23.928Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "🎨 **Custom Theme & Reference Photos:**\n\nHaan bilkul! Agar aapke paas Instagram, Pinterest ya internet ka koi bhi photo ya customized idea hai, toh hum 100% same-to-same ready kar denge! 🪄\n\nAap apna photo direct WhatsApp par share kar sakte hain:\n📱 **WhatsApp**: +91 92636 67669\n\nHum colours, balloon density aur LED signs aapke preference ke according customize kar denge!",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:23.928Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "helllo",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:48.155Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Arey bilkul! 🎈 Main The Party Hard se hoon. Main aapke event ke according best balloon decoration plan karne mein madad kar sakta hoon!\n\nAap Birthday, Anniversary, Baby Shower ya Wedding decor dekhna chahte hain? Ya apna approximate budget batayein (jaise ₹2,000 ya ₹3,500), main instant best package dikha dunga! 😊",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:48.155Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "any ideas",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:54.707Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Arey bilkul! 🎈 Main The Party Hard se hoon. Main aapke event ke according best balloon decoration plan karne mein madad kar sakta hoon!\n\nAap Birthday, Anniversary, Baby Shower ya Wedding decor dekhna chahte hain? Ya apna approximate budget batayein (jaise ₹2,000 ya ₹3,500), main instant best package dikha dunga! 😊",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:54.707Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Birthday Ideas 🎂",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:57.782Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "🎂 **Birthday Celebrations ke liye Top Ideas:**\n\n1. **Pastel Dream Ring Arch** (₹2,499) — LED Neon Sign, Ring backdrop & pastel chrome balloons.\n2. **Royal Black & Gold Adult Milestone Arch** (₹2,999) — Chrome balloons & 3ft number foils.\n3. **Surprise Bedroom Balloon Canopy** (₹1,499) — 100 ceiling balloons, fairy lights & memory photo clips!\n\nAap niche click karke direct booking kar sakte hain ya gallery explore karein:",
+        "time": "11:42 am",
+        "timestamp": "2026-10-27T06:12:57.782Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-6417",
+    "startedAt": "2026-10-27T05:45:16.171Z",
+    "lastMessageAt": "2026-10-27T05:45:16.171Z",
+    "summary": "urgent booking ho sakti hai kya",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "urgent booking ho sakti hai kya",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:16.171Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "⏰ **Setup Timing & Express Delivery:**\n\n• ⚡ **Standard Setup Time**: Normal room ya ring arch decoration **1 se 2 ghante** mein ready ho jata hai.\n• 🚀 **Urgent / Same-Day Booking**: Haan ji! Urgent setup ke liye hum **2 se 3 ghante ke express notice** par bhi decoration ready kar dete hain.\n• 🕒 **Service Timings**: Subah **8:00 AM se raat 10:00 PM** tak (Daily 7 Days open)!\n\nAapka event aaj hai ya aage kisi date par?",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:16.171Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-8393",
+    "startedAt": "2026-10-27T05:45:16.046Z",
+    "lastMessageAt": "2026-10-27T05:45:16.046Z",
+    "summary": "advance payment kitna dena hoga",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "advance payment kitna dena hoga",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:16.046Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "💳 **Payment & Discounts Information:**\n\n• 🔒 **Zero Advance Pressure**: Booking form fill karte waqt koi upfront advance nahi lagta! Hum call/WhatsApp par slot lock karte hain.\n• 💸 **Multiple Payment Options**: Setup poora dekh lene ke baad aap UPI (Google Pay, PhonePe, Paytm) ya Cash de sakte hain.\n• 🎁 **Discounts & Offers**: Direct online packages par festival discounts active hain aur starting package sirf **₹1,499** se hai!\n\nKounsa setup pasand karenge?",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:16.046Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-2683",
+    "startedAt": "2026-10-27T05:45:15.916Z",
+    "lastMessageAt": "2026-10-27T05:45:15.916Z",
+    "summary": "patna me service hai kya",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "patna me service hai kya",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:15.916Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "📍 **The Party Hard Service Areas & Doorstep Setup:**\n\nHaan ji! Hum **pure Patna aur aas-paas ke sabhi areas** mein doorstep balloon decoration deliver karte hain! 🚗🎈\n\n• Kankarbagh, Boring Road, Bailey Road, Raja Bazar\n• Danapur, Saguna More, Patliputra Colony\n• Rajendra Nagar, Anisabad, Ashiana Nagar, City Area\n\nChahe aapka ghar/bedroom ho, terrace, hall ya cafe — humari expert decorator team aapke venue par aakar poora setup ready karti hai!\n\nAap Patna mein kis area mein decorate karwana chahte hain?",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:15.916Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-3868",
+    "startedAt": "2026-10-27T05:45:15.752Z",
+    "lastMessageAt": "2026-10-27T05:45:15.752Z",
+    "summary": "kaise ho",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "kaise ho",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:15.752Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Namaste ji! Main mast hoon! 😊🎉\n\nMain hoon **The Party Hard AI Assistant** — aapka personal celebration concierge!\n\nMain aapke celebration ke liye best balloon decorations recommend kar sakta hoon, aapke budget mein packages dhoondh sakta hoon, booking karwa sakta hoon aur status track kar sakta hoon!\n\nAap bataiye, kiska celebration plan ho raha hai aaj? 🎈",
+        "time": "11:15 am",
+        "timestamp": "2026-10-27T05:45:15.752Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-9506",
+    "startedAt": "2026-10-26T11:13:14.369Z",
+    "lastMessageAt": "2026-10-27T05:33:12.305Z",
+    "summary": "Book a decoration for wedding",
+    "messages": [
+      {
+        "sender": "user",
+        "text": "Book a decoration for wedding",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "bot",
+        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "user",
+        "text": "Haldi Setup 🌼",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "bot",
+        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "user",
+        "text": "end",
+        "time": "04:48 pm"
+      },
+      {
+        "sender": "bot",
+        "text": "Aapka bahut bahut shukriya! 🙏 Agar koi bhi doubt ho ya customized setup chahiye ho, toh kabhi bhi message karein ya humare owner se connect karein:\n\n• 📱 **WhatsApp / Call**: +91 92636 67669\n• 📧 **Email**: partyhard2707@gmail.com\n\nAapka celebration shandar ho! 🎈✨",
+        "time": "04:48 pm"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Namaste! Mujhe The Party Hard ke best packages aur trending designs dikhao.",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:02.537Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Namaste! 🙏 Main hoon **Party Hard AI Assistant** — The Party Hard ka smart concierge!\n\nMain aapki kaise madad kar sakta hoon?\n• 🎈 Birthday / Wedding / Baby Shower decoration ideas dekhna\n• 💰 Apne budget ke hisaab se best package dhundhna (jaise ₹2,000 ya ₹3,000)\n• 📅 Booking confirm karna aur status track karna\n• 📞 Owner se WhatsApp par direct baat karna\n\nBataiye aaj kounsa celebration plan kar rahe hain? 😊",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:02.537Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "helllo",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:09.580Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Shukriya! 🎈 The Party Hard par hum Birthday, Wedding, Baby Shower, Anniversary aur Corporate events ke liye premium balloon decoration provide karte hain.\n\nAap kiske bare mein jaanna chahte hain? Niche kisi option par click karein:",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:09.580Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Mera budget ₹2,500 hai 💰",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:12.305Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Humare starting packages **₹1,499** se start hote hain (Romantic Bedroom Canopy ya Birthday Setup). Aap hume call ya WhatsApp karke customized package banwa sakte hain! 🎈",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:12.305Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-2502",
+    "startedAt": "2026-10-27T04:34:47.163Z",
+    "lastMessageAt": "2026-10-27T04:34:47.163Z",
+    "summary": "meri booking ka status check kro YUVI-2026-3417",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "meri booking ka status check kro YUVI-2026-3417",
+        "time": "10:04 am",
+        "timestamp": "2026-10-27T04:34:47.163Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "🔎 **Booking Mil Gayi!**\n\n• **Booking ID**: YUVI-2026-3417\n• **Customer**: PRITAM KUMAR\n• **Event**: Weddings on **2027-06-14** (Evening (5:00 PM - 8:00 PM))\n• **Package**: baby theme (₹3,000)\n• **Status**: **PENDING**\n\nTeam Yuvi Decoration on-time delivery ke liye taiyar hai! 🎈",
+        "time": "10:04 am",
+        "timestamp": "2026-10-27T04:34:47.163Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-9037",
+    "startedAt": "2026-10-27T04:33:35.675Z",
+    "lastMessageAt": "2026-10-27T04:33:35.675Z",
+    "summary": "mera budget 2500 hai",
+    "messages": [
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "mera budget 2500 hai",
+        "time": "10:03 am",
+        "timestamp": "2026-10-27T04:33:35.675Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "🎈 Aapke **₹2,500** budget ke according humare paas ye best packages hain:\n\n✨ **Royal Pastel Pink Ring Arch with Custom Neon Sign** — *Starting ₹2,499*\n   👉 Includes: 250+ High-Gloss Pastel Pink, White & Chrome Gold Balloons, Circular 6.5ft Golden Metal Ring Backdrop Frame\n\n✨ **Just Married Luxury Car Decor with Silk Ribbons & Balloons** — *Starting ₹2,499*\n   👉 Includes: Scratch-Free Bonnet Front Heart Flower & Balloon Arrangement, Luxury White & Pink Satin Organza Ribbons Across Body\n\n✨ **Gender Reveal Giant Black Surprise Balloon Drop Box** — *Starting ₹2,499*\n   👉 Includes: 36-inch Giant Opaque Black Question Mark Reveal Balloon, Stuffed with Hand-Cut Pink or Blue Foil Confetti & Mini Balloons\n\nSabhi setups mein on-time delivery aur cleanup included hai! Kounsa setup pasand aaya?",
+        "time": "10:03 am",
+        "timestamp": "2026-10-27T04:33:35.675Z"
+      }
+    ]
+  },
+  {
+    "sessionId": "CHAT-2026-9310",
+    "startedAt": "2026-10-27T04:18:31.598Z",
+    "lastMessageAt": "2026-10-27T04:18:39.251Z",
+    "summary": "hii",
+    "messages": [
+      {
+        "sender": "user",
+        "text": "hii",
+        "time": "09:48 am"
+      },
+      {
+        "sender": "bot",
+        "text": "Namaste! 🙏 Main hoon **Yuvi AI Assistant** — Yuvi.Decoration ka smart concierge!\n\nMain aapki kaise madad kar sakta hoon?\n• 🎈 Birthday / Wedding / Baby Shower decoration ideas dekhna\n• 💰 Apne budget ke hisaab se best package dhundhna (jaise ₹2,000 ya ₹3,000)\n• 📅 Booking confirm karna aur status track karna\n• 📞 Owner se WhatsApp par direct baat karna\n\nBataiye aaj kounsa celebration plan kar rahe hain? 😊",
+        "time": "09:48 am"
+      },
+      {
+        "sender": "user",
+        "text": "Birthday Ideas 🎂",
+        "time": "09:48 am"
+      },
+      {
+        "sender": "bot",
+        "text": "🎂 **Birthday Celebrations ke liye Top Ideas:**\n\n1. **Pastel Dream Ring Arch** (₹2,499) — LED Neon Sign, Ring backdrop & pastel chrome balloons.\n2. **Royal Black & Gold Adult Milestone Arch** (₹2,999) — Chrome balloons & 3ft number foils.\n3. **Surprise Bedroom Balloon Canopy** (₹1,499) — 100 ceiling balloons, fairy lights & memory photo clips!\n\nAap niche click karke direct booking kar sakte hain ya gallery explore karein:",
+        "time": "09:48 am"
+      }
+    ]
+  },
+  {
     "sessionId": "CHAT-2026-3532",
     "startedAt": "2026-10-26T11:45:07.264Z",
     "lastMessageAt": "2026-10-26T11:49:10.285Z",
@@ -230,44 +578,6 @@
         "sender": "bot",
         "text": "📸 **Yuvi.Decoration Recent Work Gallery:**\n\nHumne haal hi mein kai stunning balloon decorations deliver kiye hain — Birthday ring arches, pastel clouds baby shower, aur wedding backdrops.\n\nAap niche click karke poori gallery dekh sakte hain:",
         "time": "04:56 pm"
-      }
-    ]
-  },
-  {
-    "sessionId": "CHAT-2026-9506",
-    "startedAt": "2026-10-26T11:13:14.369Z",
-    "lastMessageAt": "2026-10-26T11:18:39.619Z",
-    "summary": "Book a decoration for wedding",
-    "messages": [
-      {
-        "sender": "user",
-        "text": "Book a decoration for wedding",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "bot",
-        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "user",
-        "text": "Haldi Setup 🌼",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "bot",
-        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "user",
-        "text": "end",
-        "time": "04:48 pm"
-      },
-      {
-        "sender": "bot",
-        "text": "Aapka bahut bahut shukriya! 🙏 Agar koi bhi doubt ho ya customized setup chahiye ho, toh kabhi bhi message karein ya humare owner se connect karein:\n\n• 📱 **WhatsApp / Call**: +91 92636 67669\n• 📧 **Email**: partyhard2707@gmail.com\n\nAapka celebration shandar ho! 🎈✨",
-        "time": "04:48 pm"
       }
     ]
   },
