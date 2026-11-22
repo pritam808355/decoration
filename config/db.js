@@ -13,6 +13,8 @@ const Review = require('../models/Review');
 const Setting = require('../models/Setting');
 
 let isConnected = false;
+let lastError = null;
+let lastAttemptedUri = null;
 const CLOUD_MONGODB_URI = 'mongodb+srv://pk6926459_db_user:pritam8083@cluster0.f7yszpf.mongodb.net/yuvi_decoration?retryWrites=true&w=majority';
 
 async function connectDB() {
@@ -20,6 +22,7 @@ async function connectDB() {
   if (!uri || uri.includes('<PASSWORD>') || uri.includes('<YOUR_CLUSTER_HOST>') || uri.includes('<password>') || uri.includes('127.0.0.1')) {
     uri = CLOUD_MONGODB_URI;
   }
+  lastAttemptedUri = uri;
 
   try {
     console.log(`\n🍃 Attempting to connect to MongoDB...`);
@@ -31,6 +34,7 @@ async function connectDB() {
     });
 
     isConnected = true;
+    lastError = null;
     console.log(`✅ [MongoDB Connected] Database: ${mongoose.connection.name}`);
     console.log(`🍃 Host: ${mongoose.connection.host}`);
 
@@ -48,6 +52,7 @@ async function connectDB() {
     return true;
   } catch (err) {
     isConnected = false;
+    lastError = err.message;
     console.log(`⚠️  [MongoDB Notice] Could not connect to MongoDB at: ${uri}`);
     console.log(`ℹ️  Reason: ${err.message}`);
     console.log(`🚀 [Auto-Fallback] Active! Server will use high-performance local JSON storage seamlessly.`);
@@ -255,11 +260,14 @@ module.exports = {
   isDbConnected: () => mongoose.connection.readyState === 1,
   getDbStatus: () => {
     const connected = mongoose.connection.readyState === 1;
+    const maskedUri = lastAttemptedUri ? lastAttemptedUri.replace(/:([^@]+)@/, ':****@') : null;
     return {
       type: connected ? 'MongoDB Atlas' : 'Local JSON Fallback',
       connected,
       database: connected ? mongoose.connection.name : 'local_storage',
-      host: connected ? mongoose.connection.host : 'localhost'
+      host: connected ? mongoose.connection.host : 'localhost',
+      lastError: connected ? null : (lastError || null),
+      attemptedUri: maskedUri
     };
   },
   models: {
