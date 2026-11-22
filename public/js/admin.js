@@ -253,8 +253,29 @@ async function loadBookings() {
     if (res.ok) {
       if (hostingAlert) hostingAlert.style.display = 'none';
       const data = await res.json();
-      allAdminBookings = data.bookings;
-      renderStats(data.stats);
+      allAdminBookings = data.bookings || [];
+
+      // Merge any local device bookings so nothing is ever missed
+      try {
+        const local = JSON.parse(localStorage.getItem('yuvi_bookings_data') || '[]');
+        if (Array.isArray(local) && local.length > 0) {
+          const remoteIds = new Set(allAdminBookings.map(b => b.id));
+          local.forEach(lb => {
+            if (!remoteIds.has(lb.id)) {
+              allAdminBookings.unshift(lb);
+            }
+          });
+        }
+      } catch (e) {}
+
+      renderStats(data.stats || {
+        total: allAdminBookings.length,
+        pending: allAdminBookings.filter(b => b.status === 'pending').length,
+        confirmed: allAdminBookings.filter(b => b.status === 'confirmed').length,
+        completed: allAdminBookings.filter(b => b.status === 'completed').length,
+        cancelled: allAdminBookings.filter(b => b.status === 'cancelled').length,
+        estimatedRevenue: allAdminBookings.reduce((sum, b) => sum + (Number(b.estimatedAmount) || 2499), 0)
+      });
       applyFiltersAndSearch();
       return;
     }

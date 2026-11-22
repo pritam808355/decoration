@@ -13,16 +13,12 @@ const Review = require('../models/Review');
 const Setting = require('../models/Setting');
 
 let isConnected = false;
+const CLOUD_MONGODB_URI = 'mongodb+srv://pk6926459_db_user:pritam8083@cluster0.f7yszpf.mongodb.net/yuvi_decoration?retryWrites=true&w=majority';
 
 async function connectDB() {
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/yuvi_decoration';
-
-  if (uri.includes('<PASSWORD>') || uri.includes('<YOUR_CLUSTER_HOST>') || uri.includes('<password>')) {
-    console.log(`\n🍃 [MongoDB Setup Info] MONGODB_URI is set, but contains placeholders (<PASSWORD> / <YOUR_CLUSTER_HOST>).`);
-    console.log(`👉 Please update .env with your actual MongoDB Atlas password and cluster address.`);
-    console.log(`🚀 [Auto-Fallback] Active! Server will use high-performance local JSON storage seamlessly.\n`);
-    isConnected = false;
-    return false;
+  let uri = process.env.MONGODB_URI;
+  if (!uri || uri.includes('<PASSWORD>') || uri.includes('<YOUR_CLUSTER_HOST>') || uri.includes('<password>') || uri.includes('127.0.0.1')) {
+    uri = CLOUD_MONGODB_URI;
   }
 
   try {
@@ -30,15 +26,15 @@ async function connectDB() {
     
     // Connect with a reasonable timeout so server boots instantly even if offline
     await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 4000, // 4-second timeout
-      connectTimeoutMS: 5000
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 6000
     });
 
     isConnected = true;
     console.log(`✅ [MongoDB Connected] Database: ${mongoose.connection.name}`);
     console.log(`🍃 Host: ${mongoose.connection.host}`);
 
-    // Auto-seed initial data if collections are empty
+    // Auto-seed and sync data into MongoDB
     await seedServicesIfEmpty();
     await seedBookingsIfEmpty();
     await seedEnquiriesIfEmpty();
@@ -55,7 +51,6 @@ async function connectDB() {
     console.log(`⚠️  [MongoDB Notice] Could not connect to MongoDB at: ${uri}`);
     console.log(`ℹ️  Reason: ${err.message}`);
     console.log(`🚀 [Auto-Fallback] Active! Server will use high-performance local JSON storage seamlessly.`);
-    console.log(`💡 Tip: To connect MongoDB Cloud (Atlas), add your connection string to .env:\n    MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.mongodb.net/yuvi_decoration\n`);
     return false;
   }
 }
@@ -80,18 +75,20 @@ async function seedServicesIfEmpty() {
   }
 }
 
-// Auto-seed existing bookings if collection is empty
+// Auto-seed existing bookings and sync missing ones from JSON
 async function seedBookingsIfEmpty() {
   try {
-    const count = await Booking.countDocuments();
-    if (count === 0) {
-      const bookingsPath = path.join(__dirname, '..', 'data', 'bookings.json');
-      if (fs.existsSync(bookingsPath)) {
-        const raw = fs.readFileSync(bookingsPath, 'utf8');
-        const bookingsData = JSON.parse(raw);
-        if (Array.isArray(bookingsData) && bookingsData.length > 0) {
-          await Booking.insertMany(bookingsData);
-          console.log(`📋 [Auto-Seeded] ${bookingsData.length} existing bookings imported into MongoDB!`);
+    const bookingsPath = path.join(__dirname, '..', 'data', 'bookings.json');
+    if (fs.existsSync(bookingsPath)) {
+      const raw = fs.readFileSync(bookingsPath, 'utf8');
+      const bookingsData = JSON.parse(raw);
+      if (Array.isArray(bookingsData) && bookingsData.length > 0) {
+        for (const b of bookingsData) {
+          const exists = await Booking.findOne({ id: b.id });
+          if (!exists) {
+            await Booking.create(b);
+            console.log(`📋 [Auto-Synced Booking] #${b.id} (${b.customerName}) imported into MongoDB!`);
+          }
         }
       }
     }

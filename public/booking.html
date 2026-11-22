@@ -600,6 +600,11 @@
 
             const data = await res.json();
             if (res.ok && data.success) {
+              try {
+                const localBookings = JSON.parse(localStorage.getItem('yuvi_bookings_data') || '[]');
+                localBookings.unshift(data.booking);
+                localStorage.setItem('yuvi_bookings_data', JSON.stringify(localBookings));
+              } catch (e) {}
               form.reset();
               showSuccess(data.booking);
               return;

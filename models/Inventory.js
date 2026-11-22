@@ -15,7 +15,7 @@ const InventorySchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['Balloons', 'Backdrop Frames', 'Neon Lights', 'Accessories', 'Florals'],
+    trim: true,
     default: 'Balloons'
   },
   quantity: {

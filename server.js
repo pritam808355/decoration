@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Ensure MongoDB connection is ready before processing API requests (critical for Netlify / Serverless)
 let serverlessDbPromise = null;
 app.use(async (req, res, next) => {
-  if (!isDbConnected() && process.env.MONGODB_URI && !process.env.MONGODB_URI.includes('<PASSWORD>') && !process.env.MONGODB_URI.includes('<YOUR_CLUSTER_HOST>')) {
+  if (!isDbConnected()) {
     if (!serverlessDbPromise) {
       serverlessDbPromise = connectDB().finally(() => { serverlessDbPromise = null; });
     }
@@ -321,10 +321,17 @@ app.post('/api/bookings', async (req, res) => {
     newBooking.whatsappError = waErr.message;
   }
 
-  // 3. Save to MongoDB if connected
+  // 3. Save to MongoDB (with immediate connection guarantee)
+  if (!isDbConnected()) {
+    try {
+      await connectDB();
+    } catch (e) {}
+  }
+
   if (isDbConnected()) {
     try {
       await Booking.create(newBooking);
+      console.log(`✅ [MongoDB Saved] #${newBooking.id} for ${newBooking.customerName}`);
     } catch (dbErr) {
       console.error('MongoDB save booking error:', dbErr.message);
     }
@@ -597,6 +604,12 @@ app.post('/api/admin/login', (req, res) => {
 app.get('/api/admin/bookings', async (req, res) => {
   let bookings = [];
 
+  if (!isDbConnected()) {
+    try {
+      await connectDB();
+    } catch (e) {}
+  }
+
   if (isDbConnected()) {
     try {
       const dbBookings = await Booking.find().sort({ createdAt: -1 }).lean();
@@ -608,8 +621,18 @@ app.get('/api/admin/bookings', async (req, res) => {
     }
   }
 
-  if (bookings.length === 0) {
-    bookings = readJson(BOOKINGS_FILE);
+  // Merge any local file bookings to ensure 100% data visibility
+  const fileBookings = readJson(BOOKINGS_FILE);
+  if (fileBookings && fileBookings.length > 0) {
+    const existingIds = new Set(bookings.map(b => b.id));
+    fileBookings.forEach(fb => {
+      if (!existingIds.has(fb.id)) {
+        bookings.push(fb);
+        if (isDbConnected()) {
+          Booking.create(fb).catch(() => {});
+        }
+      }
+    });
   }
 
   const stats = {
