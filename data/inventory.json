@@ -1,0 +1,101 @@
+[
+  {
+    "id": "INV-001",
+    "name": "Pastel Pink & Blush Latex Balloons (Pack of 100)",
+    "category": "Balloons",
+    "quantity": 45,
+    "unit": "packs",
+    "minThreshold": 10,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-002",
+    "name": "Metallic Chrome Gold Balloons (Pack of 100)",
+    "category": "Balloons",
+    "quantity": 38,
+    "unit": "packs",
+    "minThreshold": 8,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-003",
+    "name": "6.5ft Circular Golden Metal Ring Arch Frame",
+    "category": "Backdrop Frames",
+    "quantity": 12,
+    "unit": "units",
+    "minThreshold": 3,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-004",
+    "name": "6x6ft Champagne Gold Shimmer Sequin Wall",
+    "category": "Backdrop Frames",
+    "quantity": 6,
+    "unit": "units",
+    "minThreshold": 2,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-005",
+    "name": "LED Neon Sign - 'Happy Birthday' (Warm White)",
+    "category": "Neon Lights",
+    "quantity": 10,
+    "unit": "units",
+    "minThreshold": 2,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-006",
+    "name": "LED Neon Sign - 'Better Together' (Pink)",
+    "category": "Neon Lights",
+    "quantity": 5,
+    "unit": "units",
+    "minThreshold": 2,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-007",
+    "name": "LED Neon Sign - 'Oh Baby' (Pastel Blue)",
+    "category": "Neon Lights",
+    "quantity": 4,
+    "unit": "units",
+    "minThreshold": 2,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-008",
+    "name": "4ft Giant Plush Teddy Bear (Baby Shower Special)",
+    "category": "Props & Plush",
+    "quantity": 6,
+    "unit": "units",
+    "minThreshold": 2,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-009",
+    "name": "Helium Gas Tank (47L Tank)",
+    "category": "Equipment",
+    "quantity": 3,
+    "unit": "cylinders",
+    "minThreshold": 2,
+    "status": "Low Stock"
+  },
+  {
+    "id": "INV-010",
+    "name": "Warm LED Focus Spotlights & Fairy Curtains",
+    "category": "Lighting",
+    "quantity": 18,
+    "unit": "sets",
+    "minThreshold": 5,
+    "status": "In Stock"
+  },
+  {
+    "id": "INV-011",
+    "name": "Traditional Marigold Garland Strands (Haldi/Mehendi)",
+    "category": "Floral",
+    "quantity": 60,
+    "unit": "meters",
+    "minThreshold": 15,
+    "status": "In Stock"
+  }
+]

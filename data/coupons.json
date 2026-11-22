@@ -1,0 +1,42 @@
+[
+  {
+    "code": "WELCOME10",
+    "description": "Welcome Special - 10% OFF on your first celebration",
+    "discountType": "percent",
+    "discountValue": 10,
+    "minAmount": 1500,
+    "maxDiscount": 800,
+    "validUntil": "2027-12-31",
+    "active": true
+  },
+  {
+    "code": "PARTYHARD500",
+    "description": "Flat ₹500 OFF on Premium & Luxury Decoration Setups",
+    "discountType": "flat",
+    "discountValue": 500,
+    "minAmount": 2999,
+    "maxDiscount": 500,
+    "validUntil": "2027-12-31",
+    "active": true
+  },
+  {
+    "code": "FESTIVE15",
+    "description": "Festive Celebration Special - 15% OFF",
+    "discountType": "percent",
+    "discountValue": 15,
+    "minAmount": 2499,
+    "maxDiscount": 1200,
+    "validUntil": "2027-12-31",
+    "active": true
+  },
+  {
+    "code": "BIRTHDAY200",
+    "description": "Birthday Special Flat ₹200 OFF",
+    "discountType": "flat",
+    "discountValue": 200,
+    "minAmount": 1499,
+    "maxDiscount": 200,
+    "validUntil": "2027-12-31",
+    "active": true
+  }
+]

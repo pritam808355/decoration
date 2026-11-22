@@ -434,6 +434,21 @@
     </header>
 
     <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+      <!-- Live Hosting Alert (Netlify / Static CDN) -->
+      <div id="admin-live-hosting-alert" style="display: none; background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: flex-start; gap: 0.9rem;">
+          <div style="width: 38px; height: 38px; border-radius: 50%; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <div>
+            <h4 style="margin: 0 0 0.35rem; color: #92400e; font-size: 1rem; font-weight: 700;">Live Backend Notice (Netlify Static Host)</h4>
+            <p style="margin: 0; color: #b45309; font-size: 0.86rem; line-height: 1.55;">
+              Aapka frontend live chal raha hai, lekin <strong>Netlify par Node.js Express server automatically run nahi hota</strong>. Customer ke live orders yahan real-time pane ke liye is website ko <strong>Render.com</strong> par 1-click deploy karein (100% Free), ya Netlify me <strong>MongoDB Atlas MONGODB_URI</strong> connect karein. Saare customer orders instantly aapke WhatsApp par bhi receive hote hain!
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- Metrics Overview -->
       <div class="admin-stats-grid">
         <div class="stat-card">
@@ -489,10 +504,16 @@
 
       <!-- Navigation Tabs -->
       <div class="admin-nav-tabs">
-        <button class="admin-tab active" data-tab="bookings"><i class="fa-solid fa-list-check"></i> Customer Bookings</button>
-        <button class="admin-tab" data-tab="decorations"><i class="fa-solid fa-wand-magic-sparkles"></i> Manage Decorations & Rates (<span id="total-services-count">60</span>)</button>
-        <button class="admin-tab" data-tab="enquiries"><i class="fa-solid fa-envelope-open-text"></i> Contact Enquiries</button>
-        <button class="admin-tab" data-tab="chats"><i class="fa-solid fa-comments"></i> AI Chat History (<span id="total-chats-count">0</span>)</button>
+        <button class="admin-tab active" data-tab="bookings"><i class="fa-solid fa-list-check"></i> Bookings</button>
+        <button class="admin-tab" data-tab="calendar"><i class="fa-regular fa-calendar-days"></i> Calendar</button>
+        <button class="admin-tab" data-tab="inventory"><i class="fa-solid fa-boxes-stacked"></i> Inventory</button>
+        <button class="admin-tab" data-tab="staff"><i class="fa-solid fa-users-gear"></i> Staff & Orders</button>
+        <button class="admin-tab" data-tab="coupons"><i class="fa-solid fa-tags"></i> Coupons</button>
+        <button class="admin-tab" data-tab="customers"><i class="fa-solid fa-address-book"></i> Customers</button>
+        <button class="admin-tab" data-tab="analytics"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+        <button class="admin-tab" data-tab="decorations"><i class="fa-solid fa-wand-magic-sparkles"></i> Manage Rates (<span id="total-services-count">60</span>)</button>
+        <button class="admin-tab" data-tab="enquiries"><i class="fa-solid fa-envelope-open-text"></i> Enquiries</button>
+        <button class="admin-tab" data-tab="chats"><i class="fa-solid fa-comments"></i> AI Chats (<span id="total-chats-count">0</span>)</button>
       </div>
 
       <!-- TAB 1: BOOKINGS MANAGEMENT -->
@@ -634,6 +655,262 @@
               <!-- Dynamically populated via admin.js -->
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!-- TAB 5: BOOKING CALENDAR -->
+      <div id="tab-content-calendar" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-regular fa-calendar-days" style="color: var(--primary-pink);"></i>
+              <span>Event Booking Calendar</span>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">View event dates, daily order density and assigned decorators</p>
+          </div>
+          <div>
+            <button class="btn btn-white-pill" onclick="loadAdminCalendar()">
+              <i class="fa-solid fa-rotate"></i> Refresh Calendar
+            </button>
+          </div>
+        </div>
+
+        <div id="calendar-summary-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Event Date</th>
+                <th>Total Bookings</th>
+                <th>Events & Customers</th>
+                <th>Assigned Staff</th>
+                <th>Status Overview</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-calendar-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 6: INVENTORY MANAGEMENT -->
+      <div id="tab-content-inventory" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-boxes-stacked" style="color: var(--primary-pink);"></i>
+              <span>Stock & Inventory Management</span>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Track balloons, lighting, ring frames, arches, and get low-stock alerts</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-pink" onclick="openAddInventoryModal()">
+              <i class="fa-solid fa-plus-circle"></i> Add Inventory Item
+            </button>
+            <button class="btn btn-white-pill" onclick="loadAdminInventory()">
+              <i class="fa-solid fa-rotate"></i> Refresh
+            </button>
+          </div>
+        </div>
+
+        <div id="inventory-summary-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <!-- Stock KPIs -->
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Item Code & Name</th>
+                <th>Category</th>
+                <th>Stock Quantity</th>
+                <th>Min Alert Threshold</th>
+                <th>Cost / Unit</th>
+                <th>Status</th>
+                <th>Quick Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-inventory-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 7: STAFF MANAGEMENT & ORDER ASSIGNMENT -->
+      <div id="tab-content-staff" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-users-gear" style="color: var(--primary-pink);"></i>
+              <span>Staff Management & Decorator Assignments</span>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Manage decorator crew, track active setups, and assign orders</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-pink" onclick="openAddStaffModal()">
+              <i class="fa-solid fa-user-plus"></i> Add Staff Member
+            </button>
+            <button class="btn btn-white-pill" onclick="loadAdminStaff()">
+              <i class="fa-solid fa-rotate"></i> Refresh
+            </button>
+          </div>
+        </div>
+
+        <div id="staff-summary-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <!-- Staff KPIs -->
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Staff Member</th>
+                <th>Role</th>
+                <th>Contact</th>
+                <th>Assigned Service Areas</th>
+                <th>Status</th>
+                <th>Performance</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-staff-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 8: COUPONS & DISCOUNT CODES -->
+      <div id="tab-content-coupons" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-tags" style="color: var(--primary-pink);"></i>
+              <span>Coupon Codes & Festival Offers</span>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Create discount codes, set min order thresholds, and track usage</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-pink" onclick="openAddCouponModal()">
+              <i class="fa-solid fa-plus-circle"></i> Create Coupon
+            </button>
+            <button class="btn btn-white-pill" onclick="loadAdminCoupons()">
+              <i class="fa-solid fa-rotate"></i> Refresh
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Coupon Code</th>
+                <th>Description</th>
+                <th>Discount</th>
+                <th>Min Booking Amount</th>
+                <th>Max Discount Cap</th>
+                <th>Valid Until</th>
+                <th>Usage</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-coupons-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 9: CUSTOMER DATABASE -->
+      <div id="tab-content-customers" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-address-book" style="color: var(--primary-pink);"></i>
+              <span>Customer Database & Booking History</span>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">View repeat patrons, lifetime spend, and direct WhatsApp reconnect</p>
+          </div>
+          <div>
+            <button class="btn btn-white-pill" onclick="loadAdminCustomers()">
+              <i class="fa-solid fa-rotate"></i> Refresh Customers
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div style="margin-bottom: 1.25rem; max-width: 360px;">
+          <input type="text" id="admin-customers-search" class="form-control" placeholder="Search by customer name, phone or address..." oninput="filterAdminCustomers()">
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>WhatsApp Phone</th>
+                <th>Total Bookings</th>
+                <th>Lifetime Spend</th>
+                <th>Last Event</th>
+                <th>Last Booking Date</th>
+                <th>Direct Connect</th>
+              </tr>
+            </thead>
+            <tbody id="admin-customers-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 10: BUSINESS ANALYTICS -->
+      <div id="tab-content-analytics" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1.3rem; margin: 0; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-chart-line" style="color: var(--primary-pink);"></i>
+              <span>Business Analytics & Insights</span>
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.2rem 0 0;">Comprehensive revenue, popular occasions, and order performance metrics</p>
+          </div>
+          <div>
+            <button class="btn btn-white-pill" onclick="loadAdminAnalytics()">
+              <i class="fa-solid fa-rotate"></i> Refresh Analytics
+            </button>
+          </div>
+        </div>
+
+        <!-- Analytics KPI Grid -->
+        <div id="analytics-kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Occasions Breakdown & Order Status Breakdown -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          <div style="background: #ffffff; border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+            <h4 style="margin: 0 0 1rem; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-cake-candles" style="color: var(--primary-pink);"></i> Popular Event Categories
+            </h4>
+            <div id="analytics-occasions-breakdown">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+            <h4 style="margin: 0 0 1rem; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-list-check" style="color: #10b981;"></i> Booking Status Distribution
+            </h4>
+            <div id="analytics-status-breakdown">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -831,6 +1108,200 @@
             Done
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ASSIGN STAFF TO BOOKING -->
+  <div class="modal-overlay" id="assign-staff-modal">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-user-plus" style="color: var(--primary-pink);"></i> Assign Staff Decorator</h3>
+        <button class="modal-close-btn" onclick="closeAssignStaffModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem;">
+        <form id="assign-staff-form" onsubmit="submitStaffAssignment(event)">
+          <input type="hidden" id="assign-booking-id">
+          <div id="assign-booking-summary" style="background: #faf4f5; border: 1px solid var(--border-card); border-radius: 10px; padding: 1rem; margin-bottom: 1.25rem; font-size: 0.88rem; line-height: 1.5;">
+            <!-- Populated via JS -->
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Decorator / Staff Member *</label>
+            <select id="assign-staff-select" class="form-control" required>
+              <option value="">-- Choose Decorator --</option>
+            </select>
+          </div>
+
+          <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem;">
+            <button type="button" class="btn btn-white-pill" style="flex: 1;" onclick="closeAssignStaffModal()">Cancel</button>
+            <button type="submit" class="btn btn-pink" style="flex: 1;" id="assign-staff-submit-btn">
+              <i class="fa-solid fa-check"></i> Confirm Assignment
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD INVENTORY ITEM -->
+  <div class="modal-overlay" id="add-inventory-modal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-boxes-stacked" style="color: var(--primary-pink);"></i> Add Inventory Item</h3>
+        <button class="modal-close-btn" onclick="closeAddInventoryModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem;">
+        <form id="add-inventory-form" onsubmit="submitAddInventory(event)">
+          <div class="form-grid-2col">
+            <div class="form-group full-width">
+              <label class="form-label">Item Name *</label>
+              <input type="text" id="inv-name" class="form-control" placeholder="e.g. Chrome Rose Gold 12-inch Balloons" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Category *</label>
+              <select id="inv-category" class="form-control" required>
+                <option value="Balloons">Balloons</option>
+                <option value="Lighting">Lighting & Neon</option>
+                <option value="Frames">Frames & Arches</option>
+                <option value="Stands">Stands & Pillars</option>
+                <option value="Props">Props & Cutouts</option>
+                <option value="Consumables">Consumables (Glue, Arch Tape)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Unit of Measure *</label>
+              <input type="text" id="inv-unit" class="form-control" placeholder="pcs, units, sets, rolls" value="pcs" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Initial Stock Quantity *</label>
+              <input type="number" id="inv-qty" class="form-control" min="0" value="100" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Min Alert Threshold *</label>
+              <input type="number" id="inv-threshold" class="form-control" min="1" value="30" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Cost per Unit (₹)</label>
+              <input type="number" id="inv-cost" class="form-control" min="0" step="0.5" value="5">
+            </div>
+
+            <div class="form-group full-width" style="margin-top: 1rem;">
+              <button type="submit" class="btn btn-pink" style="width: 100%;">
+                <i class="fa-solid fa-plus-circle"></i> Save Item to Inventory
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD STAFF MEMBER -->
+  <div class="modal-overlay" id="add-staff-modal">
+    <div class="modal-card" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-user-plus" style="color: var(--primary-pink);"></i> Add Staff Decorator</h3>
+        <button class="modal-close-btn" onclick="closeAddStaffModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem;">
+        <form id="add-staff-form" onsubmit="submitAddStaff(event)">
+          <div class="form-group">
+            <label class="form-label">Staff Full Name *</label>
+            <input type="text" id="staff-name" class="form-control" placeholder="e.g. Ramesh Kumar" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Role *</label>
+            <select id="staff-role" class="form-control" required>
+              <option value="Lead Decorator">Lead Decorator</option>
+              <option value="Balloon Artist">Balloon Artist</option>
+              <option value="Lighting Specialist">Lighting Specialist</option>
+              <option value="Setup Assistant">Setup Assistant</option>
+              <option value="Driver / Logistics">Driver / Logistics</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">WhatsApp Mobile Number *</label>
+            <input type="tel" id="staff-phone" class="form-control" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Assigned Service Areas in Patna</label>
+            <input type="text" id="staff-areas" class="form-control" placeholder="e.g. Boring Road, Bailey Road, Kankarbagh">
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <button type="submit" class="btn btn-pink" style="width: 100%;">
+              <i class="fa-solid fa-user-check"></i> Register Staff Member
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD COUPON CODE -->
+  <div class="modal-overlay" id="add-coupon-modal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-tags" style="color: var(--primary-pink);"></i> Create Coupon Code</h3>
+        <button class="modal-close-btn" onclick="closeAddCouponModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem;">
+        <form id="add-coupon-form" onsubmit="submitAddCoupon(event)">
+          <div class="form-grid-2col">
+            <div class="form-group full-width">
+              <label class="form-label">Coupon Code (Uppercase) *</label>
+              <input type="text" id="cpn-code" class="form-control" placeholder="e.g. FESTIVE20, DIWALI500" style="text-transform: uppercase;" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Description</label>
+              <input type="text" id="cpn-desc" class="form-control" placeholder="e.g. Special 15% discount for first booking">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Discount Type *</label>
+              <select id="cpn-type" class="form-control" required>
+                <option value="percent">Percentage (%) Off</option>
+                <option value="flat">Flat Amount (₹) Off</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Discount Value *</label>
+              <input type="number" id="cpn-value" class="form-control" placeholder="e.g. 15 or 500" min="1" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Min Booking Amount (₹)</label>
+              <input type="number" id="cpn-min" class="form-control" value="2000" min="0">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Max Discount Cap (₹)</label>
+              <input type="number" id="cpn-max" class="form-control" value="1000" min="0">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Valid Until Date</label>
+              <input type="date" id="cpn-valid" class="form-control" value="2027-12-31">
+            </div>
+
+            <div class="form-group full-width" style="margin-top: 1rem;">
+              <button type="submit" class="btn btn-pink" style="width: 100%;">
+                <i class="fa-solid fa-tag"></i> Publish Coupon Code
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

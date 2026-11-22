@@ -58,7 +58,7 @@ const bookingSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'confirmed', 'completed', 'cancelled'],
+    enum: ['pending', 'confirmed', 'in_progress', 'completed', 'cancelled'],
     default: 'pending',
     index: true
   },
@@ -66,7 +66,75 @@ const bookingSchema = new mongoose.Schema({
     type: Number,
     default: 2499
   },
+  advanceAmount: {
+    type: Number,
+    default: 0
+  },
+  remainingBalance: {
+    type: Number,
+    default: 2499
+  },
+  paymentMethod: {
+    type: String,
+    default: 'Cash on Setup'
+  },
+  paymentStatus: {
+    type: String,
+    enum: ['pending', 'advance_paid', 'completed'],
+    default: 'pending'
+  },
+  receiptUrl: {
+    type: String,
+    default: ''
+  },
+  receiptGeneratedAt: {
+    type: Date
+  },
+  whatsappStatus: {
+    type: String,
+    enum: ['pending', 'sent', 'failed', 'not_configured'],
+    default: 'pending'
+  },
+  whatsappMessageId: {
+    type: String,
+    default: ''
+  },
+  whatsappSentAt: {
+    type: Date
+  },
+  whatsappError: {
+    type: String,
+    default: ''
+  },
+  adminNotified: {
+    type: Boolean,
+    default: false
+  },
   adminNotes: {
+    type: String,
+    default: ''
+  },
+  assignedStaffId: {
+    type: String,
+    default: ''
+  },
+  assignedStaffName: {
+    type: String,
+    default: ''
+  },
+  couponApplied: {
+    type: String,
+    default: ''
+  },
+  discountAmount: {
+    type: Number,
+    default: 0
+  },
+  rescheduledCount: {
+    type: Number,
+    default: 0
+  },
+  cancelledReason: {
     type: String,
     default: ''
   }

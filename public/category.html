@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title id="page-title">Decoration Themes | The Party Hard Patna</title>
+  <meta name="description" id="page-meta-desc" content="Explore handcrafted balloon decoration themes for Birthdays, Anniversaries, Weddings, Baby Showers and Corporate Events in Patna.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Dedicated Category Page Styles */
+    .cat-page-hero {
+      background: linear-gradient(135deg, #fff5f7 0%, #ffffff 50%, #fdf2f8 100%);
+      padding: 3rem 1rem 2.5rem;
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+      text-align: center;
+    }
+
+    .cat-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(232, 80, 114, 0.1);
+      color: var(--primary-pink);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .cat-page-title {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      color: var(--text-dark);
+      margin: 0.2rem 0 0.6rem;
+      font-weight: 800;
+    }
+
+    .cat-page-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .cat-switcher-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .cat-switcher-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--border-light);
+      background: #ffffff;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.22s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .cat-switcher-btn:hover {
+      border-color: var(--primary-pink);
+      color: var(--primary-pink);
+      transform: translateY(-2px);
+    }
+
+    .cat-switcher-btn.active {
+      background: var(--primary-pink);
+      border-color: var(--primary-pink);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(232, 80, 114, 0.3);
+    }
+
+    .cat-toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
+      padding: 0.85rem 1.25rem;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    }
+
+    .cat-search-box {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex: 1;
+      min-width: 240px;
+      background: #f8fafc;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-light);
+    }
+
+    .cat-search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .budget-filter-pills {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .budget-pill {
+      background: #f1f5f9;
+      border: none;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .budget-pill.active {
+      background: var(--primary-pink);
+      color: #ffffff;
+    }
+
+    .custom-theme-banner {
+      background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 2.2rem;
+      margin: 3.5rem 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .custom-banner-text h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.4rem;
+      color: #ffffff;
+    }
+
+    .custom-banner-text p {
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      max-width: 600px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .cat-page-title {
+        font-size: 1.85rem;
+      }
+      .cat-switcher-nav {
+        gap: 0.4rem;
+      }
+      .cat-switcher-btn {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body class="category-page-wrap">
+
+  <!-- Ambient background canvas -->
+  <div class="ambient-decor-wrapper" aria-hidden="true">
+    <canvas id="ambient-canvas"></canvas>
+    <div class="bg-decor-blob-left"></div>
+    <div class="bg-decor-blob-right"></div>
+  </div>
+
+  <!-- Dedicated Top Navigation Bar -->
+  <header class="booking-top-nav" style="position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); padding: 0.85rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+    <a href="index.html" class="nav-brand" style="text-decoration: none;">
+      <span class="brand-logo-wrap">
+        <span class="logo-balloon-icon">🎈</span>
+        <span class="brand-text">THE PARTY HARD</span>
+      </span>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <a href="index.html" class="btn btn-white-pill" style="font-size: 0.84rem; padding: 0.45rem 0.95rem; text-decoration: none;">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+      <a href="/book" class="btn btn-pink" style="font-size: 0.84rem; padding: 0.45rem 0.95rem; text-decoration: none;">
+        <i class="fa-regular fa-calendar-check"></i> Book Online
+      </a>
+      <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20I%20am%20looking%20for%20decoration%20themes" target="_blank" class="btn btn-whatsapp" style="font-size: 0.84rem; padding: 0.45rem 0.95rem; text-decoration: none;">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- Category Hero Section -->
+  <section class="cat-page-hero">
+    <div class="container">
+      <div class="cat-badge-pill" id="cat-badge-label">
+        <i class="fa-solid fa-sparkles"></i> <span id="cat-pill-text">CURATED OCCASION THEMES</span>
+      </div>
+      <h1 class="cat-page-title" id="cat-heading">
+        Birthday Decoration <span class="text-pink">Themes</span> 🎂
+      </h1>
+      <p class="cat-page-desc" id="cat-subtext">
+        Choose from our exclusive collection of balloon decoration themes in Patna. Transparent pricing with free on-site setup.
+      </p>
+
+      <!-- Occasion Quick Switcher Pills -->
+      <nav class="cat-switcher-nav" aria-label="Occasions">
+        <a href="?cat=birthday" class="cat-switcher-btn" data-cat="birthday">
+          <span>🎂</span> Birthday Parties
+        </a>
+        <a href="?cat=anniversary" class="cat-switcher-btn" data-cat="anniversary">
+          <span>💍</span> Anniversary
+        </a>
+        <a href="?cat=babyshower" class="cat-switcher-btn" data-cat="babyshower">
+          <span>👶</span> Baby Shower
+        </a>
+        <a href="?cat=wedding" class="cat-switcher-btn" data-cat="wedding">
+          <span>💐</span> Weddings
+        </a>
+        <a href="?cat=corporate" class="cat-switcher-btn" data-cat="corporate">
+          <span>🏢</span> Corporate Events
+        </a>
+        <a href="?cat=other" class="cat-switcher-btn" data-cat="other">
+          <span>✨</span> Kids & Special
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Main Category Content -->
+  <main class="container" style="padding: 1.5rem 1rem 4rem;">
+    <!-- Search & Filter Toolbar -->
+    <div class="cat-toolbar-row">
+      <div class="cat-search-box">
+        <i class="fa-solid fa-magnifying-glass" style="color: var(--text-muted);"></i>
+        <input type="text" id="cat-search-input" placeholder="Search themes (e.g. Ring Arch, Pastel, Neon, Safari)..." oninput="filterThemes()">
+      </div>
+
+      <div class="budget-filter-pills">
+        <button class="budget-pill active" data-budget="all" onclick="setBudgetFilter('all', this)">All Budgets</button>
+        <button class="budget-pill" data-budget="under2500" onclick="setBudgetFilter('under2500', this)">Under ₹2,500</button>
+        <button class="budget-pill" data-budget="2500to5000" onclick="setBudgetFilter('2500to5000', this)">₹2,500 - ₹5,000</button>
+        <button class="budget-pill" data-budget="luxury" onclick="setBudgetFilter('luxury', this)">Luxury ₹5,000+</button>
+      </div>
+    </div>
+
+    <!-- Active Count Indicator -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <div style="font-weight: 700; color: var(--text-dark); font-size: 1.05rem;" id="cat-count-text">
+        Showing all themes
+      </div>
+      <a href="index.html#packages" style="color: var(--primary-pink); text-decoration: none; font-weight: 600; font-size: 0.88rem;">
+        <i class="fa-solid fa-arrow-left"></i> View All Categories on Home
+      </a>
+    </div>
+
+    <!-- Themes Grid -->
+    <div class="services-detailed-grid" id="cat-themes-grid">
+      <!-- Rendered dynamically -->
+      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">
+        <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary-pink); margin-bottom: 1rem;"></i>
+        <p>Loading decoration themes...</p>
+      </div>
+    </div>
+
+    <!-- Custom Theme / Pinterest Upload Banner -->
+    <div class="custom-theme-banner">
+      <div class="custom-banner-text">
+        <h3>🎨 Have a Specific Theme or Pinterest Design in Mind?</h3>
+        <p>
+          Send us your inspiration photo or custom color palette on WhatsApp. Our experienced Patna decorators will recreate it within your budget!
+        </p>
+      </div>
+      <div>
+        <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20I%20have%20a%20custom%20decoration%20photo%20to%20share" target="_blank" class="btn btn-whatsapp" style="padding: 0.8rem 1.6rem; font-size: 1rem; text-decoration: none;">
+          <i class="fa-brands fa-whatsapp"></i> Share Photo on WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================================================
+       INSTANT BOOKING MODAL (Zero-Scroll Instant Popup)
+  =================================================== -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-card booking-modal-card">
+      <div class="modal-header">
+        <div>
+          <div class="modal-eyebrow"><i class="fa-solid fa-crown" style="color: #f59e0b;"></i> INSTANT RESERVATION</div>
+          <h3 id="booking-modal-title" style="margin: 0; font-size: 1.3rem; color: var(--text-dark);">Book This Setup 🎈</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('booking-modal')" title="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.35rem 1.6rem;">
+        <!-- Live Selected Package Banner -->
+        <div class="modal-pkg-banner" id="modal-pkg-preview">
+          <img id="modal-preview-img" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800" alt="Selected Setup">
+          <div class="modal-pkg-info">
+            <span class="modal-pkg-tag" id="modal-preview-cat">Party Special</span>
+            <h4 id="modal-preview-title">Pastel Birthday Setup</h4>
+            <div class="modal-pkg-price" id="modal-preview-price">Starting ₹2,499 • Free On-Site Setup</div>
+          </div>
+        </div>
+
+        <form id="modal-booking-form" onsubmit="handleCategoryModalBooking(event)">
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label" for="modal-booking-name"><i class="fa-regular fa-user" style="color: var(--primary-pink);"></i> Full Name *</label>
+              <input type="text" id="modal-booking-name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="modal-booking-phone"><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> WhatsApp Number *</label>
+              <input type="tel" id="modal-booking-phone" class="form-control" placeholder="e.g. 9876543210" pattern="[0-9]{10}" title="Enter 10-digit mobile number" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="modal-booking-event-type"><i class="fa-regular fa-calendar-star" style="color: var(--primary-pink);"></i> Occasion *</label>
+              <select id="modal-booking-event-type" class="form-control" required>
+                <option value="Birthday Party">Birthday Party 🎂</option>
+                <option value="Weddings">Weddings & Engagements 💍</option>
+                <option value="Baby Shower">Baby Shower & Naming 🍼</option>
+                <option value="Anniversary">Anniversary & Romance 💖</option>
+                <option value="Corporate Events">Corporate Events & Opening 🏢</option>
+                <option value="Other Occasion">Other Custom Occasion ✨</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="modal-booking-package"><i class="fa-solid fa-box-open" style="color: var(--primary-pink);"></i> Selected Package</label>
+              <select id="modal-booking-package" class="form-control" onchange="updateModalSelectedPackage(this.value)">
+                <!-- populated dynamically -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="modal-booking-date"><i class="fa-regular fa-calendar-days" style="color: var(--primary-pink);"></i> Event Date *</label>
+              <input type="date" id="modal-booking-date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="modal-booking-time"><i class="fa-regular fa-clock" style="color: var(--primary-pink);"></i> Setup Timing</label>
+              <select id="modal-booking-time" class="form-control">
+                <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                <option value="Afternoon (1:00 PM - 4:00 PM)" selected>Afternoon (1:00 PM - 4:00 PM)</option>
+                <option value="Evening (5:00 PM - 8:00 PM)">Evening (5:00 PM - 8:00 PM)</option>
+                <option value="Night Surprise (9:30 PM - 11:30 PM)">Night Surprise (9:30 PM - 11:30 PM)</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="modal-booking-venue"><i class="fa-solid fa-location-dot" style="color: var(--primary-pink);"></i> Delivery Address in Patna *</label>
+              <input type="text" id="modal-booking-venue" class="form-control" placeholder="e.g. Flat 302, Boring Road / Kankarbagh / Bailey Road, Patna" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="modal-booking-notes"><i class="fa-regular fa-comment-dots" style="color: var(--primary-pink);"></i> Special Requests / Neon Sign Name / Age</label>
+              <input type="text" id="modal-booking-notes" class="form-control" placeholder="e.g. Celebrant name on neon sign, specific balloon colors">
+            </div>
+          </div>
+
+          <!-- Trust Badges Row -->
+          <div class="modal-trust-row">
+            <span><i class="fa-solid fa-shield-halved" style="color: #10b981;"></i> Zero Advance Pressure</span>
+            <span><i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> 2-Hour Express Setup</span>
+            <span><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> Instant WhatsApp Confirm</span>
+          </div>
+
+          <!-- Buttons -->
+          <div style="display: flex; gap: 0.85rem; margin-top: 1.25rem;">
+            <button type="submit" class="btn btn-pink" style="flex: 1; padding: 0.85rem; font-size: 1rem;" id="modal-submit-btn">
+              <i class="fa-regular fa-calendar-check"></i> Confirm Booking Now
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE DETAIL MODAL -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="detail-title" style="margin: 0; font-size: 1.25rem; color: var(--text-dark);">Setup Details</h3>
+        <button class="modal-close-btn" onclick="closeModal('detail-modal')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="detail-body">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="confirmation-modal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-body">
+        <div class="confirmation-box">
+          <div class="confirmation-icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h2 style="font-size: 1.7rem; color: var(--text-dark); margin-bottom: 0.4rem;">Booking Submitted!</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Thank you for choosing <strong>The Party Hard</strong>. Your booking has been recorded.
+          </p>
+
+          <div>
+            <span class="booking-id-pill" id="confirm-booking-id">TPH-2026-8941</span>
+          </div>
+
+          <div id="confirm-booking-details" style="text-align: left; background: #fdf2f8; padding: 1rem; border-radius: 12px; margin: 1rem 0;"></div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.25rem;">
+            <a id="confirm-whatsapp-btn" href="#" target="_blank" class="btn btn-whatsapp" style="text-decoration: none;">
+              <i class="fa-brands fa-whatsapp"></i> Send on WhatsApp for 1-Minute Confirmation
+            </a>
+            <button class="btn btn-white-pill" onclick="closeModal('confirmation-modal')">
+              Done & Browse More Setups
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-wrapper" style="margin-top: 3rem; background: #ffffff; border-top: 1px solid var(--border-light); padding: 3rem 1rem 2rem;">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <div class="logo-brand-name">THE PARTY<span> HARD</span></div>
+          <div class="logo-tagline">Decorate Your Happiness</div>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.75rem 0 1.25rem; max-width: 300px;">
+          Patna's premier balloon decoration service for birthdays, weddings, anniversaries, and grand celebrations.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Occasions</h4>
+        <ul class="footer-links">
+          <li><a href="category.html?cat=birthday">Birthday Parties (11 Themes)</a></li>
+          <li><a href="category.html?cat=anniversary">Anniversary & Romance (10 Themes)</a></li>
+          <li><a href="category.html?cat=babyshower">Baby Shower & Welcome (10 Themes)</a></li>
+          <li><a href="category.html?cat=wedding">Weddings & Haldi (10 Themes)</a></li>
+          <li><a href="category.html?cat=corporate">Corporate Events (10 Themes)</a></li>
+          <li><a href="category.html?cat=other">Kids & Special Celebrations (10 Themes)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="/book">Book Online</a></li>
+          <li><a href="index.html#track">Track Booking Status</a></li>
+          <li><a href="index.html#contact">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.88rem; color: var(--text-muted);">
+          <div><i class="fa-solid fa-phone" style="color: var(--primary-pink); width: 20px;"></i> +91 9263667669</div>
+          <div><i class="fa-brands fa-whatsapp" style="color: #25D366; width: 20px;"></i> WhatsApp Available 24/7</div>
+          <div><i class="fa-solid fa-location-dot" style="color: var(--primary-pink); width: 20px;"></i> Serving All Areas of Patna, Bihar</div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); font-size: 0.82rem; color: var(--text-muted);">
+      © 2026 The Party Hard. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/services-data.js"></script>
+  <script>
+    // ==========================================
+    // DEDICATED CATEGORY PAGE LOGIC
+    // ==========================================
+    const OCCASION_META = {
+      birthday: {
+        title: 'Birthday Decoration Themes 🎂',
+        headingText: 'Birthday Decoration',
+        pill: '11 Handcrafted Birthday Themes',
+        desc: 'From 1st birthdays to 50th milestones, jungle safaris, and luxury neon arches — explore Patna\'s favorite birthday decoration setups.',
+        eventType: 'Birthday Party',
+        badge: 'PATNA\'S #1 BIRTHDAY STYLIST'
+      },
+      anniversary: {
+        title: 'Anniversary & Romantic Themes 💍',
+        headingText: 'Anniversary & Romantic',
+        pill: '10 Romantic & Jubilee Themes',
+        desc: 'Celebrate your love with intimate cabana canopies, rose-petal paths, candlelight setups, and grand silver & golden jubilee backdrops.',
+        eventType: 'Anniversary',
+        badge: 'LUXURY ROMANCE & JUBILEE'
+      },
+      babyshower: {
+        title: 'Baby Shower & Welcome Baby Themes 👶',
+        headingText: 'Baby Shower & Welcome',
+        pill: '10 Pastel Baby & Mom Themes',
+        desc: 'Gentle pastel arches, giant teddy bears, naming ceremony backdrops, and gender reveal setups to welcome your little blessing.',
+        eventType: 'Baby Shower',
+        badge: 'GENTLE PASTEL STYLING'
+      },
+      wedding: {
+        title: 'Weddings, Haldi & Sangeet Setups 💐',
+        headingText: 'Weddings & Haldi',
+        pill: '10 Wedding & Engagement Themes',
+        desc: 'Vibrant marigold & balloon haldi stages, luxury engagement ring arches, and floral reception tunnels tailored for your dream wedding.',
+        eventType: 'Weddings',
+        badge: 'ROYAL WEDDING BACKDROPS'
+      },
+      corporate: {
+        title: 'Corporate Events & Grand Launches 🏢',
+        headingText: 'Corporate & Launches',
+        pill: '10 Corporate Event Setups',
+        desc: 'Showcase your brand with grand store opening arches, company anniversary stages, milestone celebration walls, and stage balloon styling.',
+        eventType: 'Corporate Events',
+        badge: 'PROFESSIONAL BUSINESS DECOR'
+      },
+      other: {
+        title: 'Special Celebrations & Kids Themes ✨',
+        headingText: 'Kids & Special Celebrations',
+        pill: '10 Fun & Custom Themes',
+        desc: 'Cartoon superhero setups, rooftop romantic proposals, housewarmings, and festive holiday decorations tailored to any theme you imagine.',
+        eventType: 'Other Occasion',
+        badge: 'CUSTOM THEMES & KIDS'
+      }
+    };
+
+    let currentCat = 'birthday';
+    let currentBudget = 'all';
+    let allCatServices = [];
+    let displayedServices = [];
+
+    // Initialize from URL query param
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = (urlParams.get('cat') || 'birthday').toLowerCase();
+      currentCat = OCCASION_META[catParam] ? catParam : 'birthday';
+
+      // Update switcher active state
+      document.querySelectorAll('.cat-switcher-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === currentCat) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Update page copy
+      updatePageHeader(currentCat);
+
+      // Fetch services
+      await loadCategoryServices();
+    });
+
+    function updatePageHeader(catKey) {
+      const meta = OCCASION_META[catKey] || OCCASION_META.birthday;
+      document.title = `${meta.title} | The Party Hard Patna`;
+      document.getElementById('cat-heading').innerHTML = `${meta.headingText} <span class="text-pink">Themes</span>`;
+      document.getElementById('cat-subtext').textContent = meta.desc;
+      document.getElementById('cat-pill-text').textContent = meta.badge;
+      
+      const evtSelect = document.getElementById('modal-booking-event-type');
+      if (evtSelect) evtSelect.value = meta.eventType;
+    }
+
+    async function loadCategoryServices() {
+      try {
+        const res = await fetch(`/api/services?category=${currentCat}`);
+        if (res.ok) {
+          allCatServices = await res.json();
+        } else {
+          throw new Error('API unavailable');
+        }
+      } catch (err) {
+        // Fallback to local
+        const defaults = window.DEFAULT_SERVICES || [];
+        allCatServices = defaults.filter(s => s.category.toLowerCase() === currentCat.toLowerCase());
+      }
+
+      populatePackageDropdown(allCatServices);
+      filterThemes();
+    }
+
+    function filterThemes() {
+      const query = (document.getElementById('cat-search-input').value || '').trim().toLowerCase();
+      
+      displayedServices = allCatServices.filter(s => {
+        // Budget match
+        let budgetMatch = true;
+        if (currentBudget === 'under2500') budgetMatch = (s.priceStart < 2500);
+        else if (currentBudget === '2500to5000') budgetMatch = (s.priceStart >= 2500 && s.priceStart <= 5000);
+        else if (currentBudget === 'luxury') budgetMatch = (s.priceStart > 5000);
+
+        // Text query match
+        let textMatch = true;
+        if (query) {
+          const matchTitle = (s.title || '').toLowerCase().includes(query);
+          const matchDesc = (s.description || '').toLowerCase().includes(query);
+          const matchTags = (s.tags || []).some(t => t.toLowerCase().includes(query));
+          textMatch = matchTitle || matchDesc || matchTags;
+        }
+
+        return budgetMatch && textMatch;
+      });
+
+      renderThemesGrid(displayedServices);
+    }
+
+    function renderThemesGrid(services) {
+      const grid = document.getElementById('cat-themes-grid');
+      const countEl = document.getElementById('cat-count-text');
+
+      if (countEl) {
+        countEl.textContent = `Showing ${services.length} theme${services.length !== 1 ? 's' : ''} for ${OCCASION_META[currentCat]?.headingText || 'this occasion'}`;
+      }
+
+      if (!services || services.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">
+            <div style="font-size: 3rem; margin-bottom: 0.8rem;">🎈</div>
+            <h3 style="color: var(--text-dark); margin-bottom: 0.5rem;">No setups matched this filter</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1.25rem;">Try changing your search term or budget filter to see more options.</p>
+            <button class="btn btn-pink" onclick="resetFilters()">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = services.map(s => `
+        <div class="package-card" data-category="${s.category}">
+          <div class="pkg-img-wrap">
+            <img src="${s.image}" alt="${s.title}" loading="lazy">
+            ${s.badge ? `<span class="pkg-badge">${s.badge}</span>` : ''}
+            <div class="pkg-rating">
+              <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+              <span>${s.rating}</span>
+              <span style="color: var(--text-muted); font-size: 0.72rem;">(${s.reviewCount})</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <div class="pkg-meta">
+              <span class="pkg-cat-name">${s.categoryLabel}</span>
+              <div class="pkg-price">
+                <span>Starts </span>₹${s.priceStart.toLocaleString('en-IN')}
+              </div>
+            </div>
+            <h3 class="pkg-title">${s.title}</h3>
+            <p class="pkg-desc">${s.description}</p>
+            <ul class="pkg-features-list">
+              ${(s.features || []).slice(0, 3).map(f => `
+                <li><i class="fa-regular fa-circle-check"></i> ${f}</li>
+              `).join('')}
+            </ul>
+            <div class="pkg-actions-row">
+              <button class="btn btn-pink" onclick="openBookingModalForPackage('${s.id}')">
+                <i class="fa-regular fa-calendar-check"></i> Book Now
+              </button>
+              <button class="btn btn-white-pill" onclick="openDetailModal('${s.id}')">
+                <i class="fa-regular fa-eye"></i> Details
+              </button>
+              <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20I%20am%20interested%20in%20${encodeURIComponent(s.title)}" target="_blank" class="btn btn-whatsapp" title="Ask on WhatsApp" style="padding: 0.55rem 0.85rem; font-size: 0.95rem; text-decoration: none;">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setBudgetFilter(budget, btn) {
+      currentBudget = budget;
+      document.querySelectorAll('.budget-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterThemes();
+    }
+
+    function resetFilters() {
+      document.getElementById('cat-search-input').value = '';
+      currentBudget = 'all';
+      document.querySelectorAll('.budget-pill').forEach(b => {
+        if (b.getAttribute('data-budget') === 'all') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      filterThemes();
+    }
+
+    function populatePackageDropdown(services) {
+      const select = document.getElementById('modal-booking-package');
+      if (!select) return;
+      select.innerHTML = `
+        <option value="">-- Choose Setup --</option>
+        ${services.map(s => `<option value="${s.id}">${s.title} (₹${s.priceStart.toLocaleString('en-IN')})</option>`).join('')}
+        <option value="custom">✨ Custom Bespoke Theme</option>
+      `;
+    }
+
+    function openBookingModalForPackage(pkgId) {
+      const modal = document.getElementById('booking-modal');
+      const select = document.getElementById('modal-booking-package');
+      if (select && pkgId) {
+        select.value = pkgId;
+        updateModalSelectedPackage(pkgId);
+      }
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function updateModalSelectedPackage(pkgId) {
+      const matched = allCatServices.find(s => s.id === pkgId);
+      const previewImg = document.getElementById('modal-preview-img');
+      const previewCat = document.getElementById('modal-preview-cat');
+      const previewTitle = document.getElementById('modal-preview-title');
+      const previewPrice = document.getElementById('modal-preview-price');
+      const submitBtn = document.getElementById('modal-submit-btn');
+
+      if (matched) {
+        if (previewImg) previewImg.src = matched.image;
+        if (previewCat) previewCat.textContent = matched.categoryLabel;
+        if (previewTitle) previewTitle.textContent = matched.title;
+        if (previewPrice) previewPrice.textContent = `Starting ₹${matched.priceStart.toLocaleString('en-IN')} • Free On-Site Setup`;
+        if (submitBtn) submitBtn.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Confirm Booking (₹${matched.priceStart.toLocaleString('en-IN')})`;
+      } else {
+        if (previewImg) previewImg.src = 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800';
+        if (previewCat) previewCat.textContent = 'Custom Theme';
+        if (previewTitle) previewTitle.textContent = 'Custom Event Styling';
+        if (previewPrice) previewPrice.textContent = 'Packages start from ₹1,499';
+        if (submitBtn) submitBtn.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Confirm Reservation`;
+      }
+    }
+
+    function openDetailModal(pkgId) {
+      const matched = allCatServices.find(s => s.id === pkgId);
+      if (!matched) return;
+      const titleEl = document.getElementById('detail-title');
+      const bodyEl = document.getElementById('detail-body');
+      
+      if (titleEl) titleEl.textContent = matched.title;
+      if (bodyEl) {
+        bodyEl.innerHTML = `
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <img src="${matched.image}" alt="${matched.title}" style="width: 100%; border-radius: 12px; max-height: 360px; object-fit: cover;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 0.8rem;">
+              <span style="color: var(--primary-pink); font-weight: 700; font-size: 0.9rem;">${matched.categoryLabel}</span>
+              <span style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark);">₹${matched.priceStart.toLocaleString('en-IN')}</span>
+            </div>
+            <p style="color: var(--text-dark); line-height: 1.6;">${matched.description}</p>
+            <div>
+              <h4 style="margin-bottom: 0.6rem; color: var(--text-dark);">What's Included:</h4>
+              <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.45rem;">
+                ${(matched.features || []).map(f => `<li style="font-size: 0.88rem; color: #4b5563;"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> ${f}</li>`).join('')}
+              </ul>
+            </div>
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <button class="btn btn-pink" style="flex: 1;" onclick="closeModal('detail-modal'); openBookingModalForPackage('${matched.id}');">
+                <i class="fa-regular fa-calendar-check"></i> Book This Setup
+              </button>
+              <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20I%20am%20interested%20in%20${encodeURIComponent(matched.title)}" target="_blank" class="btn btn-whatsapp" style="text-decoration: none;">
+                <i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+      }
+      openModal('detail-modal');
+    }
+
+    function openModal(modalId) {
+      const el = document.getElementById(modalId);
+      if (el) {
+        el.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(modalId) {
+      const el = document.getElementById(modalId);
+      if (el) {
+        el.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    async function handleCategoryModalBooking(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('modal-submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Securing Your Slot...';
+
+      const pkgSelect = document.getElementById('modal-booking-package');
+      const pkgId = pkgSelect.value;
+      const matched = allCatServices.find(s => s.id === pkgId);
+
+      const bookingPayload = {
+        name: document.getElementById('modal-booking-name').value.trim(),
+        phone: document.getElementById('modal-booking-phone').value.trim(),
+        eventType: document.getElementById('modal-booking-event-type').value,
+        serviceId: pkgId || 'custom',
+        packageTitle: matched ? matched.title : 'Custom Celebration Setup',
+        date: document.getElementById('modal-booking-date').value,
+        timeSlot: document.getElementById('modal-booking-time').value,
+        venue: document.getElementById('modal-booking-venue').value.trim(),
+        specialNotes: document.getElementById('modal-booking-notes').value.trim(),
+        amount: matched ? matched.priceStart : 2499
+      };
+
+      try {
+        const res = await fetch('/api/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(bookingPayload)
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          closeModal('booking-modal');
+          showConfirmationModal(data.booking);
+        } else {
+          alert('Booking error: ' + (data.message || 'Please try again.'));
+        }
+      } catch (err) {
+        alert('Server unreachable. Please check your connection or book directly on WhatsApp.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    }
+
+    function showConfirmationModal(b) {
+      document.getElementById('confirm-booking-id').textContent = b.bookingId;
+      document.getElementById('confirm-booking-details').innerHTML = `
+        <div style="font-size: 0.9rem; line-height: 1.7; color: var(--text-dark);">
+          <strong>Name:</strong> ${b.name}<br>
+          <strong>Occasion:</strong> ${b.eventType}<br>
+          <strong>Setup:</strong> ${b.packageTitle}<br>
+          <strong>Date & Time:</strong> ${b.date} (${b.timeSlot})<br>
+          <strong>Location:</strong> ${b.venue}
+        </div>
+      `;
+
+      const waMsg = `Hello The Party Hard! I have booked a setup online.%0A%0A*Booking ID:* ${b.bookingId}%0A*Name:* ${b.name}%0A*Occasion:* ${b.eventType}%0A*Setup:* ${b.packageTitle}%0A*Date:* ${b.date} (${b.timeSlot})%0A*Venue:* ${b.venue}%0A%0APlease confirm my booking!`;
+      document.getElementById('confirm-whatsapp-btn').href = `https://wa.me/919263667669?text=${waMsg}`;
+
+      openModal('confirmation-modal');
+    }
+  </script>
+</body>
+</html>

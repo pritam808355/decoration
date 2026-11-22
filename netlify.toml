@@ -1,0 +1,65 @@
+# ========================================================
+# YUVI DECORATION - Netlify Configuration
+# ========================================================
+
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+# Route API requests to Netlify Serverless Function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/api/:splat"
+  status = 200
+
+# Route friendly URLs to HTML pages
+[[redirects]]
+  from = "/book"
+  to = "/booking.html"
+  status = 200
+
+[[redirects]]
+  from = "/category"
+  to = "/category.html"
+  status = 200
+
+[[redirects]]
+  from = "/birthday"
+  to = "/category.html?cat=birthday"
+  status = 302
+
+[[redirects]]
+  from = "/anniversary"
+  to = "/category.html?cat=anniversary"
+  status = 302
+
+[[redirects]]
+  from = "/babyshower"
+  to = "/category.html?cat=babyshower"
+  status = 302
+
+[[redirects]]
+  from = "/wedding"
+  to = "/category.html?cat=wedding"
+  status = 302
+
+[[redirects]]
+  from = "/corporate"
+  to = "/category.html?cat=corporate"
+  status = 302
+
+[[redirects]]
+  from = "/themes"
+  to = "/category.html?cat=birthday"
+  status = 302
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+# Single Page App fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

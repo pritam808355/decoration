@@ -1,0 +1,35 @@
+{
+  "festiveBanner": {
+    "enabled": true,
+    "title": "🎉 FESTIVE CELEBRATION SALE IN PATNA!",
+    "subtitle": "Get Flat 15% OFF + Free Custom Neon Light on Bookings Above ₹2,999. Use Code: FESTIVE15",
+    "couponCode": "FESTIVE15",
+    "badge": "LIMITED TIME OFFER"
+  },
+  "upiDetails": {
+    "upiId": "partyhard@upi",
+    "payeeName": "The Party Hard Patna",
+    "tokenAdvance": 500
+  },
+  "serviceAreas": [
+    { "name": "Boring Road", "pincode": "800001", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Kankarbagh", "pincode": "800020", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Bailey Road", "pincode": "800014", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Raja Bazar", "pincode": "800014", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Patna City", "pincode": "800008", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Rajendra Nagar", "pincode": "800016", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Danapur", "pincode": "801503", "available": true, "expressHours": 2.5, "deliveryCharge": 0 },
+    { "name": "Saguna More", "pincode": "801503", "available": true, "expressHours": 2.5, "deliveryCharge": 0 },
+    { "name": "Ashiana Nagar", "pincode": "800025", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Exhibition Road", "pincode": "800001", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Fraser Road", "pincode": "800001", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Anisabad", "pincode": "800002", "available": true, "expressHours": 2, "deliveryCharge": 0 },
+    { "name": "Digha", "pincode": "800011", "available": true, "expressHours": 2.5, "deliveryCharge": 0 },
+    { "name": "Gardanibagh", "pincode": "800001", "available": true, "expressHours": 2, "deliveryCharge": 0 }
+  ],
+  "referralProgram": {
+    "rewardAmount": 200,
+    "minOrder": 1999,
+    "terms": "Your friend gets ₹200 OFF on their 1st booking, and you get ₹200 OFF on your next celebration!"
+  }
+}

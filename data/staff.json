@@ -1,0 +1,42 @@
+[
+  {
+    "id": "STF-01",
+    "name": "Rohan Kumar",
+    "role": "Lead Balloon Artist & Stylist",
+    "phone": "+91 9263667669",
+    "assignedAreas": "Boring Road, Kankarbagh, Bailey Road",
+    "status": "Available",
+    "rating": 4.9,
+    "completedJobs": 142
+  },
+  {
+    "id": "STF-02",
+    "name": "Amit Sharma",
+    "role": "Senior Arch & Neon Specialist",
+    "phone": "+91 9123456780",
+    "assignedAreas": "Patna City, Rajendra Nagar, Danapur",
+    "status": "On Job",
+    "rating": 4.8,
+    "completedJobs": 98
+  },
+  {
+    "id": "STF-03",
+    "name": "Pooja Verma",
+    "role": "Floral & Theme Backdrop Designer",
+    "phone": "+91 9876543211",
+    "assignedAreas": "Raja Bazar, Saguna More, Exhibition Road",
+    "status": "Available",
+    "rating": 5.0,
+    "completedJobs": 115
+  },
+  {
+    "id": "STF-04",
+    "name": "Vikram Singh",
+    "role": "Express 2-Hour Setup Specialist",
+    "phone": "+91 9334455667",
+    "assignedAreas": "All Patna Central Hubs",
+    "status": "Available",
+    "rating": 4.9,
+    "completedJobs": 87
+  }
+]

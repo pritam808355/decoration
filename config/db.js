@@ -6,6 +6,11 @@ const Service = require('../models/Service');
 const Booking = require('../models/Booking');
 const Enquiry = require('../models/Enquiry');
 const ChatSession = require('../models/ChatSession');
+const Coupon = require('../models/Coupon');
+const Inventory = require('../models/Inventory');
+const Staff = require('../models/Staff');
+const Review = require('../models/Review');
+const Setting = require('../models/Setting');
 
 let isConnected = false;
 
@@ -33,11 +38,16 @@ async function connectDB() {
     console.log(`✅ [MongoDB Connected] Database: ${mongoose.connection.name}`);
     console.log(`🍃 Host: ${mongoose.connection.host}`);
 
-    // Auto-seed initial 60 services/packages if collection is empty
+    // Auto-seed initial data if collections are empty
     await seedServicesIfEmpty();
     await seedBookingsIfEmpty();
     await seedEnquiriesIfEmpty();
     await seedChatsIfEmpty();
+    await seedCouponsIfEmpty();
+    await seedInventoryIfEmpty();
+    await seedStaffIfEmpty();
+    await seedReviewsIfEmpty();
+    await seedSettingsIfEmpty();
 
     return true;
   } catch (err) {
@@ -130,6 +140,104 @@ async function seedChatsIfEmpty() {
   }
 }
 
+// Auto-seed coupons from coupons.json
+async function seedCouponsIfEmpty() {
+  try {
+    const count = await Coupon.countDocuments();
+    if (count === 0) {
+      const filePath = path.join(__dirname, '..', 'data', 'coupons.json');
+      if (fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(raw);
+        if (Array.isArray(data) && data.length > 0) {
+          await Coupon.insertMany(data);
+          console.log(`🏷️ [Auto-Seeded] ${data.length} coupons imported into MongoDB!`);
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Error auto-seeding coupons:', e.message);
+  }
+}
+
+// Auto-seed inventory from inventory.json
+async function seedInventoryIfEmpty() {
+  try {
+    const count = await Inventory.countDocuments();
+    if (count === 0) {
+      const filePath = path.join(__dirname, '..', 'data', 'inventory.json');
+      if (fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(raw);
+        if (Array.isArray(data) && data.length > 0) {
+          await Inventory.insertMany(data);
+          console.log(`📦 [Auto-Seeded] ${data.length} inventory items imported into MongoDB!`);
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Error auto-seeding inventory:', e.message);
+  }
+}
+
+// Auto-seed staff from staff.json
+async function seedStaffIfEmpty() {
+  try {
+    const count = await Staff.countDocuments();
+    if (count === 0) {
+      const filePath = path.join(__dirname, '..', 'data', 'staff.json');
+      if (fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(raw);
+        if (Array.isArray(data) && data.length > 0) {
+          await Staff.insertMany(data);
+          console.log(`👷 [Auto-Seeded] ${data.length} staff members imported into MongoDB!`);
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Error auto-seeding staff:', e.message);
+  }
+}
+
+// Auto-seed customer reviews from reviews.json
+async function seedReviewsIfEmpty() {
+  try {
+    const count = await Review.countDocuments();
+    if (count === 0) {
+      const filePath = path.join(__dirname, '..', 'data', 'reviews.json');
+      if (fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(raw);
+        if (Array.isArray(data) && data.length > 0) {
+          await Review.insertMany(data);
+          console.log(`⭐ [Auto-Seeded] ${data.length} customer reviews imported into MongoDB!`);
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Error auto-seeding reviews:', e.message);
+  }
+}
+
+// Auto-seed settings from settings.json
+async function seedSettingsIfEmpty() {
+  try {
+    const count = await Setting.countDocuments();
+    if (count === 0) {
+      const filePath = path.join(__dirname, '..', 'data', 'settings.json');
+      if (fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(raw);
+        await Setting.create({ key: 'business_config', ...data });
+        console.log(`⚙️ [Auto-Seeded] Business settings imported into MongoDB!`);
+      }
+    }
+  } catch (e) {
+    console.error('Error auto-seeding settings:', e.message);
+  }
+}
+
 // Listen for connection events
 mongoose.connection.on('connected', () => {
   isConnected = true;
@@ -147,17 +255,25 @@ mongoose.connection.on('error', (err) => {
 
 module.exports = {
   connectDB,
-  isDbConnected: () => isConnected,
-  getDbStatus: () => ({
-    type: isConnected ? 'MongoDB' : 'Local JSON Fallback',
-    connected: isConnected,
-    database: isConnected ? mongoose.connection.name : 'local_storage',
-    host: isConnected ? mongoose.connection.host : 'localhost'
-  }),
+  isDbConnected: () => mongoose.connection.readyState === 1,
+  getDbStatus: () => {
+    const connected = mongoose.connection.readyState === 1;
+    return {
+      type: connected ? 'MongoDB Atlas' : 'Local JSON Fallback',
+      connected,
+      database: connected ? mongoose.connection.name : 'local_storage',
+      host: connected ? mongoose.connection.host : 'localhost'
+    };
+  },
   models: {
     Service,
     Booking,
     Enquiry,
-    ChatSession
+    ChatSession,
+    Coupon,
+    Inventory,
+    Staff,
+    Review,
+    Setting
   }
 };

@@ -214,10 +214,96 @@ async function fetchServices() {
     }
   }
 
-  renderServices(allServices);
   initFilterTabs();
+  showOccasionThemes('birthday', false);
   populateBookingPackageDropdown(allServices);
 }
+
+const OCCASION_MAP = {
+  birthday: {
+    icon: '🎂',
+    title: 'Showing 11 Birthday Decoration Themes',
+    sub: 'From 1st Birthday to Milestone setups • Handcrafted in Patna',
+    link: 'category.html?cat=birthday',
+    btnText: 'Open Dedicated Birthday Page'
+  },
+  anniversary: {
+    icon: '💍',
+    title: 'Showing 10 Anniversary & Romantic Themes',
+    sub: 'Intimate cabana canopies, rose beds & jubilee backdrops',
+    link: 'category.html?cat=anniversary',
+    btnText: 'Open Dedicated Anniversary Page'
+  },
+  babyshower: {
+    icon: '👶',
+    title: 'Showing 10 Baby Shower & Welcome Themes',
+    sub: 'Pastel balloon rings, giant teddy & naming setups',
+    link: 'category.html?cat=babyshower',
+    btnText: 'Open Dedicated Baby Shower Page'
+  },
+  wedding: {
+    icon: '💐',
+    title: 'Showing 10 Wedding, Haldi & Sangeet Themes',
+    sub: 'Marigold floral haldi stages, engagement arches & tunnels',
+    link: 'category.html?cat=wedding',
+    btnText: 'Open Dedicated Wedding Page'
+  },
+  corporate: {
+    icon: '🏢',
+    title: 'Showing 10 Corporate & Grand Opening Themes',
+    sub: 'Store opening balloon arches, corporate milestones & stages',
+    link: 'category.html?cat=corporate',
+    btnText: 'Open Dedicated Corporate Page'
+  },
+  other: {
+    icon: '✨',
+    title: 'Showing 10 Kids Special & Custom Themes',
+    sub: 'Superhero themes, proposals, housewarming & festive decor',
+    link: 'category.html?cat=other',
+    btnText: 'Open Dedicated Special Themes Page'
+  }
+};
+
+window.showOccasionThemes = function (catKey, shouldScroll = true) {
+  currentCategory = catKey || 'birthday';
+
+  // 1. Update filter tab pills
+  const tabs = document.querySelectorAll('.filter-tab-pill');
+  tabs.forEach(t => {
+    if (t.getAttribute('data-filter') === currentCategory) {
+      t.classList.add('active');
+    } else {
+      t.classList.remove('active');
+    }
+  });
+
+  // 2. Update Occasion Banner
+  const info = OCCASION_MAP[currentCategory] || OCCASION_MAP.birthday;
+  const iconEl = document.getElementById('occasion-banner-icon');
+  const titleEl = document.getElementById('occasion-banner-title');
+  const subEl = document.getElementById('occasion-banner-sub');
+  const linkEl = document.getElementById('occasion-dedicated-link');
+
+  if (iconEl) iconEl.textContent = info.icon;
+  if (titleEl) titleEl.textContent = info.title;
+  if (subEl) subEl.textContent = info.sub;
+  if (linkEl) {
+    linkEl.href = info.link;
+    linkEl.innerHTML = `${info.btnText} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 4px;"></i>`;
+  }
+
+  // 3. Render only the filtered services for this category
+  const filtered = allServices.filter(s => s.category && s.category.toLowerCase() === currentCategory.toLowerCase());
+  renderServices(filtered);
+
+  // 4. Smooth scroll to packages if requested
+  if (shouldScroll) {
+    const packagesSection = document.getElementById('packages');
+    if (packagesSection) {
+      packagesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+};
 
 function renderServices(services) {
   const grid = document.getElementById('services-grid');
@@ -279,17 +365,8 @@ function initFilterTabs() {
   const tabs = document.querySelectorAll('.filter-tab-pill');
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
       const cat = tab.getAttribute('data-filter');
-      currentCategory = cat;
-
-      if (cat === 'all') {
-        renderServices(allServices);
-      } else {
-        const filtered = allServices.filter(s => s.category === cat);
-        renderServices(filtered);
-      }
+      window.showOccasionThemes(cat, false);
     });
   });
 }
@@ -428,6 +505,7 @@ async function processBookingSubmit(cfg) {
     packageId: pkgVal || 'custom',
     packageName: selectedPkgOpt && pkgVal ? selectedPkgOpt.text : 'Custom Bespoke Setup',
     colorTheme: cfg.theme || 'Pastel Theme',
+    couponCode: (cfg.couponCode || document.getElementById('booking-coupon')?.value || document.getElementById('modal-booking-coupon')?.value || '').trim(),
     notes: (cfg.notes || '').trim()
   };
 
@@ -491,29 +569,63 @@ function showBookingSuccessModal(booking) {
   const idElem = document.getElementById('confirm-booking-id');
   const detailsElem = document.getElementById('confirm-booking-details');
   const waBtn = document.getElementById('confirm-whatsapp-btn');
+  const receiptBtn = document.getElementById('confirm-receipt-download-btn');
 
   if (idElem) idElem.textContent = booking.id;
 
+  if (receiptBtn) {
+    receiptBtn.href = `/api/bookings/${booking.id}/receipt.pdf`;
+  }
+
   if (detailsElem) {
+    const totalAmount = Number(booking.estimatedAmount) || 2499;
+    const advanceAmount = Number(booking.advanceAmount) || 0;
+    const balanceDue = Math.max(0, totalAmount - advanceAmount);
+
     detailsElem.innerHTML = `
       <div style="background: #fff8f9; border: 1px solid var(--border-light); border-radius: 12px; padding: 1.2rem; text-align: left; margin: 1.2rem 0; font-size: 0.9rem; line-height: 1.6;">
-        <div style="color: var(--primary-pink); font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem;">
-          ${booking.packageName}
+        <div style="color: var(--primary-pink); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.05rem;">
+          ${booking.packageName || 'Luxury Balloon Decoration'}
         </div>
         <p><strong>Customer:</strong> ${booking.customerName} (${booking.mobile})</p>
         <p><strong>Occasion:</strong> ${booking.eventType}</p>
-        <p><strong>Date & Time:</strong> ${booking.eventDate} • ${booking.eventTime}</p>
-        <p><strong>Venue:</strong> ${booking.venueAddress || 'To be shared'}</p>
-        <p><strong>Estimated Amount:</strong> ₹${(booking.estimatedAmount || 2499).toLocaleString('en-IN')}</p>
+        <p><strong>Date & Time:</strong> ${booking.eventDate} • ${booking.eventTime || 'Flexible Timing'}</p>
+        <p><strong>Venue:</strong> ${booking.venueAddress || 'Patna, Bihar'}</p>
+        <p><strong>Total Amount:</strong> ₹${totalAmount.toLocaleString('en-IN')}</p>
+        <p><strong>Balance Due on Setup:</strong> <span style="color: var(--primary-pink); font-weight: 700;">₹${balanceDue.toLocaleString('en-IN')}</span> (${booking.paymentMethod || 'Cash on Setup'})</p>
+
+        <div style="margin-top: 0.85rem; padding: 0.75rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; font-size: 0.82rem; color: #065f46; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem; color: #10b981;"></i>
+          <span>Official PDF booking receipt automatically generated and sent to WhatsApp number: <strong>+91 ${booking.mobile}</strong></span>
+        </div>
       </div>
     `;
   }
 
   if (waBtn) {
     const waText = encodeURIComponent(
-      `Hello The Party Hard! 🎈\nI have placed a new booking.\n\n• Booking ID: ${booking.id}\n• Customer: ${booking.customerName}\n• Event: ${booking.eventType}\n• Date: ${booking.eventDate} (${booking.eventTime})\n• Package: ${booking.packageName}\n\nPlease confirm availability!`
+      `🎉 *NEW BOOKING - YUVI DECORATION* 🎈\n` +
+      `━━━━━━━━━━━━━━━━━━━━━\n` +
+      `🆔 *Booking ID:* ${booking.id}\n` +
+      `👤 *Customer Name:* ${booking.customerName}\n` +
+      `📱 *WhatsApp:* ${booking.mobile}\n` +
+      `🎂 *Occasion:* ${booking.eventType}\n` +
+      `✨ *Package:* ${booking.packageName || 'Custom Setup'}\n` +
+      `📅 *Date & Time:* ${booking.eventDate} (${booking.eventTime || 'Flexible'})\n` +
+      `📍 *Venue Address:* ${booking.venueAddress || 'Patna'}\n` +
+      `💰 *Estimated:* ₹${(Number(booking.estimatedAmount) || 2499).toLocaleString('en-IN')}\n` +
+      (booking.couponCode ? `🏷️ *Coupon:* ${booking.couponCode} (-₹${booking.discountAmount || 0})\n` : '') +
+      (booking.colorTheme ? `🎨 *Colors:* ${booking.colorTheme}\n` : '') +
+      (booking.notes ? `📝 *Notes:* ${booking.notes}\n` : '') +
+      `━━━━━━━━━━━━━━━━━━━━━\n` +
+      `Please confirm my reservation slot!`
     );
-    waBtn.href = `https://wa.me/919263667669?text=${waText}`;
+    const waUrl = `https://wa.me/919263667669?text=${waText}`;
+    waBtn.href = waUrl;
+
+    setTimeout(() => {
+      window.open(waUrl, '_blank');
+    }, 900);
   }
 
   openModal('confirmation-modal');
@@ -662,57 +774,91 @@ function renderTrackingResult(booking) {
 
   const status = (booking.status || 'pending').toLowerCase();
   
-  let step1Class = 'done';
-  let step2Class = status === 'pending' ? 'active' : (status === 'cancelled' ? '' : 'done');
-  let step3Class = status === 'confirmed' ? 'active' : (status === 'completed' ? 'done' : '');
-  let step4Class = status === 'completed' ? 'done active' : '';
+  let step1Class = 'done active';
+  let step2Class = '';
+  let step3Class = '';
+  let step4Class = '';
 
-  let statusBadgeColor = 'var(--status-pending)';
-  let statusBadgeText = 'Under Review / Pending Confirmation';
+  let statusBadgeColor = '#d97706';
+  let statusBadgeBg = '#fef3c7';
+  let statusBadgeText = '1. Booking Received & Under Review';
 
   if (status === 'confirmed') {
-    statusBadgeColor = 'var(--status-confirmed)';
-    statusBadgeText = 'Confirmed & Decorator Assigned';
+    step1Class = 'done';
+    step2Class = 'done active';
+    statusBadgeColor = '#059669';
+    statusBadgeBg = '#d1fae5';
+    statusBadgeText = '2. Booking Confirmed • Decorator Assigned';
+  } else if (status === 'in_progress') {
+    step1Class = 'done';
+    step2Class = 'done';
+    step3Class = 'done active';
+    statusBadgeColor = '#2563eb';
+    statusBadgeBg = '#dbeafe';
+    statusBadgeText = '3. Decoration In Progress at Venue';
   } else if (status === 'completed') {
-    statusBadgeColor = 'var(--status-completed)';
-    statusBadgeText = 'Event Successfully Completed';
+    step1Class = 'done';
+    step2Class = 'done';
+    step3Class = 'done';
+    step4Class = 'done active';
+    statusBadgeColor = '#7c3aed';
+    statusBadgeBg = '#ede9fe';
+    statusBadgeText = '4. Event Decoration Successfully Completed 🎉';
   } else if (status === 'cancelled') {
-    statusBadgeColor = 'var(--status-cancelled)';
+    step1Class = 'done';
+    statusBadgeColor = '#dc2626';
+    statusBadgeBg = '#fee2e2';
     statusBadgeText = 'Booking Cancelled';
   }
+
+  const receiptUrl = booking.receiptUrl || `/api/bookings/${booking.id}/receipt.pdf`;
 
   resultCard.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
       <div>
-        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--primary-pink); letter-spacing: 0.1em; font-weight: 700;">Live Status</span>
+        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--primary-pink); letter-spacing: 0.1em; font-weight: 700;">Live Booking Progress</span>
         <h3 style="font-size: 1.6rem; color: var(--text-dark); margin: 0.2rem 0;">${booking.id}</h3>
-        <p style="color: var(--text-muted); font-size: 0.88rem;">Placed on: ${new Date(booking.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">Booked on: ${new Date(booking.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
       </div>
       <div>
-        <span style="display: inline-block; padding: 0.35rem 1rem; border-radius: 999px; background: #fff0f3; border: 1px solid ${statusBadgeColor}; color: ${statusBadgeColor}; font-weight: 700; font-size: 0.82rem;">
+        <span style="display: inline-block; padding: 0.4rem 1.1rem; border-radius: 999px; background: ${statusBadgeBg}; color: ${statusBadgeColor}; font-weight: 700; font-size: 0.84rem; border: 1px solid ${statusBadgeColor};">
           ${statusBadgeText}
         </span>
       </div>
     </div>
 
-    <!-- Timeline Steps -->
+    <!-- Official 4-Step Booking Tracking Timeline -->
     <div class="track-timeline">
       <div class="track-step ${step1Class}">
         <div class="track-step-dot"><i class="fa-regular fa-file-lines"></i></div>
-        <div class="track-step-title">Order Received</div>
+        <div class="track-step-title">Booking Received</div>
       </div>
       <div class="track-step ${step2Class}">
-        <div class="track-step-dot"><i class="fa-regular fa-user"></i></div>
-        <div class="track-step-title">Assigned</div>
+        <div class="track-step-dot"><i class="fa-regular fa-calendar-check"></i></div>
+        <div class="track-step-title">Booking Confirmed</div>
       </div>
       <div class="track-step ${step3Class}">
         <div class="track-step-dot"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-        <div class="track-step-title">Preparation</div>
+        <div class="track-step-title">Decoration In Progress</div>
       </div>
       <div class="track-step ${step4Class}">
         <div class="track-step-dot"><i class="fa-solid fa-gift"></i></div>
-        <div class="track-step-title">Ready!</div>
+        <div class="track-step-title">Decoration Completed</div>
       </div>
+    </div>
+
+    <!-- WhatsApp & Digital PDF Receipt Banner -->
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 0.9rem 1.25rem; border-radius: 12px; margin-bottom: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.6rem;"></i>
+        <div>
+          <strong style="color: #166534; font-size: 0.92rem;">Automatic WhatsApp Receipt Generated</strong>
+          <p style="margin: 0.15rem 0 0; color: #15803d; font-size: 0.8rem;">Official PDF voucher issued for WhatsApp number: <strong>+91 ${booking.mobile}</strong></p>
+        </div>
+      </div>
+      <a href="${receiptUrl}" target="_blank" class="btn btn-pink" style="font-size: 0.82rem; padding: 0.45rem 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+        <i class="fa-solid fa-file-pdf"></i> Download PDF Receipt
+      </a>
     </div>
 
     <!-- Details Grid -->
@@ -720,26 +866,29 @@ function renderTrackingResult(booking) {
       <div>
         <p style="color: var(--primary-pink); font-size: 0.78rem; text-transform: uppercase; font-weight: 700;">Customer</p>
         <p style="font-weight: 600; color: var(--text-dark);">${booking.customerName}</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">📞 ${booking.mobile}</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">📞 +91 ${booking.mobile}</p>
       </div>
       <div>
         <p style="color: var(--primary-pink); font-size: 0.78rem; text-transform: uppercase; font-weight: 700;">Occasion & Timing</p>
         <p style="font-weight: 600; color: var(--text-dark);">${booking.eventType}</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">📅 ${booking.eventDate} (${booking.eventTime})</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">📅 ${booking.eventDate} (${booking.eventTime || 'Flexible'})</p>
       </div>
       <div>
-        <p style="color: var(--primary-pink); font-size: 0.78rem; text-transform: uppercase; font-weight: 700;">Selected Setup</p>
-        <p style="font-weight: 600; color: var(--text-dark);">${booking.packageName}</p>
-        <p style="color: var(--primary-pink); font-weight: 700; font-size: 0.85rem;">₹${(booking.estimatedAmount || 2499).toLocaleString('en-IN')}</p>
+        <p style="color: var(--primary-pink); font-size: 0.78rem; text-transform: uppercase; font-weight: 700;">Selected Setup & Amount</p>
+        <p style="font-weight: 600; color: var(--text-dark);">${booking.packageName || 'Luxury Setup'}</p>
+        <p style="color: var(--primary-pink); font-weight: 700; font-size: 0.95rem;">₹${(Number(booking.estimatedAmount) || 2499).toLocaleString('en-IN')} <span style="font-size: 0.75rem; font-weight: 500; color: var(--text-muted);">(${booking.paymentMethod || 'Cash on Setup'})</span></p>
       </div>
       <div>
         <p style="color: var(--primary-pink); font-size: 0.78rem; text-transform: uppercase; font-weight: 700;">Delivery Venue</p>
-        <p style="color: var(--text-dark); font-size: 0.88rem;">${booking.venueAddress || 'To be shared'}</p>
+        <p style="color: var(--text-dark); font-size: 0.88rem;">${booking.venueAddress || 'Patna, Bihar'}</p>
       </div>
     </div>
 
     <div style="display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap;">
-      <a href="https://wa.me/919263667669?text=Hello%20The%20Party%20Hard,%20inquiring%20about%20Booking%20ID%20${booking.id}" target="_blank" class="btn btn-whatsapp" style="font-size: 0.85rem;">
+      <a href="${receiptUrl}" target="_blank" class="btn btn-pink" style="font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+        <i class="fa-solid fa-file-pdf"></i> Download Official PDF Receipt
+      </a>
+      <a href="https://wa.me/919263667669?text=Hello%20YUVI%20DECORATION,%20inquiring%20about%20Booking%20ID%20${booking.id}" target="_blank" class="btn btn-whatsapp" style="font-size: 0.85rem; text-decoration: none;">
         <i class="fa-brands fa-whatsapp"></i> Chat with Support
       </a>
       <button class="btn btn-white-pill" onclick="window.print()" style="font-size: 0.85rem;">
@@ -934,13 +1083,13 @@ window.openServiceDetailModal = function (serviceId) {
 };
 
 window.filterGalleryByCat = function(category) {
-  const filterBtn = document.querySelector(`.filter-tab-pill[data-filter="${category}"]`);
-  if (filterBtn) {
-    filterBtn.click();
-  }
-  const packagesSection = document.getElementById('packages');
-  if (packagesSection) {
-    packagesSection.scrollIntoView({ behavior: 'smooth' });
+  if (window.showOccasionThemes) {
+    window.showOccasionThemes(category, true);
+  } else {
+    const filterBtn = document.querySelector(`.filter-tab-pill[data-filter="${category}"]`);
+    if (filterBtn) filterBtn.click();
+    const packagesSection = document.getElementById('packages');
+    if (packagesSection) packagesSection.scrollIntoView({ behavior: 'smooth' });
   }
 };
 

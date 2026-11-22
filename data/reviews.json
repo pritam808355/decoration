@@ -1,0 +1,50 @@
+[
+  {
+    "id": "REV-01",
+    "customerName": "Ananya Sharma",
+    "location": "Boring Road, Patna",
+    "eventType": "1st Birthday Party",
+    "rating": 5,
+    "comment": "Yuvi Decoration team reached our house 2 hours before the party and set up a breathtaking pastel pink ring arch with custom neon sign. All guests were taking photos non-stop! Truly professional service in Patna.",
+    "photo": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop&q=80",
+    "verified": true,
+    "approved": true,
+    "createdAt": "2026-11-05T14:20:00.000Z"
+  },
+  {
+    "id": "REV-02",
+    "customerName": "Rahul Verma",
+    "location": "Kankarbagh, Patna",
+    "eventType": "25th Silver Anniversary",
+    "rating": 5,
+    "comment": "Ordered the romantic rose gold heart arch and fairy lights for my parents' anniversary. The finishing was top notch, balloons didn't deflate even after 2 days. WhatsApp booking and instant receipt made it so easy!",
+    "photo": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop&q=80",
+    "verified": true,
+    "approved": true,
+    "createdAt": "2026-11-08T18:45:00.000Z"
+  },
+  {
+    "id": "REV-03",
+    "customerName": "Priya Singh",
+    "location": "Bailey Road, Patna",
+    "eventType": "Baby Shower Ceremony",
+    "rating": 5,
+    "comment": "The pastel clouds with the 4ft plush teddy and Oh Baby neon sign looked straight out of Pinterest! Very polite staff and zero advance hassle. Highly recommended for baby showers.",
+    "photo": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
+    "verified": true,
+    "approved": true,
+    "createdAt": "2026-11-12T11:10:00.000Z"
+  },
+  {
+    "id": "REV-04",
+    "customerName": "Vikash Agarwal",
+    "location": "Danapur, Patna",
+    "eventType": "Corporate Showroom Launch",
+    "rating": 5,
+    "comment": "Booked on urgent same-day notice for our showroom inauguration. The 14ft spiral entrance gate in our brand colors was completely ready in under 2 hours. Full GST invoice provided on spot.",
+    "photo": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80",
+    "verified": true,
+    "approved": true,
+    "createdAt": "2026-11-14T09:30:00.000Z"
+  }
+]

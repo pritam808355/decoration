@@ -1,5 +1,99 @@
 [
   {
+    "sessionId": "CHAT-2026-9506",
+    "startedAt": "2026-10-26T11:13:14.369Z",
+    "lastMessageAt": "2026-11-13T19:00:59.911Z",
+    "summary": "Book a decoration for wedding",
+    "messages": [
+      {
+        "sender": "user",
+        "text": "Book a decoration for wedding",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "bot",
+        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "user",
+        "text": "Haldi Setup 🌼",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "bot",
+        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
+        "time": "04:43 pm"
+      },
+      {
+        "sender": "user",
+        "text": "end",
+        "time": "04:48 pm"
+      },
+      {
+        "sender": "bot",
+        "text": "Aapka bahut bahut shukriya! 🙏 Agar koi bhi doubt ho ya customized setup chahiye ho, toh kabhi bhi message karein ya humare owner se connect karein:\n\n• 📱 **WhatsApp / Call**: +91 92636 67669\n• 📧 **Email**: partyhard2707@gmail.com\n\nAapka celebration shandar ho! 🎈✨",
+        "time": "04:48 pm"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Namaste! Mujhe The Party Hard ke best packages aur trending designs dikhao.",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:02.537Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Namaste! 🙏 Main hoon **Party Hard AI Assistant** — The Party Hard ka smart concierge!\n\nMain aapki kaise madad kar sakta hoon?\n• 🎈 Birthday / Wedding / Baby Shower decoration ideas dekhna\n• 💰 Apne budget ke hisaab se best package dhundhna (jaise ₹2,000 ya ₹3,000)\n• 📅 Booking confirm karna aur status track karna\n• 📞 Owner se WhatsApp par direct baat karna\n\nBataiye aaj kounsa celebration plan kar rahe hain? 😊",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:02.537Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "helllo",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:09.580Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Shukriya! 🎈 The Party Hard par hum Birthday, Wedding, Baby Shower, Anniversary aur Corporate events ke liye premium balloon decoration provide karte hain.\n\nAap kiske bare mein jaanna chahte hain? Niche kisi option par click karein:",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:09.580Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Mera budget ₹2,500 hai 💰",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:12.305Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "Humare starting packages **₹1,499** se start hote hain (Romantic Bedroom Canopy ya Birthday Setup). Aap hume call ya WhatsApp karke customized package banwa sakte hain! 🎈",
+        "time": "11:03 am",
+        "timestamp": "2026-10-27T05:33:12.305Z"
+      },
+      {
+        "sender": "user",
+        "role": "user",
+        "text": "Show me birthday decoration ideas",
+        "time": "12:30 am",
+        "timestamp": "2026-11-13T19:00:59.911Z"
+      },
+      {
+        "sender": "bot",
+        "role": "bot",
+        "text": "🎂 **Birthday Celebrations ke liye Top Ideas:**\n\n1. **Pastel Dream Ring Arch** (₹2,499) — LED Neon Sign, Ring backdrop & pastel chrome balloons.\n2. **Royal Black & Gold Adult Milestone Arch** (₹2,999) — Chrome balloons & 3ft number foils.\n3. **Surprise Bedroom Balloon Canopy** (₹1,499) — 100 ceiling balloons, fairy lights & memory photo clips!\n\nAap niche click karke direct booking kar sakte hain ya gallery explore karein:",
+        "time": "12:30 am",
+        "timestamp": "2026-11-13T19:00:59.911Z"
+      }
+    ]
+  },
+  {
     "sessionId": "CHAT-2026-3960",
     "startedAt": "2026-10-28T16:30:20.469Z",
     "lastMessageAt": "2026-10-28T16:30:20.469Z",
@@ -192,86 +286,6 @@
         "text": "Namaste ji! Main mast hoon! 😊🎉\n\nMain hoon **The Party Hard AI Assistant** — aapka personal celebration concierge!\n\nMain aapke celebration ke liye best balloon decorations recommend kar sakta hoon, aapke budget mein packages dhoondh sakta hoon, booking karwa sakta hoon aur status track kar sakta hoon!\n\nAap bataiye, kiska celebration plan ho raha hai aaj? 🎈",
         "time": "11:15 am",
         "timestamp": "2026-10-27T05:45:15.752Z"
-      }
-    ]
-  },
-  {
-    "sessionId": "CHAT-2026-9506",
-    "startedAt": "2026-10-26T11:13:14.369Z",
-    "lastMessageAt": "2026-10-27T05:33:12.305Z",
-    "summary": "Book a decoration for wedding",
-    "messages": [
-      {
-        "sender": "user",
-        "text": "Book a decoration for wedding",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "bot",
-        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "user",
-        "text": "Haldi Setup 🌼",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "bot",
-        "text": "💍 **Shaadi & Engagement Decoration Services:**\n\n✨ **Royal Double Ring Arch** with champagne balloons & fresh floral accents (₹5,499)\n✨ **Haldi / Mehendi Yellow Marigold Traditional Setup** (₹3,899)\n✨ **Luxury Bridal Entry Gateway & Proposal Canopy**\n\nMain aapke liye Wedding Booking Form open kar raha hoon!",
-        "time": "04:43 pm"
-      },
-      {
-        "sender": "user",
-        "text": "end",
-        "time": "04:48 pm"
-      },
-      {
-        "sender": "bot",
-        "text": "Aapka bahut bahut shukriya! 🙏 Agar koi bhi doubt ho ya customized setup chahiye ho, toh kabhi bhi message karein ya humare owner se connect karein:\n\n• 📱 **WhatsApp / Call**: +91 92636 67669\n• 📧 **Email**: partyhard2707@gmail.com\n\nAapka celebration shandar ho! 🎈✨",
-        "time": "04:48 pm"
-      },
-      {
-        "sender": "user",
-        "role": "user",
-        "text": "Namaste! Mujhe The Party Hard ke best packages aur trending designs dikhao.",
-        "time": "11:03 am",
-        "timestamp": "2026-10-27T05:33:02.537Z"
-      },
-      {
-        "sender": "bot",
-        "role": "bot",
-        "text": "Namaste! 🙏 Main hoon **Party Hard AI Assistant** — The Party Hard ka smart concierge!\n\nMain aapki kaise madad kar sakta hoon?\n• 🎈 Birthday / Wedding / Baby Shower decoration ideas dekhna\n• 💰 Apne budget ke hisaab se best package dhundhna (jaise ₹2,000 ya ₹3,000)\n• 📅 Booking confirm karna aur status track karna\n• 📞 Owner se WhatsApp par direct baat karna\n\nBataiye aaj kounsa celebration plan kar rahe hain? 😊",
-        "time": "11:03 am",
-        "timestamp": "2026-10-27T05:33:02.537Z"
-      },
-      {
-        "sender": "user",
-        "role": "user",
-        "text": "helllo",
-        "time": "11:03 am",
-        "timestamp": "2026-10-27T05:33:09.580Z"
-      },
-      {
-        "sender": "bot",
-        "role": "bot",
-        "text": "Shukriya! 🎈 The Party Hard par hum Birthday, Wedding, Baby Shower, Anniversary aur Corporate events ke liye premium balloon decoration provide karte hain.\n\nAap kiske bare mein jaanna chahte hain? Niche kisi option par click karein:",
-        "time": "11:03 am",
-        "timestamp": "2026-10-27T05:33:09.580Z"
-      },
-      {
-        "sender": "user",
-        "role": "user",
-        "text": "Mera budget ₹2,500 hai 💰",
-        "time": "11:03 am",
-        "timestamp": "2026-10-27T05:33:12.305Z"
-      },
-      {
-        "sender": "bot",
-        "role": "bot",
-        "text": "Humare starting packages **₹1,499** se start hote hain (Romantic Bedroom Canopy ya Birthday Setup). Aap hume call ya WhatsApp karke customized package banwa sakte hain! 🎈",
-        "time": "11:03 am",
-        "timestamp": "2026-10-27T05:33:12.305Z"
       }
     ]
   },
