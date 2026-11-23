@@ -15,7 +15,7 @@ const Setting = require('../models/Setting');
 let isConnected = false;
 let lastError = null;
 let lastAttemptedUri = null;
-const CLOUD_MONGODB_URI = 'mongodb+srv://pk6926459_db_user:pritam8083@cluster0.f7yszpf.mongodb.net/yuvi_decoration?retryWrites=true&w=majority';
+const CLOUD_MONGODB_URI = 'mongodb+srv://pk6926459_db_user:pritam620@cluster0.f7yszpf.mongodb.net/yuvi_decoration?retryWrites=true&w=majority';
 
 async function connectDB() {
   let uri = process.env.MONGODB_URI;
