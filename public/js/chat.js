@@ -139,8 +139,8 @@ function initAIChat() {
         localStorage.setItem('yuvi_chat_session_id', currentSessionId);
         messagesContainer.innerHTML = `
           <div class="chat-msg bot">
-            Hi! I'm <strong>Party Hard AI</strong> 👋<br><br>
-            Welcome to <strong>The Party Hard</strong>! How can I help you today? Aap mujhse decoration ideas, packages, pricing, budget recommendations ya booking status ke bare mein pooch sakte hain!
+            Hi! I'm <strong>Yuvi AI</strong> 👋<br><br>
+            Welcome to <strong>Yuvi Decoration</strong>! How can I help you today? Aap mujhse decoration ideas, packages, pricing, budget recommendations ya booking status ke bare mein pooch sakte hain!
           </div>
         `;
       }
@@ -461,7 +461,7 @@ function generateLocalChatResponse(message) {
   // 2. Location & Doorstep Service ("patna", "kaha", "kahan", "bihar", "ghar", "area", "address", "shop", "venue")
   if (query.includes('patna') || query.includes('kaha') || query.includes('kahan') || query.includes('location') || query.includes('address') || query.includes('shop') || query.includes('ghar') || query.includes('area') || query.includes('doorstep') || query.includes('bihar') || query.includes('service area') || query.includes('kaha se ho') || query.includes('city')) {
     return {
-      reply: `📍 **The Party Hard Service Areas & Doorstep Setup:**\n\n` +
+      reply: `📍 **Yuvi Decoration Service Areas & Doorstep Setup:**\n\n` +
         `Haan ji! Hum **pure Patna aur aas-paas ke sabhi areas** mein doorstep balloon decoration deliver karte hain! 🚗🎈\n\n` +
         `• Kankarbagh, Boring Road, Bailey Road, Raja Bazar\n` +
         `• Danapur, Saguna More, Patliputra Colony\n` +
@@ -555,7 +555,7 @@ function generateLocalChatResponse(message) {
   // 7. Trending & Best Recommendations ("kuch acha", "kuch accha", "badhiya", "sundar", "trending", "suggest", "best")
   if (query.includes('kuch acha') || query.includes('kuch accha') || query.includes('badhiya') || query.includes('sundar') || query.includes('trending') || query.includes('suggest') || query.includes('best') || query.includes('top') || query.includes('kuch naya') || query.includes('acha wala')) {
     return {
-      reply: `🌟 **The Party Hard Top Trending Recommendations:**\n\n` +
+      reply: `🌟 **Yuvi Decoration Top Trending Recommendations:**\n\n` +
         `1. 🌸 **Pastel Dream Circular Ring Arch** (₹2,499) — Warm LED Neon sign, pastel pink, lavender & chrome balloons. Sabse popular!\n` +
         `2. 👑 **Royal Black & Metallic Gold Milestone** (₹2,999) — 3ft number foils aur luxury adult look.\n` +
         `3. ☁️ **Pastel Clouds & Giant 4ft Plush Teddy** (₹3,299) — Baby Shower & 1st Birthday ke liye super cute!\n` +
@@ -586,7 +586,7 @@ function generateLocalChatResponse(message) {
   // 9. Conversational Companion Talk ("tum kaun ho", "kya haal", "kaise ho", "kese ho", "aur batao")
   if (query.includes('tum kaun') || query.includes('naam kya') || query.includes('kya haal') || query.includes('kaise ho') || query.includes('kese ho') || query.includes('kya kar sakte') || query.includes('robot') || query.includes('aur batao') || query.includes('kaise h')) {
     return {
-      reply: `Namaste ji! Main mast hoon! 😊🎉\n\nMain hoon **The Party Hard AI Assistant** — aapka personal celebration concierge!\n\nMain aapke celebration ke liye best balloon decorations recommend kar sakta hoon, aapke budget mein packages dhoondh sakta hoon, booking karwa sakta hoon aur status track kar sakta hoon!\n\nAap bataiye, kiska celebration plan ho raha hai aaj? 🎈`,
+      reply: `Namaste ji! Main mast hoon! 😊🎉\n\nMain hoon **Yuvi AI Assistant** — aapka personal celebration concierge by Yuvi Decoration!\n\nMain aapke celebration ke liye best balloon decorations recommend kar sakta hoon, aapke budget mein packages dhoondh sakta hoon, booking karwa sakta hoon aur status track kar sakta hoon!\n\nAap bataiye, kiska celebration plan ho raha hai aaj? 🎈`,
       action: 'SHOW_SUGGESTIONS',
       data: {
         suggestions: [
@@ -628,7 +628,7 @@ function generateLocalChatResponse(message) {
   // 12. Greeting
   if (query.includes('hello') || query.includes('hi') || query.includes('namaste') || query.includes('hey') || query.includes('pranam')) {
     return {
-      reply: `Namaste! 🙏 Main hoon **Party Hard AI Assistant** — The Party Hard ka smart helper!\n\nMain aapki kaise madad kar sakta hoon?\n• 🎈 Birthday / Wedding / Baby Shower decoration ideas dekhna\n• 💰 Apne budget ke hisaab se best package dhundhna (jaise ₹2,000 ya ₹3,000)\n• 📅 Booking confirm karna aur status track karna\n• 📞 Owner se WhatsApp par direct connect hona\n\nBataiye aaj kounsa celebration plan kar rahe hain? 😊`,
+      reply: `Namaste! 🙏 Main hoon **Yuvi AI Assistant** — Yuvi Decoration ka smart helper!\n\nMain aapki kaise madad kar sakta hoon?\n• 🎈 Birthday / Wedding / Baby Shower decoration ideas dekhna\n• 💰 Apne budget ke hisaab se best package dhundhna (jaise ₹2,000 ya ₹3,000)\n• 📅 Booking confirm karna aur status track karna\n• 📞 Owner se WhatsApp par direct connect hona\n\nBataiye aaj kounsa celebration plan kar rahe hain? 😊`,
       action: 'SHOW_SUGGESTIONS',
       data: {
         suggestions: [
@@ -662,7 +662,7 @@ function generateLocalChatResponse(message) {
   // 6. Packages & prices
   if (query.includes('package') || query.includes('packages') || query.includes('rate') || query.includes('rates') || query.includes('price') || query.includes('prices') || query.includes('cost') || query.includes('karcha') || query.includes('list') || query.includes('kitna')) {
     return {
-      reply: `🎈 **The Party Hard Complete Rate List & Packages:**\n\n` +
+      reply: `🎈 **Yuvi Decoration Complete Rate List & Packages:**\n\n` +
         `🎂 **Birthday Parties** — ₹1,499 se ₹3,899 (Pastel Ring Arch, Neon Sign & Cutouts)\n` +
         `🍼 **Baby Shower & Naming** — ₹2,199 se ₹3,999 (Pastel Clouds, 4ft Teddy & Mom-to-Be Neon)\n` +
         `💖 **Anniversaries** — ₹1,799 se ₹5,499 (Rose Gold Heart Arch & Fairy Lights)\n` +
@@ -740,7 +740,7 @@ function generateLocalChatResponse(message) {
   // 11. Human support / WhatsApp
   if (query.includes('human') || query.includes('owner') || query.includes('call') || query.includes('whatsapp') || query.includes('contact') || query.includes('number') || query.includes('phone') || query.includes('baat')) {
     return {
-      reply: `📞 **The Party Hard Direct Support:**\n\n` +
+      reply: `📞 **Yuvi Decoration Direct Support:**\n\n` +
         `• 📱 **Phone / WhatsApp**: +91 92636 67669\n` +
         `• 📧 **Email**: partyhard2707@gmail.com\n` +
         `• ⏰ **Timings**: 8:00 AM - 10:00 PM (Daily 7 Days)\n\n` +
@@ -752,7 +752,7 @@ function generateLocalChatResponse(message) {
 
   // Conversational Fallback with Helpful Guidance
   return {
-    reply: `Arey bilkul! 🎈 Main The Party Hard se hoon. Main aapke event ke according best balloon decoration plan karne mein madad kar sakta hoon!\n\n` +
+    reply: `Arey bilkul! 🎈 Main Yuvi Decoration se hoon. Main aapke event ke according best balloon decoration plan karne mein madad kar sakta hoon!\n\n` +
       `Aap Birthday, Anniversary, Baby Shower ya Wedding decor dekhna chahte hain? Ya apna approximate budget batayein (jaise ₹2,000 ya ₹3,500), main instant best package dikha dunga! 😊`,
     action: 'SHOW_SUGGESTIONS',
     data: {

@@ -933,7 +933,7 @@ window.loadAdminChats = async function() {
         lastMessageAt: new Date(Date.now() - 1800000).toISOString(),
         summary: "Inquired about Birthday Arch under ₹3,000",
         messages: [
-          { sender: "bot", text: "Hi! I'm Party Hard AI 👋 Welcome to The Party Hard! How can I help you today?", time: "10:15 AM" },
+          { sender: "bot", text: "Hi! I'm Yuvi AI 👋 Welcome to Yuvi Decoration! How can I help you today?", time: "10:15 AM" },
           { sender: "user", text: "Birthday decoration ideas dikhao", time: "10:16 AM" },
           { sender: "bot", text: "🎂 Top Birthday Themes: 1. Pastel Dream Ring Arch (₹2,499), 2. Royal Black & Gold Milestone Arch (₹2,999)...", time: "10:16 AM" },
           { sender: "user", text: "Mera budget ₹3,000 hai", time: "10:17 AM" },
@@ -946,9 +946,9 @@ window.loadAdminChats = async function() {
         lastMessageAt: new Date(Date.now() - 7000000).toISOString(),
         summary: "Customer wanted to talk to human / owner",
         messages: [
-          { sender: "bot", text: "Hi! I'm Party Hard AI 👋 Welcome to The Party Hard! How can I help you today?", time: "12:30 PM" },
+          { sender: "bot", text: "Hi! I'm Yuvi AI 👋 Welcome to Yuvi Decoration! How can I help you today?", time: "12:30 PM" },
           { sender: "user", text: "Talk to a human", time: "12:31 PM" },
-          { sender: "bot", text: "📞 The Party Hard Direct Support: Phone & WhatsApp +91 92636 67669, Email partyhard2707@gmail.com. Timings: 8:00 AM - 10:00 PM.", time: "12:32 PM" }
+          { sender: "bot", text: "📞 Yuvi Decoration Direct Support: Phone & WhatsApp +91 92636 67669, Email partyhard2707@gmail.com. Timings: 8:00 AM - 10:00 PM.", time: "12:32 PM" }
         ]
       }
     ];
@@ -1099,12 +1099,12 @@ window.copyCurrentChatTranscript = function() {
     return;
   }
 
-  let text = `=== THE PARTY HARD AI CHAT TRANSCRIPT ===\n`;
+  let text = `=== YUVI DECORATION AI CHAT TRANSCRIPT ===\n`;
   text += `Session ID: ${currentActiveSession.sessionId}\n`;
   text += `Started At: ${currentActiveSession.startedAt}\n\n`;
 
   currentActiveSession.messages.forEach(m => {
-    const role = m.sender === 'bot' ? 'Party Hard AI' : 'Customer';
+    const role = m.sender === 'bot' ? 'Yuvi AI' : 'Customer';
     text += `[${m.time || ''}] ${role}: ${m.text}\n\n`;
   });
 

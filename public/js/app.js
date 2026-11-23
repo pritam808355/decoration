@@ -744,7 +744,7 @@ function renderNotFoundCard(query) {
   if (!resultCard) return;
 
   const safeQuery = String(query).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
-  const waQuery = encodeURIComponent(`Hello The Party Hard, mujhe apni booking status check karne me help chahiye. My query: ${query}`);
+  const waQuery = encodeURIComponent(`Hello Yuvi Decoration, mujhe apni booking status check karne me help chahiye. My query: ${query}`);
 
   resultCard.innerHTML = `
     <div style="text-align: center; padding: 2.2rem 1.2rem; background: #fff8f9; border: 1.5px dashed var(--primary-pink); border-radius: 16px;">
@@ -1197,7 +1197,7 @@ window.handleWelcomeChat = function () {
   closeWelcomeModal();
   setTimeout(() => {
     if (window.openAiChat) {
-      window.openAiChat('Namaste! Mujhe The Party Hard ke best packages aur trending designs dikhao.');
+      window.openAiChat('Namaste! Mujhe Yuvi Decoration ke best packages aur trending designs dikhao.');
     }
   }, 300);
 };
